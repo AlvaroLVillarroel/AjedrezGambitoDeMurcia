@@ -2,6 +2,7 @@
 #include <iostream>
 #include "tablero.h"
 //rr
+//er
 //#include "peon.h"
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
