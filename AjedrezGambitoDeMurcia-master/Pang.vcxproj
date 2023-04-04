@@ -142,10 +142,12 @@
   <ItemGroup>
     <ClCompile Include="ajedrez.cpp" />
     <ClCompile Include="coordenadas.cpp" />
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="tablero.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="coordenadas.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="tablero.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
