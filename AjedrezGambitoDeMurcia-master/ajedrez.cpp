@@ -1,6 +1,7 @@
 #include "freeglut.h"
 #include <iostream>
 #include "tablero.h"
+#include "game.h"
 //rr
 //er
 //prueba
@@ -12,12 +13,13 @@ void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
 Tablero tablero;
+Game juego;
 int main(int argc,char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
 	//y crear la ventana
 	glutInit(&argc, argv);
-	glutInitWindowSize(1920,1080);
+	glutInitWindowSize(1000,720);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("Ajedrez");
 	//glutFullScreen();
@@ -53,6 +55,8 @@ void OnDraw(void)
 
 	//aqui es donde hay que poner el código de dibujo
 	tablero.dibujarTablero();
+	juego.dibuja();
+	
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
 }
