@@ -13,13 +13,13 @@ void Game::dibuja() {
 
 	glEnable(GL_TEXTURE_2D);
 	glColor3f(1, 1, 1);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/inicio.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/portada.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
-	glTexCoord2d(0, 1); glVertex3f(-16.0f, -9.0f, 0.0f);
-	glTexCoord2d(1, 1); glVertex3f(16.0f, -9.0f, 0.0f);
-	glTexCoord2d(1, 0); glVertex3f(16.0f, 9.0f, 0.0f);
-	glTexCoord2d(0, 0); glVertex3f(-16.0f, 9.0f, 0.0f);
+	glTexCoord2d(0, 1); glVertex3f(-17.6f, -8.8f, 0.0f);
+	glTexCoord2d(1, 1); glVertex3f(17.6f, -8.8f, 0.0f);
+	glTexCoord2d(1, 0); glVertex3f(17.6f, 8.8f, 0.0f);
+	glTexCoord2d(0, 0); glVertex3f(-17.6f, 8.8f, 0.0f);
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);

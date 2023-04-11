@@ -143,12 +143,16 @@
     <ClCompile Include="ajedrez.cpp" />
     <ClCompile Include="coordenadas.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="pieza.cpp" />
     <ClCompile Include="tablero.cpp" />
+    <ClCompile Include="Vector2d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="coordenadas.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="pieza.h" />
     <ClInclude Include="tablero.h" />
+    <ClInclude Include="Vector2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
