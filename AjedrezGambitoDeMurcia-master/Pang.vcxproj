@@ -145,6 +145,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="pieza.cpp" />
     <ClCompile Include="tablero.cpp" />
+    <ClCompile Include="torre.cpp" />
     <ClCompile Include="Vector2d.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="pieza.h" />
     <ClInclude Include="tablero.h" />
+    <ClInclude Include="torre.h" />
     <ClInclude Include="Vector2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "freeglut.h"
 #include "coordenadas.h"
+#include "game.h"
 class Tablero {
 public:
 	GLfloat x1=0;

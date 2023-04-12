@@ -24,3 +24,9 @@ void Coordenadas::dibujarPrueba() {
         }
     }
 }
+
+Coordenadas::Coordenadas(int fila, int columna)
+{
+    this->fila = fila;
+    this->columna = columna;
+}
