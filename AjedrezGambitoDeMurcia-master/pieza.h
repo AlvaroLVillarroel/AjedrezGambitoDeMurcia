@@ -10,8 +10,13 @@ class pieza
 	equipos Equipo;
 	tipoPieza Pieza;
 	Coordenadas Coord;
+
 public:
-	pieza(paises pais, equipos equipo, tipoPieza pieza);
+	pieza(paises pais, equipos equipo, tipoPieza pieza, Coordenadas coord);
+	int getFila(); //obtiene valor de fila
+	int getColumna(); //obtiene valor de columna
+	void setFila(int row); //modifica valor de fila
+	void setColumna(int column); //modifica valor de columna
 	void dibujarPieza();
 };
 

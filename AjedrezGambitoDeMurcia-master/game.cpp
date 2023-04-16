@@ -4,12 +4,16 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
 
-void Game::dibuja() {
-	//estado = inicio;
 
+void Game::dibuja() {
+	estado = inicio;
+	//if (estado = inicio) 
+	//{
 	gluLookAt(0, 0, 40,  // posicion del ojo
 		0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+
+	//dibuja pantalla de inicio
 
 	glEnable(GL_TEXTURE_2D);
 	glColor3f(1, 1, 1);
@@ -25,13 +29,36 @@ void Game::dibuja() {
 	glDisable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
+	//dibuja botones de empezar partida  y de salir del juego. Hay que ajustar los valores
+
+	glBegin(GL_POLYGON); //empezar partida
+	glVertex2f(-5, 5);
+	glVertex2f(5, 5);
+	glVertex2f(5, 2);
+	glVertex2f(-5, 2);
+	glEnd();
+
+	glBegin(GL_POLYGON); //salir del juego
+	glVertex2f(-5, 1);
+	glVertex2f(5, 1);
+	glVertex2f(5, -2);
+	glVertex2f(-5, -2);
+	glEnd();
+
+	//}
 } 
 
 void Game::mousePress(int button, int state, int x, int y) {
 
 	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
 	{
-
+		//Hay que ajustar valores acorde a las coord de los botones
+		if (x >= -5 && x <= 5 && y >= 5 && y <= 2) {
+			estado = modos;
+		}
+		else if (x >= -5 && x <= 5 && y >= 1 && y <= -2) {
+			exit(0);
+		}
 
 	}
 

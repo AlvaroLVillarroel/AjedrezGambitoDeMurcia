@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "freeglut.h"
-#include "coordenadas.h"
+//#include "coordenadas.h"
 #include "game.h"
 class Tablero {
 public:
@@ -11,7 +11,7 @@ public:
 	GLfloat y2=8;
 	int flagrz = 0;
 	float a = 1.5;
-	Coordenadas cord;
+	//Coordenadas cord;
 	const unsigned char columnas[8] = { '1','2','3', '4', '5', '6', '7','8' };
 	const unsigned char filas[8] = { 'a','b','c', 'd', 'e', 'f', 'g','h'};
 	unsigned char tecla;

@@ -5,7 +5,7 @@
 void Tablero::dibujarTablero() {
 	int i, j;
     resizeTablero(tecla);
-    cord.setCord();
+    //cord.setCord();
     for (i = 0; i < 8; i++)
     {
         for (j = 0; j < 8; j++)
@@ -41,7 +41,7 @@ void Tablero::dibujarTablero() {
     glVertex3f(x1-0.5, y2+0.5, 0);
     glEnd();
     glEnable(GL_LIGHTING);
-    cord.dibujarPrueba();
+    //cord.dibujarPrueba();
     glTranslatef(4.5, 3.5, 1);
     glDepthRange(0, 0.5);
 }
