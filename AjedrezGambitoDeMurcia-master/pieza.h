@@ -17,6 +17,6 @@ public:
 	int getColumna(); //obtiene valor de columna
 	void setFila(int row); //modifica valor de fila
 	void setColumna(int column); //modifica valor de columna
-	void dibujarPieza();
+	void dibujarPieza(); //dibuja la pieza
 };
 
