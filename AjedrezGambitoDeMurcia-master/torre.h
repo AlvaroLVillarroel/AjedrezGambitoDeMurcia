@@ -1,10 +1,11 @@
 #pragma once
 #include "pieza.h"
-class torre
+class torre : public pieza
 {
 
 public:
-	torre(paises pais, equipos equipo, tipoPieza pieza);
+	torre(paises pais, equipos equipo, tipoPieza pieza, Coordenadas coord);
+	torre();
 	void dibujarPieza();
 };
 

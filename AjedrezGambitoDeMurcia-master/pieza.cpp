@@ -1,10 +1,19 @@
 #include "pieza.h"
 
+pieza::pieza(){
 
+}
+pieza::~pieza()
+{
+}
 pieza::pieza(paises pais, equipos equipo, tipoPieza pieza, Coordenadas coord)
 {
 	this->Pais = pais;
 	this->Equipo = equipo;
+
+
+
+
 	this->Pieza = pieza;
 	this->Coord = coord;
 }
@@ -31,9 +40,9 @@ void pieza::setColumna(int column)
 
 void pieza::dibujarPieza()
 {
-	
+	//glTranslatef(0,0,0);
 	glTranslatef(Coord.getFila(),Coord.getColumna(), 0.0f);
 	glColor3f(1.0f, 1.0f, 0.0f); // color amarillo
-	glutSolidSphere(0.5f, 20, 20); // esfera de radio 0.5
+	glutSolidSphere(3.0f, 20, 20); // esfera de radio 0.5
 	
 }

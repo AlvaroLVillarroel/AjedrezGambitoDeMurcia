@@ -2,6 +2,9 @@
 #include "freeglut.h"
 #include "tablero.h"
 #include "coordenadas.h"
+
+
+
 void Tablero::dibujarTablero() {
 	int i, j;
     resizeTablero(tecla);
@@ -44,6 +47,9 @@ void Tablero::dibujarTablero() {
     //cord.dibujarPrueba();
     glTranslatef(4.5, 3.5, 1);
     glDepthRange(0, 0.5);
+    
+
+    prueba.dibujarPieza();
 }
 void Tablero::resizeTablero(unsigned char key) {
     if (key == 'm') {

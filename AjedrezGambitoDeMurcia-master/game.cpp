@@ -4,7 +4,7 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
 
-
+/*
 void Game::dibuja() {
 	estado = inicio;
 	//if (estado = inicio) 
@@ -88,4 +88,4 @@ void Game::mousePress(int button, int state, int x, int y) {
 		}
 	}
 
-}
+}*/

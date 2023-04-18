@@ -3,8 +3,11 @@
 #include "freeglut.h"
 //#include "coordenadas.h"
 #include "game.h"
+#include "pieza.h"
+
 class Tablero {
 public:
+	pieza prueba;
 	GLfloat x1=0;
 	GLfloat y1=0;
 	GLfloat x2=8;
