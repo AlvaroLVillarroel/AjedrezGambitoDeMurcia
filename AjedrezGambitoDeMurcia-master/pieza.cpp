@@ -1,7 +1,8 @@
 #include "pieza.h"
 
 pieza::pieza(){
-
+	Coord.setFila(1);
+	Coord.setColumna(3);
 }
 pieza::~pieza()
 {
@@ -40,9 +41,19 @@ void pieza::setColumna(int column)
 
 void pieza::dibujarPieza()
 {
-	//glTranslatef(0,0,0);
-	glTranslatef(Coord.getFila(),Coord.getColumna(), 0.0f);
-	glColor3f(1.0f, 1.0f, 0.0f); // color amarillo
-	glutSolidSphere(3.0f, 20, 20); // esfera de radio 0.5
-	
+
+	glDisable(GL_LIGHTING);
+	glColor3ub(240, 0, 0);
+	glBegin(GL_POLYGON);
+	glVertex3d(-4.5+Coord.getColumna()-1, 4.5- Coord.getFila()+1, 1);
+	glVertex3d(-4.5 + Coord.getColumna()-1, 3.5 - Coord.getFila()+1, 1);
+	glVertex3d(-3.5 + Coord.getColumna()-1, 3.5 - Coord.getFila()+1, 1);
+	glVertex3d(-3.5 + Coord.getColumna()-1, 4.5 - Coord.getFila()+1, 1);
+	glEnd();
+	glEnable(GL_LIGHTING);
+}
+
+void pieza::moverPieza()
+{
+
 }
