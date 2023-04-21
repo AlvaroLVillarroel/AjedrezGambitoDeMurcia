@@ -49,7 +49,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	gluLookAt(0, 0, 20,  // posicion del ojo
+	gluLookAt(0, 0, 15,  // posicion del ojo
 		0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
