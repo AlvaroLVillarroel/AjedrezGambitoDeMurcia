@@ -4,6 +4,7 @@
 //#include "coordenadas.h"
 #include "game.h"
 #include "pieza.h"
+#include "ETSIDI.h"
 
 class Tablero {
 public:
