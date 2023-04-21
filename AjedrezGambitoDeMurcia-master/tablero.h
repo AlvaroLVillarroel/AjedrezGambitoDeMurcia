@@ -19,8 +19,9 @@ public:
 	const unsigned char filas[8] = { 'a','b','c', 'd', 'e', 'f', 'g','h'};
 	unsigned char tecla;
 	void dibujarTablero();
-	void resizeTablero(unsigned char key);
-	void arrayCasillas(int c, int f);
+	//void resizeTablero(unsigned char key);
+	/*void arrayCasillas(int c, int f);
 	void dibujarCoordenadasx(int a);
 	void dibujarCoordenadasy(int a);
+	*/
 };

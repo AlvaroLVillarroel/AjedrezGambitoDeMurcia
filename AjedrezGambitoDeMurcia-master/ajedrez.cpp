@@ -49,7 +49,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	gluLookAt(0, 0, 40,  // posicion del ojo
+	gluLookAt(0, 0, 20,  // posicion del ojo
 		0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
@@ -62,9 +62,10 @@ void OnDraw(void)
 }
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
-	tablero.resizeTablero(key);
+	//tablero.resizeTablero(key);
 	glutPostRedisplay();
 }
+
 
 void OnTimer(int value)
 {
