@@ -1,5 +1,7 @@
 #pragma once
 #include "coordenadas.h"
+#include <cmath>
+
 enum paises{SPAIN,JAPAN,BRAZIL,PORTUGAL,ARGENTINA};
 enum equipos{EQUIPO_A,EQUIPO_B};
 enum tipoPieza{PEON,ALFIL,TORRE,CABALLO,REINA,REY};

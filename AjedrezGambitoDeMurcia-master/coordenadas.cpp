@@ -12,9 +12,8 @@
     }
 }
 void Coordenadas::dibujarPrueba() {
-  int i, j;
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++)
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++)
         {
             glColor3ub(0, 0, 255);
             glTranslatef(x[i][j], y[i][j], 5);
