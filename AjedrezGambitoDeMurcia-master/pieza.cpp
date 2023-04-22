@@ -2,8 +2,8 @@
 #include "ETSIDI.h"
 
 pieza::pieza(){
-	Coord.setFila(5);
-	Coord.setColumna(7);
+	Coord.setFila(4);
+	Coord.setColumna(3);
 }
 pieza::~pieza()
 {

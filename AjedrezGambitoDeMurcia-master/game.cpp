@@ -4,7 +4,7 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
 
-/*
+
 void Game::dibuja() {
 	estado = inicio;
 	//if (estado = inicio) 
@@ -73,19 +73,19 @@ void Game::dibuja() {
 
 void Game::mousePress(int button, int state, int x, int y) {
 
-	if(estado=inicio)
+	if (estado = inicio)
 	{
 		if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
 		{
-		//Hay que ajustar valores acorde a las coord de los botones
+			//Hay que ajustar valores acorde a las coord de los botones
 			if (x >= -5 && x <= 5 && y >= 5 && y <= 2) {
 				estado = modos;
 			}
 			else if (x >= -5 && x <= 5 && y >= 1 && y <= -2) {
 				exit(0);
-		}
+			}
 
 		}
 	}
 
-}*/
+};

@@ -66,8 +66,8 @@ void Tablero::dibujarTablero() {
     glDepthRange(0, 0.5);
     */
 
-
 }
+
 
 /*void Tablero::resizeTablero(unsigned char key) {
     if (key == 'm') {

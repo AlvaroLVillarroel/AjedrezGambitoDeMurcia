@@ -13,7 +13,7 @@ void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
 Tablero tablero;
-//Game juego;
+Game juego;
 int main(int argc,char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
