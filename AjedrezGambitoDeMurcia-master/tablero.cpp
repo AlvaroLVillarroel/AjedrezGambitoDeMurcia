@@ -4,7 +4,6 @@
 #include "coordenadas.h"
 
 
-
 void Tablero::dibujarTablero() {
     prueba.dibujarPieza();
 	int i, j;
@@ -51,6 +50,8 @@ void Tablero::dibujarTablero() {
     glEnable(GL_LIGHTING);
     glDisable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
+
+
     
     /*glColor3ub(128, 64, 0);
     glTranslatef(-4.5, -3.5, 0);
