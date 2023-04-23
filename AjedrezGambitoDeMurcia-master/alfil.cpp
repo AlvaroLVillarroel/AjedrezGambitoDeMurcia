@@ -1,12 +1,5 @@
 #include "alfil.h"
 
-alfil::alfil(paises pais, equipos equipo, tipoPieza pieza, Coordenadas coord){
-	this->pais = pais;
-	this->equipo = equipo;
-	this->pieza = pieza;
-	this->Coord = coord;
-}
-
 void alfil::dibujarPieza() {
 	if (pais == 0) glColor3ub(255, 0, 0);
 	if (pais == 1) glColor3ub(255, 255, 255);
@@ -24,6 +17,7 @@ void alfil::dibujarPieza() {
 	glVertex3d(-4.5 + Coord.getColumna(), 4.5 - Coord.getFila(), 1);
 	glVertex3d(-4.5 + Coord.getColumna(), 5.5 - Coord.getFila(), 1);
 	glEnd();
+	glEnable(GL_LIGHTING);
 }
 
 void alfil::moverPieza(float fil, float col) {
