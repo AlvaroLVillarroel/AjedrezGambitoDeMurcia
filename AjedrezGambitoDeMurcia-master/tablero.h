@@ -5,6 +5,8 @@
 #include "game.h"
 #include "pieza.h"
 #include "ETSIDI.h"
+#include "alfil.h"
+
 
 class Tablero {
 public:

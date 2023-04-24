@@ -3,7 +3,10 @@
 #include "tablero.h"
 #include "coordenadas.h"
 
-
+alfil f1c3(SPAIN, EQUIPO_A, ALFIL, 1, 3);
+alfil f1c6(SPAIN, EQUIPO_A, ALFIL, 1, 6);
+alfil f8c3(SPAIN, EQUIPO_B, ALFIL, 8, 3);
+alfil f8c6(SPAIN, EQUIPO_B, ALFIL, 8, 6);
 
 void Tablero::dibujarTablero() {
     prueba.dibujarPieza();

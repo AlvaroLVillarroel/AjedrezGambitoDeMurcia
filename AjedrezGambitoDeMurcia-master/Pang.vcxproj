@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ajedrez.cpp" />
+    <ClCompile Include="alfil.cpp" />
     <ClCompile Include="coordenadas.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="pieza.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="Vector2d.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="alfil.h" />
     <ClInclude Include="coordenadas.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="pieza.h" />
