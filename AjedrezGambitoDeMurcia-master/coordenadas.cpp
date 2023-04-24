@@ -32,8 +32,7 @@ Coordenadas::Coordenadas(int fila, int columna)
 
 Coordenadas::Coordenadas()
 {
-    fila = -4,5;
-    columna = 4,5;
+    
 }
 
 int Coordenadas::getFila()

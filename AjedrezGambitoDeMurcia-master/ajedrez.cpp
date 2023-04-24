@@ -54,8 +54,11 @@ void OnDraw(void)
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
 	//aqui es donde hay que poner el código de dibujo
+
 	tablero.dibujarTablero();
+	
 	//juego.dibuja();
+	
 	
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();

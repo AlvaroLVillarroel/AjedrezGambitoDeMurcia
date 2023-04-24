@@ -2,8 +2,8 @@
 #include "ETSIDI.h"
 
 pieza::pieza(){
-	Coord.setFila(4);
-	Coord.setColumna(3);
+	Coord.setFila(1);
+	Coord.setColumna(1);
 }
 pieza::~pieza()
 {
@@ -41,10 +41,11 @@ void pieza::dibujarPieza()
 
 	glColor3ub(240, 0, 0);
 	glBegin(GL_POLYGON);
-	glVertex3d(-4.5 + Coord.getColumna() - 1, 4.5 - Coord.getFila() + 1, 1.5);
-	glVertex3d(-4.5 + Coord.getColumna() - 1, 3.5 - Coord.getFila() + 1, 1.5);
-	glVertex3d(-3.5 + Coord.getColumna() - 1, 3.5 - Coord.getFila() + 1, 1.5);
-	glVertex3d(-3.5 + Coord.getColumna() - 1, 4.5 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-4.0 + Coord.getColumna() - 1, 4.0 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-4.0 + Coord.getColumna() - 1, 3.0 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-3.0 + Coord.getColumna() - 1, 3.0 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-3.0 + Coord.getColumna() - 1, 4.0 - Coord.getFila() + 1, 1.5);
+
 	glEnd();
 	glEnable(GL_LIGHTING);
 };
