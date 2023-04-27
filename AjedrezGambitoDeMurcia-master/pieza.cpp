@@ -39,7 +39,7 @@ void pieza::setColumna(int column)
 void pieza::dibujarPieza()
 {
 
-	glColor3ub(240, 0, 0);
+	glColor3ub(240, 0, 255);
 	glBegin(GL_POLYGON);
 	glVertex3d(-4.0 + Coord.getColumna() - 1, 4.0 - Coord.getFila() + 1, 1.5);
 	glVertex3d(-4.0 + Coord.getColumna() - 1, 3.0 - Coord.getFila() + 1, 1.5);

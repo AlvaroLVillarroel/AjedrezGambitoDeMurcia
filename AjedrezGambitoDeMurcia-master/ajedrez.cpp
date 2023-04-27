@@ -14,6 +14,8 @@ void OnTimer(int value); //esta funcion sera llamada cuando transcurra una tempo
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
 Tablero tablero;
 Game juego;
+
+
 int main(int argc,char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
@@ -35,6 +37,8 @@ int main(int argc,char* argv[])
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	
+	tablero.inicializa();
+
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
 

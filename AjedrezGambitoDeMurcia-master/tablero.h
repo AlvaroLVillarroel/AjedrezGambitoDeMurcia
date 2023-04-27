@@ -9,6 +9,11 @@
 
 
 class Tablero {
+	alfil f1c3;
+	alfil f1c6;
+	alfil f8c3;
+	alfil f8c6;
+
 public:
 	pieza prueba;
 	GLfloat x1=0;
@@ -21,6 +26,7 @@ public:
 	const unsigned char columnas[8] = { '1','2','3', '4', '5', '6', '7','8' };
 	const unsigned char filas[8] = { 'a','b','c', 'd', 'e', 'f', 'g','h'};
 	unsigned char tecla;
+	void inicializa();
 	void dibujarTablero();
 	//void resizeTablero(unsigned char key);
 	/*void arrayCasillas(int c, int f);
