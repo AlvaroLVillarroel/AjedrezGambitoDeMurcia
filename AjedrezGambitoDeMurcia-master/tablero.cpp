@@ -4,17 +4,7 @@
 #include "coordenadas.h"
 
 
-void Tablero::inicializa() {
-    f1c3.inicializa(SPAIN, EQUIPO_A, ALFIL, 1, 3);
-    f1c6.inicializa(SPAIN, EQUIPO_A, ALFIL, 1, 6);
-    f8c3.inicializa(BRAZIL, EQUIPO_B, ALFIL, 8, 3);
-    f8c6.inicializa(BRAZIL, EQUIPO_B, ALFIL, 8, 6);
-}
 void Tablero::dibujarTablero() {
-    f1c3.dibujarPieza();
-    f1c6.dibujarPieza();
-    f8c3.dibujarPieza();
-    f8c6.dibujarPieza();
 
     prueba.dibujarPieza();
 	int i, j;
