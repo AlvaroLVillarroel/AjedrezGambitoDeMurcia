@@ -15,12 +15,11 @@ void alfil::dibujarPieza() {
 	if (pais == PORTUGAL)glColor3ub(187, 35, 5);
 	if (pais == ARGENTINA)glColor3ub(20, 222, 182);
 
-	
 	glBegin(GL_POLYGON);
-	glVertex3d(-4.5 + Coord.getColumna() - 1, 4.5 - Coord.getFila() + 1, 1.5);
-	glVertex3d(-4.5 + Coord.getColumna() - 1, 3.5 - Coord.getFila() + 1, 1.5);
-	glVertex3d(-3.5 + Coord.getColumna() - 1, 3.5 - Coord.getFila() + 1, 1.5);
-	glVertex3d(-3.5 + Coord.getColumna() - 1, 4.5 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-4.0 + Coord.getColumna() - 1, 4.0 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-4.0 + Coord.getColumna() - 1, 3.0 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-3.0 + Coord.getColumna() - 1, 3.0 - Coord.getFila() + 1, 1.5);
+	glVertex3d(-3.0 + Coord.getColumna() - 1, 4.0 - Coord.getFila() + 1, 1.5);
 	glEnd();
 	glEnable(GL_LIGHTING);
 }
