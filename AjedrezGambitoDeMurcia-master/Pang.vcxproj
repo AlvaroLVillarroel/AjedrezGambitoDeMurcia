@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="src\ajedrez.cpp" />
     <ClCompile Include="src\alfil.cpp" />
+    <ClCompile Include="src\Caballo.cpp" />
     <ClCompile Include="src\coordenadas.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\pieza.cpp" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="freeglut.h" />
     <ClInclude Include="src\alfil.h" />
+    <ClInclude Include="src\Caballo.h" />
     <ClInclude Include="src\coordenadas.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\pieza.h" />

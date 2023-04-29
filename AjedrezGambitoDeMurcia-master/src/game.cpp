@@ -92,5 +92,5 @@ void Game::mousePress(int button, int state, int x, int y) {
 
 		}
 	}
+}
 
-};

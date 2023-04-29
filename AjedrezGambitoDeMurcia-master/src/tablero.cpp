@@ -9,13 +9,20 @@ void Tablero::inicializa() {
     f1c6.inicializa(SPAIN, EQUIPO_A, ALFIL, 1, 6);
     f8c3.inicializa(BRAZIL, EQUIPO_B, ALFIL, 8, 3);
     f8c6.inicializa(BRAZIL, EQUIPO_B, ALFIL, 8, 6);
+    Cb8.inicializa(SPAIN, EQUIPO_A, CABALLO, 1, 2);
+    Cg8.inicializa(SPAIN, EQUIPO_A, CABALLO, 1, 7);
+    Cb1.inicializa(ARGENTINA, EQUIPO_B, CABALLO, 8, 2);
+    Cg1.inicializa(ARGENTINA, EQUIPO_B, CABALLO, 8, 7);
 }
 void Tablero::dibujarTablero() {
     f1c3.dibujarPieza();
     f1c6.dibujarPieza();
     f8c3.dibujarPieza();
     f8c6.dibujarPieza();
-
+    Cb8.dibujarPieza();
+    Cg8.dibujarPieza();
+    Cb1.dibujarPieza();
+    Cg1.dibujarPieza();
     prueba.dibujarPieza();
 	int i, j;
     //resizeTablero(tecla);
@@ -23,6 +30,7 @@ void Tablero::dibujarTablero() {
    // glTranslatef(0.5f, -0.5f, 0.0f);
     for (i = 0; i < 8; i++)
     {
+        for (j = 0; j < 8; j++)
         for (j = 0; j < 8; j++)
         {
             if ((i + j) % 2 == 0)

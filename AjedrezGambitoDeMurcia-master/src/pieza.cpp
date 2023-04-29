@@ -49,8 +49,3 @@ void pieza::dibujarPieza()
 	glEnd();
 	glEnable(GL_LIGHTING);
 };
-
-void pieza::moverPieza()
-{
-
-}

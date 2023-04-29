@@ -2,6 +2,7 @@
 #include <iostream>
 #include "tablero.h"
 #include "game.h"
+#include "Caballo.h"
 //rr
 //er
 //prueba
@@ -11,10 +12,12 @@
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
-void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
+void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla
+void mouseButton(int button, int state, int x, int y);
+void mouseMotion(int x, int y);
 Tablero tablero;
 Game juego;
-
+Caballo c;
 
 int main(int argc,char* argv[])
 {
@@ -34,11 +37,12 @@ int main(int argc,char* argv[])
 	gluPerspective( 40.0, 1000 / 720.0f, 0.1, 150);
 	//Registrar los callbacks
 	glutDisplayFunc(OnDraw);
+	glutMouseFunc(mouseButton);
+	glutMotionFunc(mouseMotion);
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	
 	tablero.inicializa();
-
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
 
@@ -78,4 +82,12 @@ void OnTimer(int value)
 {
 	
 }
-
+void mouseButton(int button, int state, int x, int y) {
+	c.mousePress(button,state,x,y);
+	glutPostRedisplay();
+}
+void mouseMotion(int x, int y) {
+	c.mouseMotion(x,y);
+	OnTimer(25);
+	glutPostRedisplay();
+}
