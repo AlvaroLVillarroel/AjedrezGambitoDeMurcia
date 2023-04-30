@@ -22,10 +22,9 @@ void Game::dibuja() {
 
 	glEnable(GL_TEXTURE_2D);
 	glColor3f(1, 1, 1);
-	gl
 		
 		
-		dTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/pantallaInicio.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/pantallaInicio.png").id);
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 	glTexCoord2d(0, 1); glVertex3f(-28.0f, -20.0f, 0.0f);
