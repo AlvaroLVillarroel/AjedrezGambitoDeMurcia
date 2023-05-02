@@ -15,6 +15,17 @@ void Tablero::inicializa() {
     Cg1.inicializa(ARGENTINA, EQUIPO_B, CABALLO, 8, 7);
     f1cd.inicializa(SPAIN, EQUIPO_A, REINA, 1, 4);
     f8cd.inicializa(JAPAN, EQUIPO_B, REINA, 8, 4);
+
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if ((i == 0) || (i == 1) || (i == 6) || (i == 7)) {
+                posiciones[i][j] = 1;
+            }
+            else {
+                posiciones[i][j] = 0;
+            }
+        }
+    }
 }
 void Tablero::dibujarTablero() {
     f1c3.dibujarPieza();

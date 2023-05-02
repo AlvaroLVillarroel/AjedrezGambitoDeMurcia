@@ -11,6 +11,7 @@
 
 
 class Tablero {
+	int posiciones[8][8];
 	alfil f1c3;
 	alfil f1c6;
 	alfil f8c3;
