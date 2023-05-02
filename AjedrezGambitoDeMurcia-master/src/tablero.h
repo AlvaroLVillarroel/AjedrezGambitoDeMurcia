@@ -7,6 +7,7 @@
 #include "ETSIDI.h"
 #include "alfil.h"
 #include "Caballo.h"
+#include "dama.h"
 
 
 class Tablero {
@@ -18,6 +19,8 @@ class Tablero {
 	Caballo Cg8;
 	Caballo Cb1;
 	Caballo Cg1;
+	dama f1cd;
+	dama f8cd;
 public:
 	pieza prueba;
 	GLfloat x1=0;

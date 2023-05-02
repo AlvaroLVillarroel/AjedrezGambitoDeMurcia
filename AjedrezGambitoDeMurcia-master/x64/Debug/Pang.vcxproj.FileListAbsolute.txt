@@ -1,2 +1,3 @@
 C:\Users\tobia\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\ajedrez.exe
 C:\Users\david\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\ajedrez.exe
+C:\Users\23alv\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\ajedrez.exe

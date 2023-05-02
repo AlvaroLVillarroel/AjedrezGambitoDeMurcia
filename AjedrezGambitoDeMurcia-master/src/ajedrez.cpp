@@ -3,9 +3,7 @@
 #include "tablero.h"
 #include "game.h"
 #include "Caballo.h"
-//rr
-//er
-//prueba
+
 //#include "peon.h"
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
