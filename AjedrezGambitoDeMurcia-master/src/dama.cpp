@@ -4,7 +4,7 @@
 dama::dama() {
 	pais = SPAIN;
 	equipo = EQUIPO_A;
-	pieza = ALFIL;
+	pieza = REINA;
 
 	movimientos = 0;
 }
