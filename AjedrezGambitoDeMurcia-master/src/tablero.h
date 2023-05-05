@@ -8,7 +8,7 @@
 #include "alfil.h"
 #include "Caballo.h"
 #include "dama.h"
-
+#include "rey.h"
 
 class Tablero {
 	int posiciones[8][8];
@@ -22,6 +22,8 @@ class Tablero {
 	Caballo Cg1;
 	dama f1cd;
 	dama f8cd;
+	rey f1ce;
+	rey f8ce;
 public:
 	pieza prueba;
 	GLfloat x1=0;

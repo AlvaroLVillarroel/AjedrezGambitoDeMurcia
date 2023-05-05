@@ -15,6 +15,8 @@ void Tablero::inicializa() {
     Cg1.inicializa(ARGENTINA, EQUIPO_B, CABALLO, 8, 7);
     f1cd.inicializa(SPAIN, EQUIPO_A, REINA, 1, 4);
     f8cd.inicializa(JAPAN, EQUIPO_B, REINA, 8, 4);
+    f1ce.inicializa(SPAIN, EQUIPO_A, REY, 1, 5);
+    f8ce.inicializa(PORTUGAL, EQUIPO_B, REY, 8, 5);
 
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -38,6 +40,8 @@ void Tablero::dibujarTablero() {
     Cg1.dibujarPieza();
     f1cd.dibujarPieza();
     f8cd.dibujarPieza();
+    f1ce.dibujarPieza();
+    f8c3.dibujarPieza();
     prueba.dibujarPieza();
 	int i, j;
     //resizeTablero(tecla);
