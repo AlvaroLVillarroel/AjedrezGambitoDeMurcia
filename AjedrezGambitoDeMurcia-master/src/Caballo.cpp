@@ -43,7 +43,7 @@ void Caballo::sumar_movimiento() {
 Caballo::Caballo() {
 	pais = JAPAN;
 	equipo = EQUIPO_A;
-	pieza = ALFIL;
+	pieza = CABALLO;
 	mouseX = mouseY = 0;
 	movimientos = 0;
 }
