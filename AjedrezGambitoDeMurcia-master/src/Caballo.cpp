@@ -3,7 +3,7 @@
 void Caballo::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	pais = pa;
 	equipo = eq;
-	pieza = pi;
+	tp = pi;
 	Coord.setFila(fil);
 	Coord.setColumna(col);
 }
@@ -43,7 +43,7 @@ void Caballo::sumar_movimiento() {
 Caballo::Caballo() {
 	pais = JAPAN;
 	equipo = EQUIPO_A;
-	pieza = CABALLO;
+	tp = ALFIL;
 	mouseX = mouseY = 0;
 	movimientos = 0;
 }

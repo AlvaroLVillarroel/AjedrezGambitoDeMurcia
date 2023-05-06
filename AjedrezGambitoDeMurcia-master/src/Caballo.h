@@ -3,12 +3,8 @@
 #include "Vector2d.h"
 #include "pieza.h"
 #include "ETSIDI.h"
-class Caballo: private pieza
+class Caballo: public pieza
 {
-	paises pais;
-	equipos equipo;
-	tipoPieza pieza;
-	Coordenadas Coord;
 	bool isDragging = false;
 	float mouseX, mouseY;
 	int movimientos;

@@ -8,12 +8,12 @@ enum tipoPieza{PEON,ALFIL,TORRE,CABALLO,REINA,REY};
 
 class pieza
 {
-	Game game;
-	paises Pais;
-	equipos Equipo;
-	tipoPieza Pieza;
-	Coordenadas Coord;
 public:
+	Game game;
+	paises pais;
+	equipos equipo;
+	tipoPieza tp;
+	Coordenadas Coord;
 	pieza(paises pais, equipos equipo, tipoPieza tipopieza, Coordenadas coord);
 	pieza();
 	~pieza();

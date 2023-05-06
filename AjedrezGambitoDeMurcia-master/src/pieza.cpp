@@ -10,9 +10,9 @@ pieza::~pieza()
 }
 pieza::pieza(paises pais, equipos equipo, tipoPieza pieza, Coordenadas coord)
 {
-	this->Pais = pais;
-	this->Equipo = equipo;
-	this->Pieza = pieza;
+	this->pais = pais;
+	this->equipo = equipo;
+	this->tp = pieza;
 	this->Coord = coord;
 }
 

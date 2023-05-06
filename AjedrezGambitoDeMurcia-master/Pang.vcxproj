@@ -160,7 +160,6 @@
     <ClCompile Include="src\Vector2d.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="freeglut.h" />
     <ClInclude Include="src\alfil.h" />
     <ClInclude Include="src\Caballo.h" />
     <ClInclude Include="src\coordenadas.h" />

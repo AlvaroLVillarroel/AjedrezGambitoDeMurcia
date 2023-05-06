@@ -43,11 +43,11 @@
     <ClCompile Include="src\Caballo.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\dama.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="freeglut.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\alfil.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -73,6 +73,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\Caballo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\dama.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
