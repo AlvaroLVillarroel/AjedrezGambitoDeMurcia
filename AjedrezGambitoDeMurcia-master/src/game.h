@@ -11,4 +11,5 @@ public:
 	void mousePress(int button, int state,int x,int y );
 	void music();
 	Estado estado;
+	
 }; 

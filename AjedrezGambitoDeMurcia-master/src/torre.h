@@ -4,8 +4,9 @@ class torre : public pieza
 {
 
 public:
-	torre(paises pais, equipos equipo, tipoPieza pieza, Coordenadas coord);
-	torre();
+	void inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col);
 	void dibujarPieza();
+	void moverPieza(float fil, float col);
+	void sumar_movimiento();
 };
 

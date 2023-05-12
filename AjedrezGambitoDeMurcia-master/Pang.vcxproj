@@ -155,6 +155,7 @@
     <ClCompile Include="src\dama.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\pieza.cpp" />
+    <ClCompile Include="src\rey.cpp" />
     <ClCompile Include="src\tablero.cpp" />
     <ClCompile Include="src\torre.cpp" />
     <ClCompile Include="src\Vector2d.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="src\dama.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\pieza.h" />
+    <ClInclude Include="src\rey.h" />
     <ClInclude Include="src\tablero.h" />
     <ClInclude Include="src\torre.h" />
     <ClInclude Include="src\Vector2d.h" />
