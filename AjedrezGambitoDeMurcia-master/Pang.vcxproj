@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Peon.cpp" />
     <ClCompile Include="src\ajedrez.cpp" />
     <ClCompile Include="src\alfil.cpp" />
     <ClCompile Include="src\Caballo.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="src\dama.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\ListaPiezas.h" />
+    <ClInclude Include="src\Peon.h" />
     <ClInclude Include="src\pieza.h" />
     <ClInclude Include="src\rey.h" />
     <ClInclude Include="src\tablero.h" />

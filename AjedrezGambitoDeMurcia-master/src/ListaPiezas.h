@@ -1,0 +1,9 @@
+#pragma once
+#pragma once
+#include "ETSIDI.h"
+#include "pieza.h"
+#include "rey.h"
+#include "dama.h"
+#include "caballo.h"
+#include "Alfil.h"
+#include "Torre.h"
