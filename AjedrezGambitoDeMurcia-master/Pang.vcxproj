@@ -154,6 +154,7 @@
     <ClCompile Include="src\coordenadas.cpp" />
     <ClCompile Include="src\dama.cpp" />
     <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\ListaPiezas.cpp" />
     <ClCompile Include="src\pieza.cpp" />
     <ClCompile Include="src\rey.cpp" />
     <ClCompile Include="src\tablero.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="src\coordenadas.h" />
     <ClInclude Include="src\dama.h" />
     <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\ListaPiezas.h" />
     <ClInclude Include="src\pieza.h" />
     <ClInclude Include="src\rey.h" />
     <ClInclude Include="src\tablero.h" />
