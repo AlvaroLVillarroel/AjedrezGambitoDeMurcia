@@ -148,7 +148,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Peon.cpp" />
     <ClCompile Include="src\ajedrez.cpp" />
     <ClCompile Include="src\alfil.cpp" />
     <ClCompile Include="src\Caballo.cpp" />
@@ -156,6 +155,7 @@
     <ClCompile Include="src\dama.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\ListaPiezas.cpp" />
+    <ClCompile Include="src\Peon.cpp" />
     <ClCompile Include="src\pieza.cpp" />
     <ClCompile Include="src\rey.cpp" />
     <ClCompile Include="src\tablero.cpp" />

@@ -2,6 +2,9 @@
 #include "pieza.h"
 class torre : public pieza
 {
+	bool isDragging = false;
+	float mouseX, mouseY;
+	int movimientos;
 
 public:
 	void inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col);
