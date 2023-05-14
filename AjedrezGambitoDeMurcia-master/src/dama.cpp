@@ -4,14 +4,14 @@
 dama::dama() {
 	pais = SPAIN;
 	equipo = EQUIPO_A;
-	pieza = REINA;
-
+	tp = REINA;
+	mouseX = mouseY = 0;
 	movimientos = 0;
 }
 void dama::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	pais = pa;
 	equipo = eq;
-	pieza = pi;
+	tp = pi;
 	Coord.setFila(fil);
 	Coord.setColumna(col);
 }
@@ -54,4 +54,25 @@ void dama::moverPieza(float fil, float col) {
 
 void dama::sumar_movimiento() {
 	movimientos++;
+}
+
+void dama::mousePress(int button, int state, int x, int y)
+{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+		if (x >= getPosFila() - 5 && x <= getPosColumna() - 4 &&
+			y >= getPosFila() + 4 && y <= getPosFila() + 5) {
+			isDragging = true;
+			mouseX = x - getPosColumna();
+			mouseY = y - getPosFila();
+		}
+	}
+	else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+		isDragging = false;
+	}
+}
+void dama::mouseMotion(float x, float y) {
+	if (isDragging) {
+		moverPieza(x - mouseX, y - mouseY);
+		glutPostRedisplay(); // Redibujar la ventana
+	}
 }
