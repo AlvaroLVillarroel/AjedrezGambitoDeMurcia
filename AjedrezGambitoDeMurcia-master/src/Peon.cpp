@@ -7,6 +7,7 @@ void Peon::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	Coord.setColumna(col);
 }
 void Peon::dibujarPieza() {
+	//pieza::dibujarFondo();
 	glEnable(GL_TEXTURE_2D);
 	glColor3f(1, 1, 1);
 	if (pais == SPAIN)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/peon.png").id);

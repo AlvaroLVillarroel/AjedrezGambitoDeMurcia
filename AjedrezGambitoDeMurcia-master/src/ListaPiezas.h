@@ -18,6 +18,7 @@ public:
 	void dibuja();
 	void mueve(int fil, int col);
 	void destruirPiezas();
-	void eliminarPieza();
+	void eliminarPieza(int ref);
+	void eliminarPieza(pieza* p);
 	int getNumero() { return numero; }
 };

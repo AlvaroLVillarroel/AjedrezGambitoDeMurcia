@@ -42,7 +42,7 @@ void Tablero::dibujarTablero() {
     f8cd.dibujarPieza();
     f1ce.dibujarPieza();
     f8c3.dibujarPieza();
-    prueba.dibujarPieza();
+
 	int i, j;
     //resizeTablero(tecla);
     //cord.setCord();

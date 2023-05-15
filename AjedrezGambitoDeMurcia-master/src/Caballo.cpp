@@ -8,8 +8,9 @@ void Caballo::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) 
 	Coord.setColumna(col);
 }
 void Caballo::dibujarPieza() {
+	//pieza::dibujarFondo();
+
 	glEnable(GL_TEXTURE_2D);
-	glColor3f(1, 1, 1);
 	if (pais == SPAIN)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/caballo.png").id);
 	if (pais == ARGENTINA)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/argentina/caballo.png").id);
 	if (pais == BRAZIL)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/caballo.png").id);

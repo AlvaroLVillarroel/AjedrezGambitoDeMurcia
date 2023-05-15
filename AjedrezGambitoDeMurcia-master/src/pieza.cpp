@@ -48,4 +48,15 @@ void pieza::dibujarPieza()
 
 	glEnd();
 	glEnable(GL_LIGHTING);
-};
+}
+
+int pieza::colorCasilla()
+{
+	int fila = Coord.getFila();
+	int columna = Coord.getColumna();
+
+	if (((fila % 2 != 0) && (columna % 2 != 0)) || ((fila % 2 == 0) && (columna % 2 == 0))) {
+		return 1; //si es una casilla negra
+	}
+	return 0;
+}

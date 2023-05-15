@@ -27,3 +27,24 @@ void ListaPiezas::dibuja()
 	for (int i = 0;i < numero;i++)
 		lista[i]->dibujarPieza();
 }
+
+void ListaPiezas::eliminarPieza(int ref)
+{
+	if ((ref < 0) || (ref >= numero))
+		return;
+	delete lista[ref];
+	numero--;
+	for (int i = ref; i < numero; i++) {
+		lista[i] = lista[i + 1];
+	}
+}
+
+void ListaPiezas::eliminarPieza(pieza* p)
+{
+	for (int i = 0;i < numero;i++) {
+		if (lista[i] == p) {
+			eliminarPieza(i);
+		}
+
+	}
+}

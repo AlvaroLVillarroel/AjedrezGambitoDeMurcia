@@ -16,6 +16,7 @@ void rey::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	Coord.setColumna(col);
 }
 void rey::dibujarPieza() {
+	
 
 	glEnable(GL_TEXTURE_2D);
 

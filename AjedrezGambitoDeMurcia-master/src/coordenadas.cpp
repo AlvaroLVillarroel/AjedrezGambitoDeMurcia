@@ -61,3 +61,4 @@ Vector2d Coordenadas::CoordtoVector()
     int y = getColumna();
     return Vector2d(x,y);
 }
+
