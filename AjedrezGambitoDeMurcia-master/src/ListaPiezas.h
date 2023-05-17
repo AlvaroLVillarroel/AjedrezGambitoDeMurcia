@@ -16,7 +16,7 @@ public:
 	ListaPiezas();
 	bool agregar(pieza* p);
 	void dibuja();
-	void mueve(int fil, int col);
+	void mueve(pieza* p,int fil, int col);
 	void destruirPiezas();
 	void eliminarPieza(int ref);
 	void eliminarPieza(pieza* p);

@@ -2,7 +2,7 @@
 #pragma once
 #include <iostream>
 #include "freeglut.h"
-enum Estado {inicioPartida,modosJuego,modo_pvp,modo_rapido,pausa,jugando};
+enum Estado {inicioPartida,modosJuego,seleccionJUG1,seleccionJUG2,modo_pvp,modo_rapido,pausa,jugando};
 class Game
 {
 public:

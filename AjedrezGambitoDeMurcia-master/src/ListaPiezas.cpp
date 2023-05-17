@@ -45,6 +45,5 @@ void ListaPiezas::eliminarPieza(pieza* p)
 		if (lista[i] == p) {
 			eliminarPieza(i);
 		}
-
 	}
 }
