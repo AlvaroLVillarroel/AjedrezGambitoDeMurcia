@@ -8,6 +8,7 @@
 Game::Game()
 {
 	estado = inicioPartida;
+	music();
 }
 
 void Game::dibuja() {
@@ -111,6 +112,7 @@ void Game::dibuja() {
 void Game::mousePress(int button, int state, int x, int y) {
 
 	if (estado == inicioPartida)
+
 	{
 		if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
 		{
@@ -118,7 +120,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 			if (x >= 310 && x <= 740 && y >= 450 && y <= 550) {
 				exit(0);
 			}
-			else if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
+			if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
 				//glutSetCursor(GLUT_CURSOR_HAND);
 				estado = seleccionJUG1;
 			}
@@ -146,7 +148,6 @@ void Game::mousePress(int button, int state, int x, int y) {
 			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
 				
 				//equipo == SPAIN
-				exit(0);
 				estado = seleccionJUG2;
 			}
 			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
@@ -195,5 +196,18 @@ void Game::mousePress(int button, int state, int x, int y) {
 		}
 
 	}
+}
+
+void Game::music()
+{
+	if (modoMusica == true) {
+		modoMusica = false;
+		ETSIDI::stopMusica();
+	}
+	else if (modoMusica == false) {
+		modoMusica = true;
+		ETSIDI::playMusica("sonidos/fondo.mp3", true);
+	}
+	
 }
 
