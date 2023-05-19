@@ -11,9 +11,11 @@ void alfil::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	Coord.setColumna(col);
 }
 void alfil::dibujarPieza() {
-	//int tipoCasilla = pieza::colorCasilla();
+	
 
-	//if (tipoCasilla == 1) {
+	if (negra == true) {
+		glEnable(GL_TEXTURE_2D);
+		glColor3f(1, 1, 1);
 		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfilN.png").id);
 		//if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
 		//if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
@@ -37,9 +39,10 @@ void alfil::dibujarPieza() {
 		glDisable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, 0);
 		glEnable(GL_TEXTURE_2D);
-	//}
-	//else {
-
+	}
+	else {
+		glEnable(GL_TEXTURE_2D);
+		glColor3f(1, 1, 1);
 		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfilB.png").id);
 		//if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
 		//if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
@@ -65,7 +68,7 @@ void alfil::dibujarPieza() {
 		glEnable(GL_TEXTURE_2D);
 
 
-	//}
+	}
 
 
 	

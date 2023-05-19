@@ -10,6 +10,7 @@ enum tipoPieza{PEON,ALFIL,TORRE,CABALLO,REINA,REY};
 class pieza
 {
 public:
+	bool negra;
 	Game game;
 	paises pais;
 	equipos equipo;
@@ -23,6 +24,6 @@ public:
 	void setFila(int row); //modifica valor de fila
 	void setColumna(int column); //modifica valor de columna
 	void dibujarPieza(); //dibuja la pieza
-	int colorCasilla();
+	void colorCasilla();
 };
 

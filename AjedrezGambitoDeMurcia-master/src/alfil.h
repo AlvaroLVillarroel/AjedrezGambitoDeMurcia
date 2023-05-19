@@ -1,7 +1,7 @@
 #pragma once
 #include"pieza.h"
 
-class alfil
+class alfil : public pieza
 {
 	paises pais;
 	equipos equipo;

@@ -4,6 +4,7 @@
 pieza::pieza(){
 	Coord.setFila(1);
 	Coord.setColumna(1);
+	bool negra = false;
 }
 pieza::~pieza()
 {
@@ -50,13 +51,12 @@ void pieza::dibujarPieza()
 	glEnable(GL_LIGHTING);
 }
 
-int pieza::colorCasilla()
+void pieza::colorCasilla()
 {
 	int fila = Coord.getFila();
 	int columna = Coord.getColumna();
 
 	if (((fila % 2 != 0) && (columna % 2 != 0)) || ((fila % 2 == 0) && (columna % 2 == 0))) {
-		return 1; //si es una casilla negra
+		negra=true; //si es una casilla negra
 	}
-	return 0;
 }
