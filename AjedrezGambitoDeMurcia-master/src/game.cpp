@@ -3,7 +3,7 @@
 #include <iostream>
 #include "freeglut.h"
 #include "ETSIDI.h"
-
+#include <Windows.h>
 
 Game::Game()
 {
@@ -121,7 +121,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				exit(0);
 			}
 			if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
-				//glutSetCursor(GLUT_CURSOR_HAND);
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				estado = seleccionJUG1;
 			}
 			
@@ -136,27 +136,27 @@ void Game::mousePress(int button, int state, int x, int y) {
 		{
 			//Hay que ajustar valores acorde a las coord de los botones
 			if (x >= 190 && x <= 345 && y >= 260 && y <= 430) {
-			
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == PORTUGAL
 				estado = seleccionJUG2;
 			}
 			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
-				
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == JAPON
 				estado = seleccionJUG2;
 			}
 			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
-				
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == SPAIN
 				estado = seleccionJUG2;
 			}
 			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
-				
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == ARGENTINA
 				estado = seleccionJUG2;
 			}
 			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610) {
-	
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == BRAZIL
 				estado = seleccionJUG2;
 			}
@@ -169,27 +169,27 @@ void Game::mousePress(int button, int state, int x, int y) {
 		{
 			//Hay que ajustar valores acorde a las coord de los botones
 			if (x >= 190 && x <= 345 && y >= 260 && y <= 430) {
-
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == PORTUGAL
 				
 			}
 			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
-
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == JAPON
 				
 			}
 			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
-
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == SPAIN
 			
 			}
 			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
-
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == ARGENTINA
 			
 			}
 			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610) {
-
+				SetCursor(LoadCursor(NULL, IDC_HAND));
 				//equipo == BRAZIL
 				
 			}

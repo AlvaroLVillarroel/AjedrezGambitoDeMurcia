@@ -61,9 +61,9 @@ void OnDraw(void)
 
 	//aqui es donde hay que poner el código de dibujo
 
-	tablero.dibujarTablero();
+	//tablero.dibujarTablero();
 	
-	//juego.dibuja();
+	juego.dibuja();
 	
 	
 	//no borrar esta linea ni poner nada despues

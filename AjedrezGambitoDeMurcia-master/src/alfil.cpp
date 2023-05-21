@@ -15,7 +15,7 @@ void alfil::dibujarPieza() {
 
 	if (negra == true) {
 		glEnable(GL_TEXTURE_2D);
-		glColor3f(1, 1, 1);
+		glColor4f(1.0f, 1.0f, 1.0f, 0.0f);
 		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfil.png").id);
 		if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
 		if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
