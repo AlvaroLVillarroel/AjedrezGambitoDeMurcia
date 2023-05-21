@@ -95,3 +95,9 @@ void ListaPiezas::agregarRey(paises p, equipos e, int fil, int col) {
 	aux->inicializa(p, e, REY, fil, col);
 	agregar(aux);
 }
+bool ListaPiezas::piezaencasilla(int fil, int col) {
+	for (int i = 0; i < numero; i++) {
+		if (lista[i]->getFila() == fil && lista[i]->getColumna() == col)return true;
+	}
+	return false;
+}

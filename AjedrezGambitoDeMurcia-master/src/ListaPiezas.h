@@ -29,4 +29,5 @@ public:
 	void agregarAlfil(paises p, equipos e, int fil, int col);
 	void agregarDama(paises p, equipos e, int fil, int col);
 	void agregarRey(paises p, equipos e, int fil, int col);
+	bool piezaencasilla(int fil, int col);
 };
