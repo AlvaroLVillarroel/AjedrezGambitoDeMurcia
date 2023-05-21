@@ -3,7 +3,7 @@
 #include "freeglut.h"
 //#include "coordenadas.h"
 #include "game.h"
-#include "pieza.h"
+#include "ListaPIezas.h"
 #include "ETSIDI.h"
 #include "alfil.h"
 #include "Caballo.h"
@@ -24,6 +24,7 @@ class Tablero {
 	dama f8cd;
 	rey f1ce;
 	rey f8ce;
+	ListaPiezas piezas;
 public:
 	pieza prueba;
 	GLfloat x1=0;

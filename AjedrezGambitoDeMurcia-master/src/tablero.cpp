@@ -5,6 +5,7 @@
 
 
 void Tablero::inicializa() {
+    piezas.lista_inicial(JAPAN, SPAIN);
     f1c3.inicializa(SPAIN, EQUIPO_A, ALFIL, 1, 3);
     f1c6.inicializa(SPAIN, EQUIPO_A, ALFIL, 1, 6);
     f8c3.inicializa(BRAZIL, EQUIPO_B, ALFIL, 8, 3);
@@ -42,7 +43,7 @@ void Tablero::dibujarTablero() {
     f8cd.dibujarPieza();
     f1ce.dibujarPieza();
     f8c3.dibujarPieza();
-
+    piezas.dibuja();
 	int i, j;
     //resizeTablero(tecla);
     //cord.setCord();

@@ -13,7 +13,6 @@ class ListaPiezas:public pieza {
 	pieza* lista[MAX_PIEZAS];
 	int numero = 0;
 	Coordenadas cord;
-	bool equipoa, equipob;
 public:
 	ListaPiezas();
 	bool agregar(pieza* p);
