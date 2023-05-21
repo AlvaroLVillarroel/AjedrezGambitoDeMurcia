@@ -1,17 +1,10 @@
 #include "rey.h"
 #include "freeglut.h"
 #include "ETSIDI.h"
-rey::rey() {
-	pais = SPAIN;
-	equipo = EQUIPO_A;
-	pieza = REY;
-
-	movimientos = 0;
-}
 void rey::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	pais = pa;
 	equipo = eq;
-	pieza = pi;
+	tp = pi;
 	Coord.setFila(fil);
 	Coord.setColumna(col);
 }
@@ -55,4 +48,10 @@ void rey::moverPieza(float fil, float col) {
 
 void rey::sumar_movimiento() {
 	movimientos++;
+}
+rey::rey() {
+	pais = JAPAN;
+	equipo = EQUIPO_A;
+	tp = REY;
+	movimientos = 0;
 }

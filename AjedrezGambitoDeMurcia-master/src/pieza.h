@@ -9,7 +9,7 @@ enum tipoPieza{PEON,ALFIL,TORRE,CABALLO,REINA,REY};
 
 class pieza
 {
-public:
+protected:
 	bool negra;
 	Game game;
 	paises pais;
@@ -17,13 +17,14 @@ public:
 	tipoPieza tp;
 	Coordenadas Coord;
 	pieza(paises pais, equipos equipo, tipoPieza tipopieza, Coordenadas coord);
+public:
 	pieza();
 	~pieza();
 	int getFila(); //obtiene valor de fila
 	int getColumna(); //obtiene valor de columna
-	void setFila(int row); //modifica valor de fila
-	void setColumna(int column); //modifica valor de columna
-	void dibujarPieza(); //dibuja la pieza
-	void colorCasilla();
+	virtual void setFila(int row); //modifica valor de fila
+	virtual void setColumna(int column); //modifica valor de columna
+	virtual void dibujarPieza(); //dibuja la pieza
+	virtual void colorCasilla();
 };
 

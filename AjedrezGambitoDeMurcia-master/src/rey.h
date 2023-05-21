@@ -1,11 +1,7 @@
 #pragma once
 #include"pieza.h"
-class rey
+class rey:public pieza
 {
-	paises pais;
-	equipos equipo;
-	tipoPieza pieza;
-	Coordenadas Coord;
 	int movimientos;
 
 public:

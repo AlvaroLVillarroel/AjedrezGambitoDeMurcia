@@ -22,7 +22,5 @@ public:
 	float getPosColumna() {
 		return Coord.getColumna();
 	}
-	void mousePress(int button, int state, int x, int y);
-	void mouseMotion(float x, float y);
 };
 
