@@ -6,19 +6,6 @@
 
 void Tablero::inicializa() {
     piezas.lista_inicial(JAPAN, SPAIN);
-    f1c3.inicializa(SPAIN, EQUIPO_A, ALFIL, 1, 3);
-    f1c6.inicializa(SPAIN, EQUIPO_A, ALFIL, 1, 6);
-    f8c3.inicializa(BRAZIL, EQUIPO_B, ALFIL, 8, 3);
-    f8c6.inicializa(BRAZIL, EQUIPO_B, ALFIL, 8, 6);
-    Cb8.inicializa(SPAIN, EQUIPO_A, CABALLO, 1, 2);
-    Cg8.inicializa(SPAIN, EQUIPO_A, CABALLO, 1, 7);
-    Cb1.inicializa(ARGENTINA, EQUIPO_B, CABALLO, 8, 2);
-    Cg1.inicializa(ARGENTINA, EQUIPO_B, CABALLO, 8, 7);
-    f1cd.inicializa(SPAIN, EQUIPO_A, REINA, 1, 4);
-    f8cd.inicializa(JAPAN, EQUIPO_B, REINA, 8, 4);
-    f1ce.inicializa(SPAIN, EQUIPO_A, REY, 1, 5);
-    f8ce.inicializa(PORTUGAL, EQUIPO_B, REY, 8, 5);
-
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if ((i == 0) || (i == 1) || (i == 6) || (i == 7)) {
@@ -31,18 +18,6 @@ void Tablero::inicializa() {
     }
 }
 void Tablero::dibujarTablero() {
-    f1c3.dibujarPieza();
-    f1c6.dibujarPieza();
-    f8c3.dibujarPieza();
-    f8c6.dibujarPieza();
-    Cb8.dibujarPieza();
-    Cg8.dibujarPieza();
-    Cb1.dibujarPieza();
-    Cg1.dibujarPieza();
-    f1cd.dibujarPieza();
-    f8cd.dibujarPieza();
-    f1ce.dibujarPieza();
-    f8c3.dibujarPieza();
     piezas.dibuja();
 	int i, j;
     //resizeTablero(tecla);

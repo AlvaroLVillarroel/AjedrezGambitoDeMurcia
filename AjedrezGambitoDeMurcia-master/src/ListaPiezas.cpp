@@ -52,7 +52,18 @@ void ListaPiezas::lista_inicial(paises p1,paises p2) {
 		agregarPeon(p1, EQUIPO_A, 2, i);
 		agregarPeon(p2, EQUIPO_B, 7, i);
 	}
-
+	for (int i = 1;i < 3;i++) {
+		agregarTorre(p1, EQUIPO_A, 1, i*7-6);
+		agregarTorre(p2, EQUIPO_B, 8, i*7-6);
+		agregarCaballo(p1, EQUIPO_A, 1, i*5-3);
+		agregarCaballo(p2, EQUIPO_B, 8, i*5-3);
+		agregarAlfil(p1, EQUIPO_A, 1, i*3);
+		agregarAlfil(p2, EQUIPO_B, 8, i*3);
+		agregarDama(p1, EQUIPO_A, 1, 4);
+		agregarDama(p2, EQUIPO_B, 8, 4);
+		agregarRey(p1, EQUIPO_A, 1, 5);
+		agregarRey(p2, EQUIPO_B, 8, 5);
+	}
 }
 void ListaPiezas::agregarPeon(paises p,equipos e,int fil,int col) {
 	Peon* aux = new Peon;

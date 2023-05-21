@@ -3,11 +3,6 @@
 
 class alfil : public pieza
 {
-	paises pais;
-	equipos equipo;
-	tipoPieza pieza;
-	Coordenadas Coord;
-
 	int movimientos;
 
 public:

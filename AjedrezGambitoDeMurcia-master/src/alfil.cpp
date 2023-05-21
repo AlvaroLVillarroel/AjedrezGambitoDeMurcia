@@ -6,7 +6,7 @@
 void alfil::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	pais = pa;
 	equipo = eq;
-	pieza = pi;
+	tp = pi;
 	Coord.setFila(fil);
 	Coord.setColumna(col);
 }
@@ -16,11 +16,11 @@ void alfil::dibujarPieza() {
 	if (negra == true) {
 		glEnable(GL_TEXTURE_2D);
 		glColor3f(1, 1, 1);
-		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfilN.png").id);
-		//if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
-		//if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
-		//if (pais == PORTUGAL)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/portugal/alfil.png").id);
-		//if (pais == ARGENTINA)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/argentina/alfil.png").id);
+		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfil.png").id);
+		if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
+		if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
+		if (pais == PORTUGAL)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/portugal/alfil.png").id);
+		if (pais == ARGENTINA)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/argentina/alfil.png").id);
 
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
@@ -43,11 +43,11 @@ void alfil::dibujarPieza() {
 	else {
 		glEnable(GL_TEXTURE_2D);
 		glColor3f(1, 1, 1);
-		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfilB.png").id);
-		//if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
-		//if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
-		//if (pais == PORTUGAL)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/portugal/alfil.png").id);
-		//if (pais == ARGENTINA)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/argentina/alfil.png").id);
+		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfil.png").id);
+		if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
+		if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
+		if (pais == PORTUGAL)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/portugal/alfil.png").id);
+		if (pais == ARGENTINA)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/argentina/alfil.png").id);
 
 		glDisable(GL_LIGHTING);
 		glBegin(GL_POLYGON);
@@ -89,7 +89,7 @@ void alfil::sumar_movimiento() {
 alfil::alfil() {
 	pais = SPAIN;
 	equipo = EQUIPO_A;
-	pieza = ALFIL;
+	tp = ALFIL;
 
 	movimientos = 0;
 }
