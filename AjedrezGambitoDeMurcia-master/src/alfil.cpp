@@ -74,12 +74,16 @@ void alfil::dibujarPieza() {
 	
 }
 
+bool alfil::desplazamientovalido(int fil, int col) {
+	if (abs(Coord.getFila() - fil) == abs(Coord.getColumna() - col))return true;
+	if ((getFila() == fil) && (getColumna() == col))return false;
+	return false;
+}
+
 void alfil::moverPieza(float fil, float col) {
-	if (abs(Coord.getFila()-fil) == abs(Coord.getColumna()-col)) {
 		Coord.setFila(fil);
 		Coord.setColumna(col);
 		sumar_movimiento();
-	}
 }
 
 void alfil::sumar_movimiento() {

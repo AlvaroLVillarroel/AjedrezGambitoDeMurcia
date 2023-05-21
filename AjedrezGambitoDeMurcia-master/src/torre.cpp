@@ -73,3 +73,10 @@ void torre::mouseMotion(float x, float y)
 	}
 }
 
+bool torre::desplazamientovalido(int fil, int col) {
+
+	if ((getFila() == fil) || (getColumna() == col))return true;
+	if ((getFila() == fil) && (getColumna() == col))return false;
+	return false;
+}
+

@@ -26,5 +26,7 @@ public:
 	virtual void setColumna(int column); //modifica valor de columna
 	virtual void dibujarPieza(); //dibuja la pieza
 	virtual void colorCasilla();
+	virtual bool desplazamientovalido(int fil,int col);
+;	tipoPieza getpieza() { return tp; } //devuelve el tipo de pieza
 };
 

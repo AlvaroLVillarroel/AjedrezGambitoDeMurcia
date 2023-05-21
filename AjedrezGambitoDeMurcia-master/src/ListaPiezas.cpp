@@ -101,3 +101,36 @@ bool ListaPiezas::piezaencasilla(int fil, int col) {
 	}
 	return false;
 }
+bool ListaPiezas::movimientovalido(pieza * pi, int fil, int col) {
+
+	int desfilas = fil - pi->getFila();
+	int descolumnas = col - pi->getColumna();
+
+	int i, j;
+
+	if (pi->getpieza()==ALFIL) {
+
+		if ((desfilas > 0) && (descolumnas > 0)) {
+			for (i = pi->getFila(), j = pi->getColumna(); i < fil, j < col; i++, j++) {
+				if (piezaencasilla(i, j) == 1)return false;
+			}
+		}
+		if ((desfilas < 0) && (descolumnas > 0)) {
+			for (i = pi->getFila(), j = pi->getColumna(); i > fil, j < col; i--, j++) {
+				if (piezaencasilla(i, j) == 1)return false;
+			}
+		}
+		if ((desfilas < 0) && (descolumnas < 0)) {
+			for (i = pi->getFila(), j = pi->getColumna(); i > fil, j > col; i--, j--) {
+				if (piezaencasilla(i, j) == 1)return false;
+			}
+		}
+		if ((desfilas > 0) && (descolumnas < 0)) {
+			for (i = pi->getFila(), j = pi->getColumna(); i < fil, j > col; i++, i--) {
+				if (piezaencasilla(i, j) == 1)return false;
+			}
+		}
+		return true;
+	}
+
+}

@@ -23,5 +23,6 @@ public:
 	}
 	void mousePress(int button, int state, int x, int y);
 	void mouseMotion(float x, float y);
+	bool desplazamientovalido(int fil, int col);
 };
 

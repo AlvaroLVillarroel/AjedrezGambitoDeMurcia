@@ -45,3 +45,9 @@ Peon::Peon() {
 	mouseX = mouseY = 0;
 	movimientos = 0;
 }
+
+bool Peon::desplazamientovalido(int fil, int col) {
+	if ((movimientos == 0) && (fil - getFila() < 3))return true;
+	if ((movimientos != 0) && (fil - getFila() < 2))return true;
+	return false;
+}

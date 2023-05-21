@@ -30,4 +30,5 @@ public:
 	void agregarDama(paises p, equipos e, int fil, int col);
 	void agregarRey(paises p, equipos e, int fil, int col);
 	bool piezaencasilla(int fil, int col);
+	bool movimientovalido(pieza *pi,int fil, int col);
 };

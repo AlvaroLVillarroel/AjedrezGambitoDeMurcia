@@ -10,5 +10,6 @@ public:
 	void dibujarPieza();
 	void moverPieza(float fil, float col);
 	void sumar_movimiento();
+	bool desplazamientovalido(int fil, int col);
 };
 

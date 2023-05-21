@@ -22,5 +22,6 @@ public:
 	float getPosColumna() {
 		return Coord.getColumna();
 	}
+	bool desplazamientovalido(int fil, int col);
 };
 

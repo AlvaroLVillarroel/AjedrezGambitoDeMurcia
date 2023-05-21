@@ -39,11 +39,9 @@ void rey::dibujarPieza() {
 }
 
 void rey::moverPieza(float fil, float col) {
-	if (abs(Coord.getFila() - fil) == abs(Coord.getColumna() - col)) {
 		Coord.setFila(fil);
 		Coord.setColumna(col);
 		sumar_movimiento();
-	}
 }
 
 void rey::sumar_movimiento() {
@@ -54,4 +52,11 @@ rey::rey() {
 	equipo = EQUIPO_A;
 	tp = REY;
 	movimientos = 0;
+}
+bool rey::desplazamientovalido(int fil, int col) {
+
+	if ((abs(Coord.getFila() - fil) < 2) && (abs(Coord.getColumna() - col) < 2))return true;
+	if ((getFila() == fil) && (getColumna() == col))return false;
+	return false;
+
 }

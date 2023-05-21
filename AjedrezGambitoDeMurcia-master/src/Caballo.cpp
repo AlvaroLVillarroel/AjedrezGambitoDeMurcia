@@ -30,11 +30,9 @@ void Caballo::dibujarPieza() {
 }
 
 void Caballo::moverPieza(float fil, float col) {
-	//if ((abs(Coord.getFila() - 3 == 0 && abs(Coord.getColumna() - 1) == 0)) || (abs(Coord.getFila() - 1 == 0 && abs(Coord.getColumna() - 3) == 0))) {
 		Coord.setFila(fil);
 		Coord.setColumna(col);
 		sumar_movimiento();
-	//}
 }
 
 void Caballo::sumar_movimiento() {
@@ -67,6 +65,11 @@ void Caballo::mouseMotion(float x, float y) {
 		moverPieza(x - mouseX,y - mouseY);
 		glutPostRedisplay(); // Redibujar la ventana
 	}
+}
+bool Caballo::desplazamientovalido(int fil, int col) {
+	if ((abs(Coord.getFila() - 3 == 0 && abs(Coord.getColumna() - 1) == 0)) || (abs(Coord.getFila() - 1 == 0 && abs(Coord.getColumna() - 3) == 0)))return true;
+	return false;
+
 }
 
 

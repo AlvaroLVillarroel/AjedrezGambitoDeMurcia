@@ -60,3 +60,6 @@ void pieza::colorCasilla()
 		negra=true; //si es una casilla negra
 	}
 }
+bool pieza::desplazamientovalido(int fil, int col) {
+	return 0;
+}

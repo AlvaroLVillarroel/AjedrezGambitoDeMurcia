@@ -45,11 +45,9 @@ void dama::dibujarPieza() {
 }
 
 void dama::moverPieza(float fil, float col) {
-	if (abs(Coord.getFila() - fil) == abs(Coord.getColumna() - col)) {
 		Coord.setFila(fil);
 		Coord.setColumna(col);
 		sumar_movimiento();
-	}
 }
 
 void dama::sumar_movimiento() {
@@ -75,4 +73,11 @@ void dama::mouseMotion(float x, float y) {
 		moverPieza(x - mouseX, y - mouseY);
 		glutPostRedisplay(); // Redibujar la ventana
 	}
+}
+
+bool dama::desplazamientovalido(int fil, int col) {
+	if ((getFila() == fil) || (getColumna() == col))return true;
+	if (abs(Coord.getFila() - fil) == abs(Coord.getColumna() - col))return true;
+	if ((getFila() == fil) && (getColumna() == col))return false;
+	return false;
 }
