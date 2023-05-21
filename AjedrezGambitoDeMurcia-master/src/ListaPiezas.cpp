@@ -138,22 +138,22 @@ bool ListaPiezas::movimientovalido(pieza * pi, int fil, int col) {
 	if (pi->getpieza() == TORRE) {
 		if (pi->desplazamientovalido(fil, col) == 1) {
 			if (descolumnas > 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() < col; j++) {
+				for (i = pi->getFila(), j = pi->getColumna(); j < col; j++) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
 			if (descolumnas < 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() > col; j--) {
+				for (i = pi->getFila(), j = pi->getColumna();j > col; j--) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
 			if (desfilas > 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() < fil; i++) {
+				for (i = pi->getFila(), j = pi->getColumna(); i < fil; i++) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
 			if (desfilas < 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() > fil; i--) {
+				for (i = pi->getFila(), j = pi->getColumna(); i > fil; i--) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
@@ -189,27 +189,56 @@ bool ListaPiezas::movimientovalido(pieza * pi, int fil, int col) {
 
 			//movimientos de torre
 			if (descolumnas > 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() < col; j++) {
+				for (i = pi->getFila(), j = pi->getColumna(); j < col; j++) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
 			if (descolumnas < 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() > col; j--) {
+				for (i = pi->getFila(), j = pi->getColumna(); j > col; j--) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
 			if (desfilas > 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() < fil; i++) {
+				for (i = pi->getFila(), j = pi->getColumna(); i < fil; i++) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
 			if (desfilas < 0) {
-				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() > fil; i--) {
+				for (i = pi->getFila(), j = pi->getColumna(); i > fil; i--) {
 					if (piezaencasilla(i, j) == 1)return false;
 				}
 			}
+			return true;
 		}
 		else return false;
+	}
+
+	if (pi->getpieza() == PEON) {
+		if (pi->desplazamientovalido(fil, col) == 1) {
+			if (desfilas == 2) {
+				for (i = pi->getFila(), j = pi->getColumna(); i < fil; i++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if (desfilas == 1) {
+				i = pi->getFila();
+				j = pi->getColumna();
+				if (piezaencasilla(i + 1, j) == 1)return false;
+			}
+			return true;
+		}
+		else return false;
+	}
+
+	//Caracteristicas especiales (falta por añadir)
+	if (pi->getpieza() == CABALLO) {
+		if (pi->desplazamientovalido(fil, col) == 1)return true;
+		return false;
+	}
+
+	if (pi->getpieza() == REY) {
+		if (pi->desplazamientovalido(fil, col) == 1)return true;
+		return false;
 	}
 }
 
