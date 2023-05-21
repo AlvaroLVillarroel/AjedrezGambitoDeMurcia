@@ -109,28 +109,110 @@ bool ListaPiezas::movimientovalido(pieza * pi, int fil, int col) {
 	int i, j;
 
 	if (pi->getpieza()==ALFIL) {
-
-		if ((desfilas > 0) && (descolumnas > 0)) {
-			for (i = pi->getFila(), j = pi->getColumna(); i < fil, j < col; i++, j++) {
-				if (piezaencasilla(i, j) == 1)return false;
+		if (pi->desplazamientovalido(fil, col) == 1) {
+			if ((desfilas > 0) && (descolumnas > 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i < fil, j < col; i++, j++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
 			}
-		}
-		if ((desfilas < 0) && (descolumnas > 0)) {
-			for (i = pi->getFila(), j = pi->getColumna(); i > fil, j < col; i--, j++) {
-				if (piezaencasilla(i, j) == 1)return false;
+			if ((desfilas < 0) && (descolumnas > 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i > fil, j < col; i--, j++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
 			}
-		}
-		if ((desfilas < 0) && (descolumnas < 0)) {
-			for (i = pi->getFila(), j = pi->getColumna(); i > fil, j > col; i--, j--) {
-				if (piezaencasilla(i, j) == 1)return false;
+			if ((desfilas < 0) && (descolumnas < 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i > fil, j > col; i--, j--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
 			}
-		}
-		if ((desfilas > 0) && (descolumnas < 0)) {
-			for (i = pi->getFila(), j = pi->getColumna(); i < fil, j > col; i++, i--) {
-				if (piezaencasilla(i, j) == 1)return false;
+			if ((desfilas > 0) && (descolumnas < 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i < fil, j > col; i++, i--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
 			}
+			return true;
 		}
-		return true;
+		else return false;
 	}
 
+	if (pi->getpieza() == TORRE) {
+		if (pi->desplazamientovalido(fil, col) == 1) {
+			if (descolumnas > 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() < col; j++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if (descolumnas < 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() > col; j--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if (desfilas > 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() < fil; i++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if (desfilas < 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() > fil; i--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			return true;
+		}
+		else return false;
+	}
+
+	if (pi->getpieza() == REINA) {
+		if (pi->desplazamientovalido(fil, col) == 1) {
+
+			//Movimientos de alfil
+			if ((desfilas > 0) && (descolumnas > 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i < fil, j < col; i++, j++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if ((desfilas < 0) && (descolumnas > 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i > fil, j < col; i--, j++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if ((desfilas < 0) && (descolumnas < 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i > fil, j > col; i--, j--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if ((desfilas > 0) && (descolumnas < 0)) {
+				for (i = pi->getFila(), j = pi->getColumna(); i < fil, j > col; i++, i--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+
+			//movimientos de torre
+			if (descolumnas > 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() < col; j++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if (descolumnas < 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getColumna() > col; j--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if (desfilas > 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() < fil; i++) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+			if (desfilas < 0) {
+				for (i = pi->getFila(), j = pi->getColumna(); pi->getFila() > fil; i--) {
+					if (piezaencasilla(i, j) == 1)return false;
+				}
+			}
+		}
+		else return false;
+	}
+}
+
+void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
+	if (pi->desplazamientovalido(fil, col) == 1)pi->moverPieza(fil, col);
 }

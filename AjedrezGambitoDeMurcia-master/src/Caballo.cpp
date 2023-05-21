@@ -29,22 +29,13 @@ void Caballo::dibujarPieza() {
 
 }
 
-void Caballo::moverPieza(float fil, float col) {
-		Coord.setFila(fil);
-		Coord.setColumna(col);
-		sumar_movimiento();
-}
 
-void Caballo::sumar_movimiento() {
-	movimientos++;
-}
 
 Caballo::Caballo() {
 	pais = JAPAN;
 	equipo = EQUIPO_A;
 	tp = ALFIL;
 	mouseX = mouseY = 0;
-	movimientos = 0;
 }
 void Caballo::mousePress(int button, int state, int x, int y)
 {

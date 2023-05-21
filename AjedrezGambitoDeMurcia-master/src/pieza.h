@@ -17,11 +17,13 @@ protected:
 	tipoPieza tp;
 	Coordenadas Coord;
 	pieza(paises pais, equipos equipo, tipoPieza tipopieza, Coordenadas coord);
+	int movimientos;
 public:
 	pieza();
 	~pieza();
 	int getFila(); //obtiene valor de fila
 	int getColumna(); //obtiene valor de columna
+	void moverPieza(int fil, int col);
 	virtual void setFila(int row); //modifica valor de fila
 	virtual void setColumna(int column); //modifica valor de columna
 	virtual void dibujarPieza(); //dibuja la pieza

@@ -37,21 +37,10 @@ void rey::dibujarPieza() {
 	glDisable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
-
-void rey::moverPieza(float fil, float col) {
-		Coord.setFila(fil);
-		Coord.setColumna(col);
-		sumar_movimiento();
-}
-
-void rey::sumar_movimiento() {
-	movimientos++;
-}
 rey::rey() {
 	pais = JAPAN;
 	equipo = EQUIPO_A;
 	tp = REY;
-	movimientos = 0;
 }
 bool rey::desplazamientovalido(int fil, int col) {
 

@@ -5,6 +5,7 @@ pieza::pieza(){
 	Coord.setFila(1);
 	Coord.setColumna(1);
 	bool negra = false;
+	movimientos = 0;
 }
 pieza::~pieza()
 {
@@ -62,4 +63,9 @@ void pieza::colorCasilla()
 }
 bool pieza::desplazamientovalido(int fil, int col) {
 	return 0;
+}
+void pieza::moverPieza(int fil, int col) {
+	Coord.setFila(fil);
+	Coord.setColumna(col);
+	movimientos++;
 }

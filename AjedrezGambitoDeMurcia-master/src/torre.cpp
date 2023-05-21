@@ -38,18 +38,6 @@ void torre::dibujarPieza()
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void torre::moverPieza(float fil, float col)
-{
-	Coord.setFila(fil);
-	Coord.setColumna(col);
-	sumar_movimiento();
-}
-
-void torre::sumar_movimiento()
-{
-	movimientos++;
-}
-
 void torre::mousePress(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {

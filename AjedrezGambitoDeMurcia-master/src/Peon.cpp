@@ -28,22 +28,12 @@ void Peon::dibujarPieza() {
 
 }
 
-void Peon::moverPieza(float fil, float col) {
-	Coord.setFila(fil);
-	Coord.setColumna(col);
-	sumar_movimiento();
-}
-
-void Peon::sumar_movimiento() {
-	movimientos++;
-}
 
 Peon::Peon() {
 	pais = JAPAN;
 	equipo = EQUIPO_A;
 	tp =PEON;
 	mouseX = mouseY = 0;
-	movimientos = 0;
 }
 
 bool Peon::desplazamientovalido(int fil, int col) {

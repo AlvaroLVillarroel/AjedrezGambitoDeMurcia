@@ -80,15 +80,6 @@ bool alfil::desplazamientovalido(int fil, int col) {
 	return false;
 }
 
-void alfil::moverPieza(float fil, float col) {
-		Coord.setFila(fil);
-		Coord.setColumna(col);
-		sumar_movimiento();
-}
-
-void alfil::sumar_movimiento() {
-	movimientos++;
-}
 
 alfil::alfil() {
 	pais = SPAIN;

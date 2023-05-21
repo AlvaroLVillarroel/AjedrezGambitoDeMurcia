@@ -6,7 +6,6 @@ dama::dama() {
 	equipo = EQUIPO_A;
 	tp = REINA;
 	mouseX = mouseY = 0;
-	movimientos = 0;
 }
 void dama::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	pais = pa;
@@ -44,15 +43,6 @@ void dama::dibujarPieza() {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void dama::moverPieza(float fil, float col) {
-		Coord.setFila(fil);
-		Coord.setColumna(col);
-		sumar_movimiento();
-}
-
-void dama::sumar_movimiento() {
-	movimientos++;
-}
 
 void dama::mousePress(int button, int state, int x, int y)
 {
