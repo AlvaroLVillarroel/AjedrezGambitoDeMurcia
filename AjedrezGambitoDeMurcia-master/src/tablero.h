@@ -12,18 +12,6 @@
 
 class Tablero {
 	int posiciones[8][8];
-	alfil f1c3;
-	alfil f1c6;
-	alfil f8c3;
-	alfil f8c6;
-	Caballo Cb8;
-	Caballo Cg8;
-	Caballo Cb1;
-	Caballo Cg1;
-	dama f1cd;
-	dama f8cd;
-	rey f1ce;
-	rey f8ce;
 	ListaPiezas piezas;
 public:
 	pieza prueba;
@@ -39,9 +27,5 @@ public:
 	unsigned char tecla;
 	void inicializa();
 	void dibujarTablero();
-	//void resizeTablero(unsigned char key);
-	/*void arrayCasillas(int c, int f);
-	void dibujarCoordenadasx(int a);
-	void dibujarCoordenadasy(int a);
-	*/
+	void juega(int button,int state,int x,int y);
 };

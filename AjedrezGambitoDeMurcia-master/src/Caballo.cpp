@@ -35,27 +35,6 @@ Caballo::Caballo() {
 	pais = JAPAN;
 	equipo = EQUIPO_A;
 	tp = ALFIL;
-	mouseX = mouseY = 0;
-}
-void Caballo::mousePress(int button, int state, int x, int y)
-{
-	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-		if (x >= getPosFila()-5 && x <= getPosColumna() - 4 &&
-			y >= getPosFila()+4 && y <= getPosFila() + 5) {
-			isDragging = true;
-			mouseX = x - getPosColumna();
-			mouseY = y - getPosFila();
-		}
-	}
-	else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-		isDragging = false;
-	}
-}
-void Caballo::mouseMotion(float x, float y) {
-	if (isDragging) {
-		moverPieza(x - mouseX,y - mouseY);
-		glutPostRedisplay(); // Redibujar la ventana
-	}
 }
 bool Caballo::desplazamientovalido(int fil, int col) {
 	if ((abs(Coord.getFila() - 3 == 0 && abs(Coord.getColumna() - 1) == 0)) || (abs(Coord.getFila() - 1 == 0 && abs(Coord.getColumna() - 3) == 0)))return true;

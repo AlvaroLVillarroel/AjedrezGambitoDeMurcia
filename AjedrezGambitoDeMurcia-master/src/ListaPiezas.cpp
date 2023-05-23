@@ -245,3 +245,11 @@ bool ListaPiezas::movimientovalido(pieza * pi, int fil, int col) {
 void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	if (pi->desplazamientovalido(fil, col) == 1)pi->moverPieza(fil, col);
 }
+void ListaPiezas::mousePress(int button, int state, int x, int y)
+{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+		casillax = (x - 207)*8/(791-207) + 1;
+		casillay = (y-67)*8/(651-67)+1;
+		std::cout << casillax << " " << casillay<< std::endl;
+	}
+}

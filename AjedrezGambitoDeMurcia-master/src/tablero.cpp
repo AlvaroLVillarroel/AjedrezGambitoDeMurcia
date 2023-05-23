@@ -110,33 +110,6 @@ void Tablero::dibujarTablero() {
     */
 
 }
-
-
-/*void Tablero::resizeTablero(unsigned char key) {
-    if (key == 'm') {
-        flagrz++;
-        a +=0.5;
-    }
-    if (flagrz == 3) {
-        flagrz = 0;
-            a = 1.5;
-    }
-    glScalef(a, a, 0);
-    tecla = key;
-
-    //prueba.dibujarPieza();
+void Tablero::juega(int button, int state, int x, int y) {
+    piezas.mousePress(button, state, x, y);
 }
-/void Tablero::arrayCasillas(int a, int b) {
-    filas[a];
-    columnas[b];
-}
-void Tablero::dibujarCoordenadasx(int a) {
-    glColor3ub(255, 255, 255);
-    glRasterPos2f(a- 4, -3.9);
-    glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, filas[a]);
-}
-void Tablero::dibujarCoordenadasy(int a) {
-    glColor3ub(255, 255, 255);
-    glRasterPos2f(+3.7, a- 3);
-    glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, columnas[a]);
-}*/

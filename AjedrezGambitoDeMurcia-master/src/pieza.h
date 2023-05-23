@@ -31,4 +31,3 @@ public:
 	virtual bool desplazamientovalido(int fil,int col);
 ;	tipoPieza getpieza() { return tp; } //devuelve el tipo de pieza
 };
-
