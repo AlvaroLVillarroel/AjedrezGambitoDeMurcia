@@ -37,7 +37,24 @@ Peon::Peon() {
 }
 
 bool Peon::desplazamientovalido(int fil, int col) {
-	if ((movimientos == 0) && (fil - getFila() < 3))return true;
-	if ((movimientos != 0) && (fil - getFila() < 2))return true;
+	if (equipo == EQUIPO_A) {
+		if ((fil - getFila() == 1) && (col == getColumna()))return true;
+		if ((fil - getFila() == 1) && (col - getColumna() == 1))return true;
+		if ((fil - getFila() == 1) && (col - getColumna() == -1))return true;
+	}
+	else if (equipo == EQUIPO_B) {
+		if ((getFila()- fil == 1) && (col == getColumna()))return true;
+		if ((getFila() - fil == 1) && (getColumna() - col == 1))return true;
+		if ((getFila() - fil == 1) && (getColumna() - col == -1))return true;
+	}
+
+	if (movimientos == 0) {
+		if (equipo == EQUIPO_A) {
+			if ((fil - getFila() == 2) && (col == getColumna()))return true;
+		}
+		else if (equipo == EQUIPO_B) {
+			if ((getFila() * fil == 2) && (col == getColumna()))return true;
+		}
+	}
 	return false;
 }
