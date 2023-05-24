@@ -5,7 +5,6 @@ dama::dama() {
 	pais = SPAIN;
 	equipo = EQUIPO_A;
 	tp = REINA;
-	mouseX = mouseY = 0;
 }
 void dama::inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col) {
 	pais = pa;
@@ -51,31 +50,7 @@ void dama::dibujarPieza() {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-
-void dama::mousePress(int button, int state, int x, int y)
-{
-	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-		if (x >= getPosFila() - 5 && x <= getPosColumna() - 4 &&
-			y >= getPosFila() + 4 && y <= getPosFila() + 5) {
-			isDragging = true;
-			mouseX = x - getPosColumna();
-			mouseY = y - getPosFila();
-		}
-	}
-	else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-		isDragging = false;
-	}
-}
-void dama::mouseMotion(float x, float y) {
-	if (isDragging) {
-		moverPieza(x - mouseX, y - mouseY);
-		glutPostRedisplay(); // Redibujar la ventana
-	}
-}
-
 bool dama::desplazamientovalido(int fil, int col) {
-	if ((getFila() == fil) || (getColumna() == col))return true;
-	if (abs(Coord.getFila() - fil) == abs(Coord.getColumna() - col))return true;
-	if ((getFila() == fil) && (getColumna() == col))return false;
+	if ((abs(getFila() - fil) == abs(getColumna() - col)) || (getFila() == fil) || (getColumna() == col))return true;
 	return false;
 }

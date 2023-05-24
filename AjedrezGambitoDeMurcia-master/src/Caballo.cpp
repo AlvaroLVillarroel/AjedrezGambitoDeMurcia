@@ -43,7 +43,7 @@ Caballo::Caballo() {
 	tp = ALFIL;
 }
 bool Caballo::desplazamientovalido(int fil, int col) {
-	if ((abs(getFila() - fil == 2 && abs(getColumna() - col) == 1)) || (abs(getFila() - fil == 1 && abs(getColumna() - col) == 2)))return true;
+		if ((abs(getFila() - fil) == 2 && abs(getColumna() - col) == 1) || (abs(getFila() - fil) == 1 && abs(getColumna() - col) == 2))return true;
 	return false;
 }
 

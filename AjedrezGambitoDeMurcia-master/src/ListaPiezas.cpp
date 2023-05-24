@@ -115,13 +115,11 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 		case COORD_INI:
 			casillax = (x - 207) * 8 / (791 - 207) + 1;
 			casillay = (y - 67) * 8 / (651 - 67) + 1;
-			std::cout << "coordenada inicio: " << casillax << " " << casillay << std::endl;
 			seleccion = COORD_DEST;
 			break;
 		case COORD_DEST:
 			casillax1 = (x - 207) * 8 / (791 - 207) + 1;
 			casillay1 = (y - 67) * 8 / (651 - 67) + 1;
-			std::cout << "coordenada destino: " << casillax1 << " " << casillay1 << std::endl;
 			seleccion = COORD_INI;
 			break;
 		}
@@ -300,8 +298,15 @@ bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 		return resul;
 	}
 	if (pi->getpieza() == REINA) {
-		resul = colisionreina(pi, fil, col);
-		return resul;
+		//resul = colisionreina(pi, fil, col);
+		//return resul;
+		return false;
+	}
+	if (pi->getpieza() == CABALLO) {
+		return false;
+	}
+	if (pi->getpieza() == REY) {
+		return false;
 	}
 }
 
