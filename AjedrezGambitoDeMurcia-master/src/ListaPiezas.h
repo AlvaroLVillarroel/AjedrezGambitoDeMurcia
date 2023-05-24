@@ -43,5 +43,5 @@ public:
 	bool colisionpieza(pieza* pi, int fil, int col);
 	void mousePress(int button, int state, int x, int y);
 	pieza* piezaseleccionada(int fil, int col);
-	
+	void MoverPieza();
 };
