@@ -5,10 +5,6 @@
 #include "game.h"
 #include "ListaPIezas.h"
 #include "ETSIDI.h"
-#include "alfil.h"
-#include "Caballo.h"
-#include "dama.h"
-#include "rey.h"
 
 class Tablero {
 	int posiciones[8][8];

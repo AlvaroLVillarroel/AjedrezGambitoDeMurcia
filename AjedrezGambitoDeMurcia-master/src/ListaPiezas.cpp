@@ -6,6 +6,9 @@ ListaPiezas::ListaPiezas() {
 	for (int i = 0;i < MAX_PIEZAS;i++) {
 		lista[i] = 0;
 	}
+	casillax= casillay = 0;
+	casillax1 = casillay1=0;
+	seleccion = COORD_DEST;
 }
 
 bool ListaPiezas::agregar(pieza*p) {
@@ -62,11 +65,11 @@ void ListaPiezas::lista_inicial(paises p1,paises p2) {
 		agregarCaballo(p2, EQUIPO_B, 8, i*5-3);
 		agregarAlfil(p1, EQUIPO_A, 1, i*3);
 		agregarAlfil(p2, EQUIPO_B, 8, i*3);
+	}
 		agregarDama(p1, EQUIPO_A, 1, 4);
 		agregarDama(p2, EQUIPO_B, 8, 4);
 		agregarRey(p1, EQUIPO_A, 1, 5);
 		agregarRey(p2, EQUIPO_B, 8, 5);
-	}
 }
 void ListaPiezas::agregarPeon(paises p,equipos e,int fil,int col) {
 	Peon* aux = new Peon;
@@ -108,13 +111,22 @@ bool ListaPiezas::piezaencasilla(int fil, int col) {
 void ListaPiezas::mousePress(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-		casillax = (x - 207)*8/(791-207) + 1;
-		casillay = (y-67)*8/(651-67)+1;
-		std::cout << casillax << " " << casillay<< std::endl;
+		switch (seleccion) {
+		case COORD_INI:
+			casillax = (x - 207) * 8 / (791 - 207) + 1;
+			casillay = (y - 67) * 8 / (651 - 67) + 1;
+			std::cout << "coordenada inicio: " << casillax << " " << casillay << std::endl;
+			seleccion = COORD_DEST;
+			break;
+		case COORD_DEST:
+			casillax1 = (x - 207) * 8 / (791 - 207) + 1;
+			casillay1 = (y - 67) * 8 / (651 - 67) + 1;
+			std::cout << "coordenada destino: " << casillax1 << " " << casillay1 << std::endl;
+			seleccion = COORD_INI;
+			break;
+		}
 	}
-	pieza* pi = piezaseleccionada(casillax, casillay);
 }
-
 bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 
 	int desfilas = fil - pi->getFila();
@@ -299,57 +311,13 @@ pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 	}
 	return nullptr;
 }
-
-bool ListaPiezas::turnocorrecto(pieza* pi) {
-	if (pi->getequipo() == turno)return true;
-	return false;
-}
-
-bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
-
-	//Se busca si hay alguna pieza en la posicion donde me quiero mover
-	pieza* posicionfinal = piezaseleccionada(fil, col);
-	
-	// Si hay una pieza en esa posicion
-	if (posicionfinal != nullptr) {
-		//Si la pieza es del mismo equipo de la mia devuelve false
-		if (pi->getequipo() == posicionfinal->getequipo())return false;
-		//Si al pieza es de distinto equipo
-		if(pi->getequipo()!=posicionfinal->getequipo()){
-			//Si no es su turno devuelve false
-			if (turnocorrecto(pi) == 0)return false;
-			//Si es su turno entonces
-			if (turnocorrecto(pi) == 1) {
-				//Si el desplazamiento invalido devuelve false
-				if (pi->desplazamientovalido(fil,col) == 0)return false;
-				//Si el desplazamiento es valido entonces
-				if (pi->desplazamientovalido(fil, col) == 1) {
-					//Si la pieza colisiona con otra en su camino devuelve false
-					if (colisionpieza(pi, fil, col) == 1)return false;
-					//Si la pieza no colisiona con otras entonces el movimiento es valido
-					if (colisionpieza(pi, fil, col) == 0)return true;
-				}
-			}
+void ListaPiezas::MoverPieza() {
+	pieza* pi = piezaseleccionada(casillay1, casillax1);
+	//std::cout << pi->comprobarPieza() << std::endl;
+	if (pi != nullptr) {
+		if (seleccion == COORD_DEST) {
+			pi->setFila(casillay);
+			pi->setColumna(casillax);
 		}
 	}
-	// Si no hay una pieza en esa posicion
-	else if (posicionfinal == nullptr) {
-		//Si no es su turno devuelve false
-		if (turnocorrecto(pi) == 0)return false;
-		//Si es su turno entonces
-		if (turnocorrecto(pi) == 1) {
-			//Si el desplazamiento invalido devuelve false
-			if (pi->desplazamientovalido(fil, col) == 0)return false;
-			//Si el desplazamiento es valido entonces
-			if (pi->desplazamientovalido(fil, col) == 1) {
-				//Si la pieza colisiona con otra en su camino devuelve false
-				if (colisionpieza(pi, fil, col) == 1)return false;
-				//Si la pieza no colisiona con otras entonces el movimiento es valido
-				if (colisionpieza(pi, fil, col) == 0)return true;
-			}
-		}
-	}
-}
-void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
-	if (movimientovalido(pi, fil, col) == 1)pi->moverPieza(fil, col);
 }

@@ -3,6 +3,7 @@
 #include <cmath>
 #include "game.h"
 #include "ETSIDI.h"
+#include <string>
 enum paises{SPAIN,JAPAN,BRAZIL,PORTUGAL,ARGENTINA};
 enum equipos{EQUIPO_A,EQUIPO_B};
 enum tipoPieza{PEON,ALFIL,TORRE,CABALLO,REINA,REY};
@@ -29,6 +30,7 @@ public:
 	virtual void dibujarPieza(); //dibuja la pieza
 	virtual void colorCasilla();
 	virtual bool desplazamientovalido(int fil,int col);
+	std::string comprobarPieza();
 	tipoPieza getpieza() { return tp; } //devuelve el tipo de pieza
 	equipos getequipo() { return equipo; }
 	int getmovimientos() { return movimientos; }

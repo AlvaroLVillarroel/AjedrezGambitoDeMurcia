@@ -69,3 +69,11 @@ void pieza::moverPieza(int fil, int col) {
 	Coord.setColumna(col);
 	movimientos++;
 }
+std::string pieza::comprobarPieza() {
+	if (tp == ALFIL) return "alfil";
+	if (tp == PEON) return "peon";
+	if (tp == TORRE) return "torre";
+	if (tp == REINA) return "reina";
+	if (tp == REY) return "rey";
+	if (tp == CABALLO) return "caballo";
+}
