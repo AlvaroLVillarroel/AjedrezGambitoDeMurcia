@@ -19,7 +19,7 @@ class ListaPiezas:public pieza {
 	int casillax, casillay;
 	int casillax1, casillay1;
 	Seleccion seleccion;
-	equipos turnos;
+	equipos turno;
 public:
 	ListaPiezas();
 	bool agregar(pieza* p);

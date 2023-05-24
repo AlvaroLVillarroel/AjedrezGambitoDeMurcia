@@ -6,7 +6,6 @@ ListaPiezas::ListaPiezas() {
 	for (int i = 0;i < MAX_PIEZAS;i++) {
 		lista[i] = 0;
 	}
-}
 	casillax= casillay = 0;
 	casillax1 = casillay1=0;
 	seleccion = COORD_DEST;
