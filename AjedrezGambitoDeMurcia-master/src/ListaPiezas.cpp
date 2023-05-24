@@ -381,7 +381,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	case EQUIPO_B:
 		if (movimientovalido(pi, fil, col) == 1) {
 			pi->moverPieza(fil, col);
-			turno = EQUIPO_B;
+			turno = EQUIPO_A;
 		}
 		break;
 	}
