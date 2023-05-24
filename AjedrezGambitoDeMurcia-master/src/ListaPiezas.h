@@ -11,10 +11,12 @@
 #define MAX_PIEZAS 100
 class ListaPiezas:public pieza {
 	pieza* lista[MAX_PIEZAS];
+	pieza* piezasel = 0;
 	int windowXPos = 0;
 	int windowYPos = 0;
 	int numero = 0;
-	int casillax, casillay = 0;
+	int casillax =0 , casillay = 0;
+	equipos turno;
 public:
 	ListaPiezas();
 	bool agregar(pieza* p);
@@ -39,5 +41,8 @@ public:
 	bool colisionpieza(pieza* pi, int fil, int col);
 	void mousePress(int button, int state, int x, int y);
 	pieza* piezaseleccionada(int fil, int col);
+	bool turnocorrecto(pieza* pi);
+	bool movimientovalido(pieza* pi, int fil, int col);
+	void moverPieza(pieza* pi, int fil, int col);
 	
 };
