@@ -2,6 +2,11 @@
 
 ListaPiezas::ListaPiezas() {
 	numero = 0;
+	turno = EQUIPO_A; //Empiezan las blancas
+	for (int i = 0;i < MAX_PIEZAS;i++) {
+		lista[i] = 0;
+	}
+}
 	casillax= casillay = 0;
 	casillax1 = casillay1=0;
 	seleccion = COORD_DEST;
@@ -316,4 +321,57 @@ void ListaPiezas::MoverPieza() {
 			pi->setColumna(casillax);
 		}
 	}
+}
+bool ListaPiezas::turnocorrecto(pieza* pi) {
+	if (pi->getequipo() == turno)return true;
+	return false;
+}
+
+bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
+
+	//Se busca si hay alguna pieza en la posicion donde me quiero mover
+	pieza* posicionfinal = piezaseleccionada(fil, col);
+
+	// Si hay una pieza en esa posicion
+	if (posicionfinal != nullptr) {
+		//Si la pieza es del mismo equipo de la mia devuelve false
+		if (pi->getequipo() == posicionfinal->getequipo())return false;
+		//Si al pieza es de distinto equipo
+		if (pi->getequipo() != posicionfinal->getequipo()) {
+			//Si no es su turno devuelve false
+			if (turnocorrecto(pi) == 0)return false;
+			//Si es su turno entonces
+			if (turnocorrecto(pi) == 1) {
+				//Si el desplazamiento invalido devuelve false
+				if (pi->desplazamientovalido(fil, col) == 0)return false;
+				//Si el desplazamiento es valido entonces
+				if (pi->desplazamientovalido(fil, col) == 1) {
+					//Si la pieza colisiona con otra en su camino devuelve false
+					if (colisionpieza(pi, fil, col) == 1)return false;
+					//Si la pieza no colisiona con otras entonces el movimiento es valido
+					if (colisionpieza(pi, fil, col) == 0)return true;
+				}
+			}
+		}
+	}
+	// Si no hay una pieza en esa posicion
+	else if (posicionfinal == nullptr) {
+		//Si no es su turno devuelve false
+		if (turnocorrecto(pi) == 0)return false;
+		//Si es su turno entonces
+		if (turnocorrecto(pi) == 1) {
+			//Si el desplazamiento invalido devuelve false
+			if (pi->desplazamientovalido(fil, col) == 0)return false;
+			//Si el desplazamiento es valido entonces
+			if (pi->desplazamientovalido(fil, col) == 1) {
+				//Si la pieza colisiona con otra en su camino devuelve false
+				if (colisionpieza(pi, fil, col) == 1)return false;
+				//Si la pieza no colisiona con otras entonces el movimiento es valido
+				if (colisionpieza(pi, fil, col) == 0)return true;
+			}
+		}
+	}
+}
+void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
+	if (movimientovalido(pi, fil, col) == 1)pi->moverPieza(fil, col);
 }

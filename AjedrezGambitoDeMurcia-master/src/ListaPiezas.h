@@ -19,6 +19,7 @@ class ListaPiezas:public pieza {
 	int casillax, casillay;
 	int casillax1, casillay1;
 	Seleccion seleccion;
+	equipos turnos;
 public:
 	ListaPiezas();
 	bool agregar(pieza* p);
@@ -44,4 +45,7 @@ public:
 	void mousePress(int button, int state, int x, int y);
 	pieza* piezaseleccionada(int fil, int col);
 	void MoverPieza();
+	bool turnocorrecto(pieza* pi);
+	bool movimientovalido(pieza* pi, int fil, int col);
+	void moverPieza(pieza* pi, int fil, int col);
 };
