@@ -2,7 +2,9 @@
 #include <iostream>
 #include "freeglut.h"
 #include "ETSIDI.h"
+
 enum Estado {inicioPartida,modosJuego,seleccionJUG1,seleccionJUG2,modo_pvp,modo_rapido,pausa,jugando};
+
 class Game
 {
 public:
