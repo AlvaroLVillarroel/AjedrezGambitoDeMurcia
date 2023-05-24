@@ -2,7 +2,7 @@
 
 ListaPiezas::ListaPiezas() {
 	numero = 0;
-	turno = EQUIPO_A; //Empiezan las blancas
+	turno = EQUIPO_B; //Empiezan las blancas
 	for (int i = 0;i < MAX_PIEZAS;i++) {
 		lista[i] = 0;
 	}
@@ -316,8 +316,7 @@ void ListaPiezas::MoverPieza() {
 	//std::cout << pi->comprobarPieza() << std::endl;
 	if (pi != nullptr) {
 		if (seleccion == COORD_DEST) {
-			pi->setFila(casillay);
-			pi->setColumna(casillax);
+			moverPieza(pi, casillay, casillax);
 		}
 	}
 }
@@ -372,5 +371,18 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 	}
 }
 void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
-	if (movimientovalido(pi, fil, col) == 1)pi->moverPieza(fil, col);
+	switch (turno) {
+	case EQUIPO_A:
+		if (movimientovalido(pi, fil, col) == 1) {
+			pi->moverPieza(fil, col); 
+			turno = EQUIPO_B;
+		}
+		break;
+	case EQUIPO_B:
+		if (movimientovalido(pi, fil, col) == 1) {
+			pi->moverPieza(fil, col);
+			turno = EQUIPO_B;
+		}
+		break;
+	}
 }

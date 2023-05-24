@@ -37,9 +37,14 @@ Caballo::Caballo() {
 	tp = ALFIL;
 }
 bool Caballo::desplazamientovalido(int fil, int col) {
-	if ((abs(Coord.getFila() - 3 == 0 && abs(Coord.getColumna() - 1) == 0)) || (abs(Coord.getFila() - 1 == 0 && abs(Coord.getColumna() - 3) == 0)))return true;
+	if (equipo == EQUIPO_B) {
+		if ((abs(getFila() - 3 == 0 && abs(getColumna() - 1) == 0)) || (abs(getFila() - 1 == 0 && abs(getColumna() - 3) == 0)))return true;
+	}
 	return false;
-
+	if (equipo == EQUIPO_A) {
+		if ((abs(getFila() - 3 == 0 && abs(getColumna() - 1) == 0)) || (abs(getFila() - 1 == 0 && abs(getColumna() - 3) == 0)))return true;
+	}
+	return false;
 }
 
 

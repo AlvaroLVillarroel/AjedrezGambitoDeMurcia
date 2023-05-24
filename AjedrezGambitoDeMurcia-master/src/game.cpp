@@ -120,7 +120,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 			if (x >= 310 && x <= 740 && y >= 450 && y <= 550) {
 				x = 0;
 				y = 0;
-				exit(0);
+				//exit(0);
 
 			}
 			if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
