@@ -14,10 +14,10 @@ void alfil::dibujarPieza() {
 		glEnable(GL_TEXTURE_2D);
 		glColor3f(1, 1, 1);
 		if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/spain/alfils.png").id);
-		if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfil.png").id);
-		if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfil.png").id);
-		if (pais == PORTUGAL)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/portugal/alfil.png").id);
-		if (pais == ARGENTINA)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/argentina/alfil.png").id);
+		if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/japan/alfils.png").id);
+		if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/brazil/alfils.png").id);
+		if (pais == PORTUGAL)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/portugal/alfils.png").id);
+		if (pais == ARGENTINA)glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/argentina/alfils.png").id);
 
 		glDisable(GL_LIGHTING);
 		glEnable(GL_BLEND);
@@ -45,7 +45,7 @@ void alfil::dibujarPieza() {
 }
 
 bool alfil::desplazamientovalido(int fil, int col) {
-	if (abs(Coord.getFila() - fil) == abs(Coord.getColumna() - col))return true;
+	if (abs(getFila() - fil) == abs(getColumna() - col))return true;
 	if ((getFila() == fil) && (getColumna() == col))return false;
 	return false;
 }
@@ -55,6 +55,5 @@ alfil::alfil() {
 	pais = SPAIN;
 	equipo = EQUIPO_A;
 	tp = ALFIL;
-
 	movimientos = 0;
 }

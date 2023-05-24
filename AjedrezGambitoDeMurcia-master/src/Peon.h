@@ -6,10 +6,6 @@
 #include "ETSIDI.h"
 class Peon : public pieza
 {
-	bool isDragging = false;
-	float mouseX, mouseY;
-	int movimientos;
-
 public:
 	Peon();
 	void inicializa(paises pa, equipos eq, tipoPieza pi, int fil, int col);
