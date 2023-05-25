@@ -36,7 +36,51 @@ void Game::dibuja() {
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 0);
-	
+
+	if(musicaOn ==true)
+	{
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/notmuted.png").id);
+	glDisable(GL_LIGHTING);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_ALPHA_TEST);
+	glAlphaFunc(GL_GREATER, 0.0);
+	glTranslated(-22, -18, 0.0);
+	glBegin(GL_POLYGON);
+	glTexCoord2d(0, 1); glVertex3f(-3.5f, -1, 1.0f);
+	glTexCoord2d(1, 1); glVertex3f(0, -1, 1.0f);
+	glTexCoord2d(1, 0); glVertex3f(0, 3, 1.0f);
+	glTexCoord2d(0, 0); glVertex3f(-3.5f, 3, 1.0f);
+	glEnd();
+	glDisable(GL_BLEND);
+	glDisable(GL_ALPHA_TEST);
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	else 
+	{
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/muted.png").id);
+		glDisable(GL_LIGHTING);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.0);
+		glTranslated(-22, -18, 0.0);
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(-3.5f, -1, 1.0f);
+		glTexCoord2d(1, 1); glVertex3f(0, -1, 1.0f);
+		glTexCoord2d(1, 0); glVertex3f(0, 3, 1.0f);
+		glTexCoord2d(0, 0); glVertex3f(-3.5f, 3, 1.0f);
+		glEnd();
+		glDisable(GL_BLEND);
+		glDisable(GL_ALPHA_TEST);
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 	}
 	if (estado == modosJuego) 
 	{
@@ -137,7 +181,18 @@ void Game::mousePress(int button, int state, int x, int y) {
 				estado = modosJuego;
 				ETSIDI::play("sonidos/select.wav");
 			}
-			
+			if (x >= 30 && x <= 100 && y >= 0 && y <= 720 && musicaOn == true) {
+				SetCursor(LoadCursor(NULL, IDC_HAND));
+				x = 0;
+				y = 0;
+				ETSIDI::stopMusica();
+				musicaOn == false;
+			}
+			if(x >= 30 && x <= 100 && y >= 0 && y <= 720 && musicaOn == false) {
+				SetCursor(LoadCursor(NULL, IDC_HAND));
+				ETSIDI::stopMusica();
+				musicaOn == true;
+			}
 		}
 
 		
@@ -280,6 +335,6 @@ void Game::mousePress(int button, int state, int x, int y) {
 }
 void Game::music()
 {
-	//ETSIDI::playMusica("sonidos/fondo.mp3",true);
+	ETSIDI::playMusica("sonidos/fondo.mp3",true);
 }
 
