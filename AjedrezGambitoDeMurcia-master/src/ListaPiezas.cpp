@@ -11,6 +11,14 @@ ListaPiezas::ListaPiezas() {
 	seleccion = COORD_DEST;
 }
 
+ListaPiezas::~ListaPiezas()
+{
+	for (int i = 0; i < MAX_PIEZAS; i++) {
+		delete lista[i];
+	}
+	numero = 0;
+}
+
 bool ListaPiezas::agregar(pieza*p) {
 	if (numero < MAX_PIEZAS) {
 		lista[numero++] = p;
@@ -192,48 +200,48 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 
 	//Movimientos de alfil
 	if ((desfilas > 0) && (descolumnas > 0)) {
-		for (i = pi->getFila()+1, j = pi->getColumna()+1; i < fil, j < col; i++, j++) {
+		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil, j < col; i++, j++) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if ((desfilas < 0) && (descolumnas > 0)) {
-		for (i = pi->getFila()-1, j = pi->getColumna()+1; i > fil, j < col; i--, j++) {
+		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil, j < col; i--, j++) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if ((desfilas < 0) && (descolumnas < 0)) {
-		for (i = pi->getFila()-1, j = pi->getColumna()-1; i > fil, j > col; i--, j--) {
+		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil, j > col; i--, j--) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if ((desfilas > 0) && (descolumnas < 0)) {
-		for (i = pi->getFila()+1, j = pi->getColumna()-1; i < fil, j > col; i++, i--) {
+		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil, j > col; i++, i--) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 
 	//movimientos de torre
 	if (descolumnas > 0) {
-		for (i = pi->getFila(), j = pi->getColumna()+1; j < col; j++) {
+		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col; j++) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if (descolumnas < 0) {
-		for (i = pi->getFila(), j = pi->getColumna()-1; j > col; j--) {
+		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col; j--) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if (desfilas > 0) {
-		for (i = pi->getFila()+1, j = pi->getColumna(); i < fil; i++) {
+		for (i = pi->getFila() + 1, j = pi->getColumna(); i < fil; i++) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if (desfilas < 0) {
-		for (i = pi->getFila()-1, j = pi->getColumna(); i > fil; i--) {
+		for (i = pi->getFila() - 1, j = pi->getColumna(); i > fil; i--) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
-	return true;
+	return false;
 }
 
 bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
@@ -324,9 +332,8 @@ bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 		return resul;
 	}
 	if (pi->getpieza() == REINA) {
-		//resul = colisionreina(pi, fil, col);
-		//return resul;
-		return false;
+		resul = colisionreina(pi, fil, col);
+		return resul;
 	}
 	if (pi->getpieza() == CABALLO) {
 		return false;
@@ -432,34 +439,10 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 		break;
 	}
 }
-void ListaPiezas::dibujarmovposibles(int fil,int col) {
-	pieza* pi = piezaseleccionada(fil, col);
 
-	int i, j;
-
-	if (pi != nullptr) {
-		if (pi->getpieza() == ALFIL) {
-			for (i = pi->getFila() - 1, j = pi->getColumna() +1; j < 8;i--, j++) {
-				if (colisionalfil(pi, i, j) == 0) {
-					dibujarbalon(i, j);
-				}
-			}
-			for (i = pi->getFila() - 1, j = pi->getColumna() - 1; j > 1; i--, j--) {
-				if (colisionalfil(pi, i, j) == 0) {
-					dibujarbalon(i, j);
-				}
-			}
-			for (i = pi->getFila() + 1, j = pi->getColumna() - 1; j > 1; i++, j--) {
-				if (colisionalfil(pi, i, j) == 0) {
-					dibujarbalon(i, j);
-				}
-			}
-			for (i = pi->getFila() - 1, j = pi->getColumna() + 1; j < 8; i--, j++) {
-				if (colisionalfil(pi, i, j) == 0) {
-					dibujarbalon(i, j);
-				}
-			}
-		}
+void ListaPiezas::destruirPiezas(pieza* p, int fil, int col) {
+	if (colisionpieza(p, fil, col) == true) {
+		eliminarPieza(p);
 	}
 }
 
@@ -541,7 +524,7 @@ bool ListaPiezas::enroquevalido(pieza* pi, int fil, int col) {
 	}
 	return false;
 }
-
+//
 void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
 
 	if(pi->getpieza()==REY){

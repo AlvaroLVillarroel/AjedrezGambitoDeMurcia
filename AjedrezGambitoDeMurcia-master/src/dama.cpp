@@ -51,6 +51,8 @@ void dama::dibujarPieza() {
 }
 
 bool dama::desplazamientovalido(int fil, int col) {
-	if ((abs(getFila() - fil) == abs(getColumna() - col)) || (getFila() == fil) || (getColumna() == col))return true;
+	if (abs(getFila() - fil) == abs(getColumna() - col))return true;
+	if ((getFila() == fil) && (getColumna() == col))return false;
+	if ((getFila() == fil) || (getColumna() == col))return true;
 	return false;
 }
