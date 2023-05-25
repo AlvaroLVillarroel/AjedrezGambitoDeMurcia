@@ -55,6 +55,10 @@ public:
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
+<<<<<<< HEAD
 
 	void jaque(equipos equipo);
+=======
+	void comer(pieza* pi, int fil,int col);
+>>>>>>> todas las piezas comen menos rey
 };

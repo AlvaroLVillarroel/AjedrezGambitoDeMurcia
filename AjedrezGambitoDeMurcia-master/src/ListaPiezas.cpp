@@ -11,14 +11,14 @@ ListaPiezas::ListaPiezas() {
 	seleccion = COORD_DEST;
 }
 
-ListaPiezas::~ListaPiezas()
+/*ListaPiezas::~ListaPiezas()
 {
 	for (int i = 0; i < MAX_PIEZAS; i++) {
 		delete lista[i];
 	}
 	numero = 0;
 }
-
+*/
 bool ListaPiezas::agregar(pieza*p) {
 	if (numero < MAX_PIEZAS) {
 		lista[numero++] = p;
@@ -141,6 +141,7 @@ bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 	int i, j;
 
 		if ((desfilas > 0) && (descolumnas > 0)) {
+<<<<<<< HEAD
 			for (i = pi->getFila()+1, j = pi->getColumna()+1; i < fil, j < col; i++, j++) {
 				if (piezaencasilla(i, j) == 1) return true; 
 			}
@@ -158,6 +159,25 @@ bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 		if ((desfilas > 0) && (descolumnas < 0)) {
 			for (i = pi->getFila()+1, j = pi->getColumna()-1; i < fil, j > col; i++, i--) {
 				if (piezaencasilla(i, j) == 1) return true;
+=======
+			for (i = pi->getFila()+1, j = pi->getColumna()+1; i < fil-1, j < col-1; i++, j++) {
+				if (piezaencasilla(i, j) == 1)return true;
+			}
+		}
+		if ((desfilas < 0) && (descolumnas > 0)) {
+			for (i = pi->getFila()-1, j = pi->getColumna()+1; i > fil+1, j < col-1; i--, j++) {
+				if (piezaencasilla(i, j) == 1)return true;
+			}
+		}
+		if ((desfilas < 0) && (descolumnas < 0)) {
+			for (i = pi->getFila()-1, j = pi->getColumna()-1; i > fil+1, j > col+1; i--, j--) {
+				if (piezaencasilla(i, j) == 1)return true;
+			}
+		}
+		if ((desfilas > 0) && (descolumnas < 0)) {
+			for (i = pi->getFila()+1, j = pi->getColumna()-1; i < fil-1, j > col+1; i++, i--) {
+				if (piezaencasilla(i, j) == 1)return true;
+>>>>>>> todas las piezas comen menos rey
 			}
 		}
 		return false;
@@ -170,22 +190,22 @@ bool ListaPiezas::colisiontorre(pieza* pi, int fil, int col) {
 	int i, j;
 
 		if (descolumnas > 0) {
-			for (i = pi->getFila(), j = pi->getColumna()+1; j < col; j++) {
+			for (i = pi->getFila(), j = pi->getColumna()+1; j < col-1; j++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
 		if (descolumnas < 0) {
-			for (i = pi->getFila(), j = pi->getColumna()-1; j > col; j--) {
+			for (i = pi->getFila(), j = pi->getColumna()-1; j > col+1; j--) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
 		if (desfilas > 0) {
-			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil; i++) {
+			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil-1; i++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
 		if (desfilas < 0) {
-			for (i = pi->getFila()-1, j = pi->getColumna(); i > fil; i--) {
+			for (i = pi->getFila()-1, j = pi->getColumna(); i > fil+1; i--) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
@@ -200,6 +220,7 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 
 	//Movimientos de alfil
 	if ((desfilas > 0) && (descolumnas > 0)) {
+<<<<<<< HEAD
 		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil, j < col; i++, j++) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
@@ -217,27 +238,46 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 	if ((desfilas > 0) && (descolumnas < 0)) {
 		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil, j > col; i++, i--) {
 			if (piezaencasilla(i, j) == 1) return true;
+=======
+		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil-1, j < col-1; i++, j++) {
+			if (piezaencasilla(i, j) == 1)return true;
+		}
+	}
+	if ((desfilas < 0) && (descolumnas > 0)) {
+		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil+1, j < col-1; i--, j++) {
+			if (piezaencasilla(i, j) == 1)return true;
+		}
+	}
+	if ((desfilas < 0) && (descolumnas < 0)) {
+		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil+1, j > col+1; i--, j--) {
+			if (piezaencasilla(i, j) == 1)return true;
+		}
+	}
+	if ((desfilas > 0) && (descolumnas < 0)) {
+		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil-1, j > col+1; i++, i--) {
+			if (piezaencasilla(i, j) == 1)return true;
+>>>>>>> todas las piezas comen menos rey
 		}
 	}
 
 	//movimientos de torre
 	if (descolumnas > 0) {
-		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col; j++) {
+		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col-1; j++) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if (descolumnas < 0) {
-		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col; j--) {
+		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col+1; j--) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if (desfilas > 0) {
-		for (i = pi->getFila() + 1, j = pi->getColumna(); i < fil; i++) {
+		for (i = pi->getFila() + 1, j = pi->getColumna(); i < fil-1; i++) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
 	if (desfilas < 0) {
-		for (i = pi->getFila() - 1, j = pi->getColumna(); i > fil; i--) {
+		for (i = pi->getFila() - 1, j = pi->getColumna(); i > fil+1; i--) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
 	}
@@ -250,6 +290,8 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 	int descolumnas = col - pi->getColumna();
 	int i, j;
 
+	pieza* posicion = piezaseleccionada(fil, col);
+
 	if (pi->getequipo() == EQUIPO_A) {
 
 		if ((desfilas == 1) && (col == pi->getColumna())) {
@@ -260,13 +302,21 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
-		if ((desfilas == 1) && (descolumnas == 1)) {
-			if (piezaencasilla(fil, col) == 1)return true;
-			return false;
+		if (posicion == nullptr) {
+			if ((desfilas == 1) && (descolumnas == 1)) {
+				return true;
+			}
+			if ((desfilas == 1) && (descolumnas == -1)) {
+				return true;
+			}
 		}
-		if ((desfilas == 1) && (descolumnas == -1)) {
-			if (piezaencasilla(fil, col) == 1)return true;
-			return false;
+		else if (posicion != nullptr) {
+			if ((desfilas == 1) && (descolumnas == 1)) {
+				return false;
+			}
+			if ((desfilas == 1) && (descolumnas == -1)) {
+				return false;
+			}
 		}
 		return false;
 	}
@@ -280,16 +330,24 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
+	}
+	if (posicion == nullptr) {
 		if ((-desfilas == 1) && (-descolumnas == 1)) {
-			if (piezaencasilla(fil, col) == 1)return true;
+			return true;
+		}
+		if ((-desfilas == 1) && (-descolumnas == -1)) {
+			return true;
+		}
+	}
+	else if (posicion != nullptr) {
+		if ((-desfilas == 1) && (-descolumnas == 1)) {
 			return false;
 		}
 		if ((-desfilas == 1) && (-descolumnas == -1)) {
-			if (piezaencasilla(fil, col) == 1)return true;
 			return false;
 		}
-		return false;
 	}
+		return false;
 }
 
 bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
@@ -340,7 +398,7 @@ bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 	}
 	if (pi->getpieza() == REY) {
 		resul = colisionrey(pi, fil, col);
-		return false;
+		return resul;
 	}
 }
 
@@ -387,7 +445,10 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 					//Si la pieza colisiona con otra en su camino devuelve false
 					if (colisionpieza(pi, fil, col) == 1)return false;
 					//Si la pieza no colisiona con otras entonces el movimiento es valido
-					if (colisionpieza(pi, fil, col) == 0)return true;
+					if (colisionpieza(pi, fil, col) == 0) {
+						comer(pi, fil, col);
+						return true;
+					}
 				}
 			}
 		}
@@ -556,6 +617,7 @@ void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
 	}
 }
 
+<<<<<<< HEAD
 void ListaPiezas::jaque(equipos equipo)
 {
 	bool jaqueEquipo_A = false;
@@ -574,3 +636,17 @@ void ListaPiezas::jaque(equipos equipo)
 		}
 	}
 }
+=======
+void ListaPiezas::comer(pieza* pi, int fil,int col) {
+
+	pieza* comida = piezaseleccionada(fil, col);
+	int posicion = -1;
+
+	for (int i = 0; i < numero; i++) {
+		if ((lista[i]->getFila() == comida->getFila()) && (lista[i]->getColumna() == comida->getColumna())) {
+			posicion = i;
+			eliminarPieza(posicion);
+		}
+	}
+}
+>>>>>>> todas las piezas comen menos rey
