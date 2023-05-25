@@ -318,6 +318,7 @@ pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 }
 void ListaPiezas::MoverPieza() {
 	pieza* pi = piezaseleccionada(casillay1, casillax1);
+	if (pi == nullptr)seleccion = COORD_DEST;
 	//std::cout << pi->comprobarPieza() << std::endl;
 	if (pi != nullptr) {
 		if (seleccion == COORD_DEST) {
@@ -379,15 +380,19 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	switch (turno) {
 	case EQUIPO_A:
 		if (movimientovalido(pi, fil, col) == 1) {
-			pi->moverPieza(fil, col); 
+			pi->moverPieza(fil, col);
 			turno = EQUIPO_B;
+			ETSIDI::play("sonidos/move.mp3");
 		}
+		else seleccion = COORD_DEST;
 		break;
 	case EQUIPO_B:
 		if (movimientovalido(pi, fil, col) == 1) {
 			pi->moverPieza(fil, col);
 			turno = EQUIPO_A;
+			ETSIDI::play("sonidos/move2.mp3");
 		}
+		else seleccion = COORD_DEST;
 		break;
 	}
 }
