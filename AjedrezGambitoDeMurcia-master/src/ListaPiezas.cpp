@@ -440,11 +440,11 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	}
 }
 
-void ListaPiezas::destruirPiezas(pieza* p, int fil, int col) {
+/*void ListaPiezas::destruirPiezas(pieza* p, int fil, int col) {
 	if (colisionpieza(p, fil, col) == true) {
 		eliminarPieza(p);
 	}
-}
+}*/
 
 void ListaPiezas::dibujarbalon(int fil, int col) {
 

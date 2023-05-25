@@ -2,11 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-<<<<<<< HEAD
-      <FullPath>C:\Users\tobia\source\repos\ajedreztrabaJo\AjedrezGambitoDeMurcia-master\x64\Debug\bin\ajedrez.exe</FullPath>
-=======
-      <FullPath>C:\Users\david\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\bin\ajedrez.exe</FullPath>
->>>>>>> error
+      <FullPath>C:\Users\Diego Carasa\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\bin\ajedrez.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
