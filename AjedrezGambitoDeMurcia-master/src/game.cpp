@@ -129,13 +129,14 @@ void Game::mousePress(int button, int state, int x, int y) {
 				x = 0;
 				y = 0;
 				exit(0);
-
+				ETSIDI::play("sonidos/select.wav");
 			}
 			if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
 				estado = modosJuego;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			
 		}
@@ -154,6 +155,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				x = 0;
 				y = 0;
 				estado = seleccionJUG1;
+				ETSIDI::play("sonidos/select.wav");
 				//pvp
 			}
 			if (x >= 580 && x <= 720 && y >= 380 && y <= 500) {
@@ -161,6 +163,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				x = 0;
 				y = 0;
 				estado = seleccionJUG1;
+				ETSIDI::play("sonidos/select.wav");
 				//pve
 		
 			}
@@ -181,6 +184,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == PORTUGAL
 				estado = seleccionJUG2;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -188,6 +192,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == JAPON
 				estado = seleccionJUG2;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -195,6 +200,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == SPAIN
 				estado = seleccionJUG2;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -202,6 +208,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == ARGENTINA
 				estado = seleccionJUG2;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -209,6 +216,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == BRAZIL
 				estado = seleccionJUG2;
+				ETSIDI::play("sonidos/select.wav");
 			}
 		}
 
@@ -224,7 +232,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == PORTUGAL
 				estado = jugando;
-				
+				ETSIDI::play("sonidos/select.wav");
 				
 			}
 			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
@@ -233,6 +241,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == JAPON
 				estado = jugando;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -240,6 +249,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == SPAIN
 				estado = jugando;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -247,6 +257,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == ARGENTINA
 				estado = jugando;
+				ETSIDI::play("sonidos/select.wav");
 			}
 			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -254,6 +265,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == BRAZIL
 				estado = jugando;
+				ETSIDI::play("sonidos/select.wav");
 			}
 		}
 
@@ -265,6 +277,6 @@ void Game::mousePress(int button, int state, int x, int y) {
 
 void Game::music()
 {
-	ETSIDI::play("sonidos/fondo.mp3");
+	//ETSIDI::playMusica("sonidos/fondo.mp3",true);
 }
 
