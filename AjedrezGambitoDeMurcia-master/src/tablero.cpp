@@ -5,7 +5,7 @@
 
 
 void Tablero::inicializa() {
-    piezas.lista_inicial(JAPAN, SPAIN);
+    piezas.lista_inicial(pa1, pa);
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if ((i == 0) || (i == 1) || (i == 6) || (i == 7)) {

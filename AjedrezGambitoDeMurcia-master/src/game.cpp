@@ -181,7 +181,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == PORTUGAL
+				tablero.pa = PORTUGAL;
 				estado = seleccionJUG2;
 				ETSIDI::play("sonidos/select.wav");
 			}
@@ -189,7 +189,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == JAPON
+				tablero.pa = JAPAN;
 				estado = seleccionJUG2;
 				ETSIDI::play("sonidos/select.wav");
 			}
@@ -197,7 +197,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == SPAIN
+				tablero.pa = SPAIN;
 				estado = seleccionJUG2;
 				ETSIDI::play("sonidos/select.wav");
 			}
@@ -205,7 +205,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == ARGENTINA
+				tablero.pa = ARGENTINA;
 				estado = seleccionJUG2;
 				ETSIDI::play("sonidos/select.wav");
 			}
@@ -213,11 +213,12 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == BRAZIL
+				tablero.pa = BRAZIL;
 				estado = seleccionJUG2;
 				ETSIDI::play("sonidos/select.wav");
 			}
 		}
+		std::cout << tablero.pa;
 
 	}
 	if (estado == seleccionJUG2)
@@ -229,7 +230,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == PORTUGAL
+				tablero.pa1 = PORTUGAL;
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
@@ -238,7 +239,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == JAPON
+				tablero.pa1 = JAPAN;
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
@@ -247,7 +248,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == SPAIN
+				tablero.pa1 = SPAIN;
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
@@ -256,7 +257,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == ARGENTINA
+				tablero.pa1 = ARGENTINA;
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
@@ -265,13 +266,13 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				//equipo == BRAZIL
+				tablero.pa1 = BRAZIL;
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
 			}
 		}
-
+		std::cout << tablero.pa1;
 	}
 	if (estado == jugando) {
 		tablero.juega(button, state, x, y);

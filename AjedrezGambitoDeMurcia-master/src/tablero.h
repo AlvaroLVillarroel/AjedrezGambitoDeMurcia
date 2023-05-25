@@ -9,6 +9,7 @@ class Tablero {
 	int posiciones[8][8];
 	ListaPiezas piezas;
 public:
+	paises pa,pa1;
 	pieza prueba;
 	GLfloat x1=0;
 	GLfloat y1=0;
