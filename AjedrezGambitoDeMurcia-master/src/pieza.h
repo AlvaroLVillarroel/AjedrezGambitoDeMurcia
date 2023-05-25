@@ -1,7 +1,6 @@
 #pragma once
 #include "coordenadas.h"
 #include <cmath>
-#include "game.h"
 #include "ETSIDI.h"
 #include <string>
 enum paises{SPAIN,JAPAN,BRAZIL,PORTUGAL,ARGENTINA};
@@ -12,7 +11,7 @@ class pieza
 {
 protected:
 	bool negra;
-	Game game;
+	
 	paises pais;
 	equipos equipo;
 	tipoPieza tp;

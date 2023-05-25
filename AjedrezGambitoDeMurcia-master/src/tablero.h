@@ -2,7 +2,6 @@
 #include <iostream>
 #include "freeglut.h"
 //#include "coordenadas.h"
-#include "game.h"
 #include "ListaPIezas.h"
 #include "ETSIDI.h"
 

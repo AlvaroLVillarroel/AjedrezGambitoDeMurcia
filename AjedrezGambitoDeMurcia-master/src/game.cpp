@@ -3,8 +3,9 @@
 #include <iostream>
 #include "freeglut.h"
 #include "ETSIDI.h"
-#include <Windows.h>
-#include "tablero.h"
+//#include <Windows.h>
+
+
 
 Game::Game()
 {
@@ -106,9 +107,16 @@ void Game::dibuja() {
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 	}
+	if (estado == jugando) {
+
+		tablero.dibujarTablero();
+		tablero.inicializa();
+		
+	}
 } 
 
 void Game::mousePress(int button, int state, int x, int y) {
+
 
 	if (estado == inicioPartida)
 
@@ -120,7 +128,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 			if (x >= 310 && x <= 740 && y >= 450 && y <= 550) {
 				x = 0;
 				y = 0;
-				//exit(0);
+				exit(0);
 
 			}
 			if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
@@ -215,7 +223,8 @@ void Game::mousePress(int button, int state, int x, int y) {
 				x = 0;
 				y = 0;
 				//equipo == PORTUGAL
-
+				estado = jugando;
+				
 				
 			}
 			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
@@ -223,44 +232,39 @@ void Game::mousePress(int button, int state, int x, int y) {
 				x = 0;
 				y = 0;
 				//equipo == JAPON
-				
+				estado = jugando;
 			}
 			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
 				//equipo == SPAIN
-			
+				estado = jugando;
 			}
 			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
 				//equipo == ARGENTINA
-			
+				estado = jugando;
 			}
 			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
 				//equipo == BRAZIL
-				
+				estado = jugando;
 			}
 		}
 
 	}
+	/*if (estado = jugando) {
+		tablero.juega(button, state, x, y);
+	}*/
 }
 
 void Game::music()
 {
-	if (modoMusica == true) {
-		modoMusica = false;
-		ETSIDI::stopMusica();
-	}
-	else if (modoMusica == false) {
-		modoMusica = true;
-		ETSIDI::playMusica("sonidos/fondo.mp3", true);
-	}
-	
+	ETSIDI::play("sonidos/fondo.mp3");
 }
 

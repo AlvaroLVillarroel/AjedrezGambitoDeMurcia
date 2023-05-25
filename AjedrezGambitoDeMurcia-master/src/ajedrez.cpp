@@ -1,6 +1,6 @@
 #include "freeglut.h"
 #include <iostream>
-#include "tablero.h"
+//#include "tablero.h"
 #include "game.h"
 //#include "peon.h"
 //los callback, funciones que seran llamadas automaticamente por la glut
@@ -11,7 +11,7 @@ void OnTimer(int value); //esta funcion sera llamada cuando transcurra una tempo
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla
 void mouseButton(int button, int state, int x, int y);
 void windowPosition(int x, int y);
-Tablero tablero;
+//Tablero tablero;
 Game juego;
 
 int main(int argc,char* argv[])
@@ -36,7 +36,7 @@ int main(int argc,char* argv[])
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	
-	tablero.inicializa();
+	//tablero.inicializa();
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
 
@@ -57,9 +57,9 @@ void OnDraw(void)
 
 	//aqui es donde hay que poner el código de dibujo
 
-	tablero.dibujarTablero();
+	//tablero.dibujarTablero();
 	
-	//juego.dibuja();
+	juego.dibuja();
 	
 	
 	//no borrar esta linea ni poner nada despues
@@ -75,9 +75,11 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 void OnTimer(int value)
 {
 	
+	//glutTimerFunc(25, OnTimer, 0);
+	//glutPostRedisplay();
 }
 void mouseButton(int button, int state, int x, int y) {
-	//juego.mousePress(button, state, x, y);
-	tablero.juega(button, state, x, y);
+	juego.mousePress(button, state, x, y);
+	//tablero.juega(button, state, x, y);
 	glutPostRedisplay();
 }
