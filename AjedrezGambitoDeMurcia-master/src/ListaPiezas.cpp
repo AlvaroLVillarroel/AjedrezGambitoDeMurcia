@@ -555,3 +555,22 @@ void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
 		}
 	}
 }
+
+void ListaPiezas::jaque(equipos equipo)
+{
+	bool jaqueEquipo_A = false;
+	bool jaqueEquipo_B = false;
+	
+	for (int i = 0; i < numero; i++) {
+		if (lista[i]->getpieza() == REY && lista[i]->getequipo() != equipo) {
+			if (equipo == EQUIPO_A) {
+				jaqueEquipo_B = true;
+				ETSIDI::play("sonidos/jaque.mp3");
+			}
+			if (equipo == EQUIPO_B) {
+				jaqueEquipo_A = true;
+				ETSIDI::play("sonidos/jaque.mp3");
+			}
+		}
+	}
+}

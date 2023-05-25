@@ -55,4 +55,6 @@ public:
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
+
+	void jaque(equipos equipo);
 };
