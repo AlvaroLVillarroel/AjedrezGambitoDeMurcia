@@ -407,19 +407,26 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	switch (turno) {
 	case EQUIPO_A:
 		if (movimientovalido(pi, fil, col) == 1) {
-			if (enroquevalido(pi, fil, col) == 1)hacerenroque(pi, fil, col);
+			if (enroquevalido(pi, fil, col) == 1) {
+				hacerenroque(pi, fil, col);
+				ETSIDI::play("sonidos/castle.mp3");
+			}
+			else ETSIDI::play("sonidos/move.mp3");
 			pi->moverPieza(fil, col);
 			turno = EQUIPO_B;
-			ETSIDI::play("sonidos/move.mp3");
+			
 		}
 		else seleccion = COORD_DEST;
 		break;
 	case EQUIPO_B:
 		if (movimientovalido(pi, fil, col) == 1) {
-			if (enroquevalido(pi, fil, col) == 1)hacerenroque(pi, fil, col);
+			if (enroquevalido(pi, fil, col) == 1) { 
+				hacerenroque(pi, fil, col);
+				ETSIDI::play("sonidos/castle.mp3");
+			}
+			else ETSIDI::play("sonidos/move2.mp3");
 			pi->moverPieza(fil, col);
 			turno = EQUIPO_A;
-			ETSIDI::play("sonidos/move2.mp3");
 		}
 		else seleccion = COORD_DEST;
 		break;

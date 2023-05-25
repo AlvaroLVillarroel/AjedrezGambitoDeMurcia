@@ -22,11 +22,11 @@ class ListaPiezas:public pieza {
 	equipos turno;
 public:
 	ListaPiezas();
-	~ListaPiezas();
+	//~ListaPiezas();
 	bool agregar(pieza* p);
 	void dibuja();
 	void mueve(pieza* p,int fil, int col);
-	void destruirPiezas(pieza* p, int fil, int col);
+	//void destruirPiezas(pieza* p, int fil, int col);
 	void eliminarPieza(int ref);
 	void eliminarPieza(pieza* p);
 	int getNumero() { return numero; }
