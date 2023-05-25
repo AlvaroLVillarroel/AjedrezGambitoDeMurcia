@@ -11,6 +11,14 @@ ListaPiezas::ListaPiezas() {
 	seleccion = COORD_DEST;
 }
 
+ListaPiezas::~ListaPiezas()
+{
+	for (int i = 0; i < MAX_PIEZAS; i++) {
+		delete lista[i];
+	}
+	numero = 0;
+}
+
 bool ListaPiezas::agregar(pieza*p) {
 	if (numero < MAX_PIEZAS) {
 		lista[numero++] = p;
@@ -397,6 +405,14 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 		break;
 	}
 }
+
+void ListaPiezas::destruirPiezas(pieza* p, int fil, int col) {
+	if (colisionpieza(p, fil, col) == true) {
+		eliminarPieza(p);
+	}
+	//delete p;
+}
+
 //void ListaPiezas::dibujarmovposibles(int fil,int col) {
 //	pieza* pi = piezaseleccionada(fil, col);
 //
