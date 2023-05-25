@@ -142,22 +142,22 @@ bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 
 		if ((desfilas > 0) && (descolumnas > 0)) {
 			for (i = pi->getFila()+1, j = pi->getColumna()+1; i < fil, j < col; i++, j++) {
-				if (piezaencasilla(i, j) == 1)return true;
+				if (piezaencasilla(i, j) == 1) return true; 
 			}
 		}
 		if ((desfilas < 0) && (descolumnas > 0)) {
 			for (i = pi->getFila()-1, j = pi->getColumna()+1; i > fil, j < col; i--, j++) {
-				if (piezaencasilla(i, j) == 1)return true;
+				if (piezaencasilla(i, j) == 1) return true;
 			}
 		}
 		if ((desfilas < 0) && (descolumnas < 0)) {
 			for (i = pi->getFila()-1, j = pi->getColumna()-1; i > fil, j > col; i--, j--) {
-				if (piezaencasilla(i, j) == 1)return true;
+				if (piezaencasilla(i, j) == 1) return true;
 			}
 		}
 		if ((desfilas > 0) && (descolumnas < 0)) {
 			for (i = pi->getFila()+1, j = pi->getColumna()-1; i < fil, j > col; i++, i--) {
-				if (piezaencasilla(i, j) == 1)return true;
+				if (piezaencasilla(i, j) == 1) return true;
 			}
 		}
 		return false;
@@ -201,22 +201,22 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 	//Movimientos de alfil
 	if ((desfilas > 0) && (descolumnas > 0)) {
 		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil, j < col; i++, j++) {
-			if (piezaencasilla(i, j) == 1)return true;
+			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
 	if ((desfilas < 0) && (descolumnas > 0)) {
 		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil, j < col; i--, j++) {
-			if (piezaencasilla(i, j) == 1)return true;
+			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
 	if ((desfilas < 0) && (descolumnas < 0)) {
 		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil, j > col; i--, j--) {
-			if (piezaencasilla(i, j) == 1)return true;
+			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
 	if ((desfilas > 0) && (descolumnas < 0)) {
 		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil, j > col; i++, i--) {
-			if (piezaencasilla(i, j) == 1)return true;
+			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
 

@@ -69,7 +69,7 @@ void Tablero::dibujarTablero() {
 
     glEnable(GL_TEXTURE_2D);
     glColor3f(1, 1, 1);
-    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/fondoTablero.png").id);
+    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/fondoTablero1.png").id);
     glDisable(GL_LIGHTING);
     glBegin(GL_POLYGON);
     glTexCoord2d(0, 1); glVertex3f(-7.6f, -5.5f, 0.0f);
