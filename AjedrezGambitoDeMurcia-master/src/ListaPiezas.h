@@ -22,7 +22,7 @@ class ListaPiezas:public pieza {
 	equipos turno;
 public:
 	ListaPiezas();
-	~ListaPiezas();
+	//~ListaPiezas();
 	bool agregar(pieza* p);
 	void dibuja();
 	void mueve(pieza* p,int fil, int col);
@@ -55,10 +55,6 @@ public:
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
-<<<<<<< HEAD
-
 	void jaque(equipos equipo);
-=======
 	void comer(pieza* pi, int fil,int col);
->>>>>>> todas las piezas comen menos rey
 };

@@ -134,53 +134,34 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 		}
 	}
 }
+
 bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 
 	int desfilas = fil - pi->getFila();
 	int descolumnas = col - pi->getColumna();
 	int i, j;
 
-		if ((desfilas > 0) && (descolumnas > 0)) {
-<<<<<<< HEAD
-			for (i = pi->getFila()+1, j = pi->getColumna()+1; i < fil, j < col; i++, j++) {
-				if (piezaencasilla(i, j) == 1) return true; 
-			}
-		}
-		if ((desfilas < 0) && (descolumnas > 0)) {
-			for (i = pi->getFila()-1, j = pi->getColumna()+1; i > fil, j < col; i--, j++) {
-				if (piezaencasilla(i, j) == 1) return true;
-			}
-		}
-		if ((desfilas < 0) && (descolumnas < 0)) {
-			for (i = pi->getFila()-1, j = pi->getColumna()-1; i > fil, j > col; i--, j--) {
-				if (piezaencasilla(i, j) == 1) return true;
-			}
-		}
-		if ((desfilas > 0) && (descolumnas < 0)) {
-			for (i = pi->getFila()+1, j = pi->getColumna()-1; i < fil, j > col; i++, i--) {
-				if (piezaencasilla(i, j) == 1) return true;
-=======
-			for (i = pi->getFila()+1, j = pi->getColumna()+1; i < fil-1, j < col-1; i++, j++) {
+	if ((desfilas > 0) && (descolumnas > 0)) {
+			for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil - 1, j < col - 1; i++, j++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
-		}
-		if ((desfilas < 0) && (descolumnas > 0)) {
-			for (i = pi->getFila()-1, j = pi->getColumna()+1; i > fil+1, j < col-1; i--, j++) {
+	}
+	if ((desfilas < 0) && (descolumnas > 0)) {
+			for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil + 1, j < col - 1; i--, j++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
-		}
-		if ((desfilas < 0) && (descolumnas < 0)) {
-			for (i = pi->getFila()-1, j = pi->getColumna()-1; i > fil+1, j > col+1; i--, j--) {
+	}
+	if ((desfilas < 0) && (descolumnas < 0)) {
+			for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil + 1, j > col + 1; i--, j--) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
-		}
-		if ((desfilas > 0) && (descolumnas < 0)) {
-			for (i = pi->getFila()+1, j = pi->getColumna()-1; i < fil-1, j > col+1; i++, i--) {
+	}
+	if ((desfilas > 0) && (descolumnas < 0)) {
+			for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil - 1, j > col + 1; i++, i--) {
 				if (piezaencasilla(i, j) == 1)return true;
->>>>>>> todas las piezas comen menos rey
 			}
-		}
-		return false;
+	}
+	return false;
 }
 
 bool ListaPiezas::colisiontorre(pieza* pi, int fil, int col) {
@@ -220,25 +201,6 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 
 	//Movimientos de alfil
 	if ((desfilas > 0) && (descolumnas > 0)) {
-<<<<<<< HEAD
-		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil, j < col; i++, j++) {
-			if (piezaencasilla(i, j) == 1) return true;
-		}
-	}
-	if ((desfilas < 0) && (descolumnas > 0)) {
-		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil, j < col; i--, j++) {
-			if (piezaencasilla(i, j) == 1) return true;
-		}
-	}
-	if ((desfilas < 0) && (descolumnas < 0)) {
-		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil, j > col; i--, j--) {
-			if (piezaencasilla(i, j) == 1) return true;
-		}
-	}
-	if ((desfilas > 0) && (descolumnas < 0)) {
-		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil, j > col; i++, i--) {
-			if (piezaencasilla(i, j) == 1) return true;
-=======
 		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil-1, j < col-1; i++, j++) {
 			if (piezaencasilla(i, j) == 1)return true;
 		}
@@ -256,7 +218,6 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 	if ((desfilas > 0) && (descolumnas < 0)) {
 		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil-1, j > col+1; i++, i--) {
 			if (piezaencasilla(i, j) == 1)return true;
->>>>>>> todas las piezas comen menos rey
 		}
 	}
 
@@ -617,7 +578,6 @@ void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
 	}
 }
 
-<<<<<<< HEAD
 void ListaPiezas::jaque(equipos equipo)
 {
 	bool jaqueEquipo_A = false;
@@ -636,7 +596,7 @@ void ListaPiezas::jaque(equipos equipo)
 		}
 	}
 }
-=======
+
 void ListaPiezas::comer(pieza* pi, int fil,int col) {
 
 	pieza* comida = piezaseleccionada(fil, col);
@@ -649,4 +609,3 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 		}
 	}
 }
->>>>>>> todas las piezas comen menos rey
