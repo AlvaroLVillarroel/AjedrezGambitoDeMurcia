@@ -11,14 +11,6 @@ ListaPiezas::ListaPiezas() {
 	seleccion = COORD_DEST;
 }
 
-ListaPiezas::~ListaPiezas()
-{
-	for (int i = 0; i < MAX_PIEZAS; i++) {
-		delete lista[i];
-	}
-	numero = 0;
-}
-
 bool ListaPiezas::agregar(pieza*p) {
 	if (numero < MAX_PIEZAS) {
 		lista[numero++] = p;
@@ -292,6 +284,31 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 	}
 }
 
+bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
+
+	int desfilas = fil - pi->getFila();
+	int descolumnas = col - pi->getColumna();
+	int i, j;
+
+	if ((abs(desfilas) <= 1) && (abs(descolumnas) <= 1)) {
+		if (piezaencasilla(fil, col) == 1)return true;
+		return false;
+	}
+	if ((desfilas == 0) && (descolumnas == 2)) {
+		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col; j++) {
+			if (piezaencasilla(i, j) == 1)return true;
+			return false;
+		}
+	}
+	if ((desfilas == 0) && (descolumnas == -2)) {
+		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col; j--) {
+			if (piezaencasilla(i, j) == 1)return true;
+			return false;
+		}
+	}
+
+}
+
 bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 	bool resul;
 	if (pi->getpieza() == TORRE) {
@@ -315,6 +332,7 @@ bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 		return false;
 	}
 	if (pi->getpieza() == REY) {
+		resul = colisionrey(pi, fil, col);
 		return false;
 	}
 }
@@ -389,6 +407,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	switch (turno) {
 	case EQUIPO_A:
 		if (movimientovalido(pi, fil, col) == 1) {
+			if (enroquevalido(pi, fil, col) == 1)hacerenroque(pi, fil, col);
 			pi->moverPieza(fil, col);
 			turno = EQUIPO_B;
 			ETSIDI::play("sonidos/move.mp3");
@@ -397,6 +416,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 		break;
 	case EQUIPO_B:
 		if (movimientovalido(pi, fil, col) == 1) {
+			if (enroquevalido(pi, fil, col) == 1)hacerenroque(pi, fil, col);
 			pi->moverPieza(fil, col);
 			turno = EQUIPO_A;
 			ETSIDI::play("sonidos/move2.mp3");
@@ -405,70 +425,143 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 		break;
 	}
 }
+void ListaPiezas::dibujarmovposibles(int fil,int col) {
+	pieza* pi = piezaseleccionada(fil, col);
 
-void ListaPiezas::destruirPiezas(pieza* p, int fil, int col) {
-	if (colisionpieza(p, fil, col) == true) {
-		eliminarPieza(p);
+	int i, j;
+
+	if (pi != nullptr) {
+		if (pi->getpieza() == ALFIL) {
+			for (i = pi->getFila() - 1, j = pi->getColumna() +1; j < 8;i--, j++) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+			for (i = pi->getFila() - 1, j = pi->getColumna() - 1; j > 1; i--, j--) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+			for (i = pi->getFila() + 1, j = pi->getColumna() - 1; j > 1; i++, j--) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+			for (i = pi->getFila() - 1, j = pi->getColumna() + 1; j < 8; i--, j++) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+		}
 	}
-	//delete p;
 }
 
-//void ListaPiezas::dibujarmovposibles(int fil,int col) {
-//	pieza* pi = piezaseleccionada(fil, col);
-//
-//	int i, j;
-//
-//	if (pi != nullptr) {
-//		if (pi->getpieza() == ALFIL) {
-//			for (i = pi->getFila() - 1, j = pi->getColumna() +1; j < 8;i--, j++) {
-//				if (colisionalfil(pi, i, j) == 0) {
-//					dibujarbalon(i, j);
-//				}
-//			}
-//			for (i = pi->getFila() - 1, j = pi->getColumna() - 1; j > 1; i--, j--) {
-//				if (colisionalfil(pi, i, j) == 0) {
-//					dibujarbalon(i, j);
-//				}
-//			}
-//			for (i = pi->getFila() + 1, j = pi->getColumna() - 1; j > 1; i++, j--) {
-//				if (colisionalfil(pi, i, j) == 0) {
-//					dibujarbalon(i, j);
-//				}
-//			}
-//			for (i = pi->getFila() - 1, j = pi->getColumna() + 1; j < 8; i--, j++) {
-//				if (colisionalfil(pi, i, j) == 0) {
-//					dibujarbalon(i, j);
-//				}
-//			}
-//		}
-//	}
-//}
-//
-//void ListaPiezas::dibujarbalon(int fil, int col) {
-//
-//	glEnable(GL_TEXTURE_2D);
-//	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/balon.png").id);
-//	glDisable(GL_LIGHTING);
-//	glEnable(GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//	glEnable(GL_ALPHA_TEST);
-//	glAlphaFunc(GL_GREATER, 0.0);
-//	glBegin(GL_POLYGON);
-//
-//	glTexCoord2d(0, 0);
-//	glVertex3d(-4.0 + fil - 1, 4.0 - col + 1, 1.5);
-//	glTexCoord2d(0, 1);
-//	glVertex3d(-4.0 + fil - 1, 3.0 - col + 1, 1.5);
-//	glTexCoord2d(1, 1);
-//	glVertex3d(-3.0 + fil - 1, 3.0 - col + 1, 1.5);
-//	glTexCoord2d(1, 0);
-//	glVertex3d(-3.0 + fil - 1, 4.0 - col + 1, 1.5);
-//
-//	glEnd();
-//	glDisable(GL_BLEND);
-//	glDisable(GL_ALPHA_TEST);
-//	glEnable(GL_LIGHTING);
-//	glDisable(GL_TEXTURE_2D);
-//	glBindTexture(GL_TEXTURE_2D, 0);
-//	glEnable(GL_TEXTURE_2D);
-//}
+void ListaPiezas::dibujarbalon(int fil, int col) {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/balon.png").id);
+	glDisable(GL_LIGHTING);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_ALPHA_TEST);
+	glAlphaFunc(GL_GREATER, 0.0);
+	glBegin(GL_POLYGON);
+
+	glTexCoord2d(0, 0);
+	glVertex3d(-4.0 + fil - 1, 4.0 - col + 1, 1.5);
+	glTexCoord2d(0, 1);
+	glVertex3d(-4.0 + fil - 1, 3.0 - col + 1, 1.5);
+	glTexCoord2d(1, 1);
+	glVertex3d(-3.0 + fil - 1, 3.0 - col + 1, 1.5);
+	glTexCoord2d(1, 0);
+	glVertex3d(-3.0 + fil - 1, 4.0 - col + 1, 1.5);
+
+	glEnd();
+	glDisable(GL_BLEND);
+	glDisable(GL_ALPHA_TEST);
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glEnable(GL_TEXTURE_2D);
+}
+
+bool ListaPiezas::enroquevalido(pieza* pi, int fil, int col) {
+
+
+	pieza* torres;
+
+	if ((fil == 1) && (col == 3)) {
+		torres = piezaseleccionada(1, 1);
+		if (torres == nullptr)return false;
+		else if (torres != nullptr) {
+			if (torres->getmovimientos() != 0)return false;
+			else if (torres->getmovimientos() == 0) {
+					if (colisionpieza(pi,1, 2) == 1)return false;
+					return true;
+			}
+		}
+	}
+	if ((fil == 1) && (col == 7)) {
+		torres = piezaseleccionada(1, 8);
+		if (torres == nullptr)return false;
+		else if (torres != nullptr) {
+			if (torres->getmovimientos() != 0)return false;
+			else if (torres->getmovimientos() == 0) {
+					return true;
+			}
+		}
+	}
+	if ((fil == 8) && (col == 3)) {
+		torres = piezaseleccionada(8, 1);
+		if (torres == nullptr)return false;
+		else if (torres != nullptr) {
+			if (torres->getmovimientos() != 0)return false;
+			else if (torres->getmovimientos() == 0) {
+					if (colisionpieza(pi, 8, 2) == 1)return false;
+					return true;
+			}
+		}
+	}
+	if ((fil == 8) && (col == 7)) {
+		torres = piezaseleccionada(8, 8);
+		if (torres == nullptr)return false;
+		else if (torres != nullptr) {
+			if (torres->getmovimientos() != 0)return false;
+			else if (torres->getmovimientos() == 0) {
+					return true;
+			}
+		}
+	}
+	return false;
+}
+
+void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
+
+	if(pi->getpieza()==REY){
+
+		if ((fil == 1) && (col == 3)) {
+			if (enroquevalido(pi,fil,col) == 1) {
+				pieza* torr = piezaseleccionada(1, 1);
+				torr->moverPieza(1, 4);
+			}
+		}
+		if ((fil == 1) && (col == 7)) {
+			if (enroquevalido(pi,fil,col) == 1) {
+				pieza* torr = piezaseleccionada(1, 8);
+				torr->moverPieza(1, 6);
+			}
+		}
+		if ((fil == 8) && (col == 3)) {
+			if (enroquevalido(pi,fil,col) == 1) {
+				pieza* torr = piezaseleccionada(8, 1);
+				torr->moverPieza(8, 4);
+			}
+		}
+		if ((fil == 8) && (col == 7)) {
+			if (enroquevalido(pi,fil,col) == 1) {
+				pieza* torr = piezaseleccionada(8, 8);
+				torr->moverPieza(8, 6);
+			}
+		}
+	}
+}

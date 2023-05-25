@@ -42,6 +42,7 @@ public:
 	bool colisiontorre(pieza* pi, int fil, int col);
 	bool colisionreina(pieza* pi, int fil, int col);
 	bool colisionpeon(pieza* pi, int fil, int col);
+	bool colisionrey(pieza* pi, int fil, int col);
 	bool colisionpieza(pieza* pi, int fil, int col);
 	void mousePress(int button, int state, int x, int y);
 	pieza* piezaseleccionada(int fil, int col);
@@ -51,4 +52,6 @@ public:
 	void moverPieza(pieza* pi, int fil, int col);
 	void dibujarmovposibles(int fil,int col);
 	void dibujarbalon(int fil, int col);
+	bool enroquevalido(pieza* pi, int fil, int col);
+	void hacerenroque(pieza* pi, int fil, int col);
 };

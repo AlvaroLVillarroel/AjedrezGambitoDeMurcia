@@ -33,5 +33,5 @@ public:
 	tipoPieza getpieza() { return tp; } //devuelve el tipo de pieza
 	equipos getequipo() { return equipo; }
 	int getmovimientos() { return movimientos; }
-
+	void sumarmovimientos() { movimientos++; }
 };
