@@ -121,6 +121,7 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 			casillax1 = (x - 207) * 8 / (791 - 207) + 1;
 			casillay1 = (y - 67) * 8 / (651 - 67) + 1;
 			seleccion = COORD_INI;
+			dibujarmovposibles(casillay1, casillax1);
 			break;
 		}
 	}
@@ -395,4 +396,63 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 		else seleccion = COORD_DEST;
 		break;
 	}
+}
+void ListaPiezas::dibujarmovposibles(int fil,int col) {
+	pieza* pi = piezaseleccionada(fil, col);
+
+	int i, j;
+
+	if (pi != nullptr) {
+		if (pi->getpieza() == ALFIL) {
+			for (i = pi->getFila() - 1, j = pi->getColumna() +1; j < 8;i--, j++) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+			for (i = pi->getFila() - 1, j = pi->getColumna() - 1; j > 1; i--, j--) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+			for (i = pi->getFila() + 1, j = pi->getColumna() - 1; j > 1; i++, j--) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+			for (i = pi->getFila() - 1, j = pi->getColumna() + 1; j < 8; i--, j++) {
+				if (colisionalfil(pi, i, j) == 0) {
+					dibujarbalon(i, j);
+				}
+			}
+		}
+	}
+}
+
+void ListaPiezas::dibujarbalon(int fil, int col) {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/balon.png").id);
+	glDisable(GL_LIGHTING);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_ALPHA_TEST);
+	glAlphaFunc(GL_GREATER, 0.0);
+	glBegin(GL_POLYGON);
+
+	glTexCoord2d(0, 0);
+	glVertex3d(-4.0 + fil - 1, 4.0 - col + 1, 1.5);
+	glTexCoord2d(0, 1);
+	glVertex3d(-4.0 + fil - 1, 3.0 - col + 1, 1.5);
+	glTexCoord2d(1, 1);
+	glVertex3d(-3.0 + fil - 1, 3.0 - col + 1, 1.5);
+	glTexCoord2d(1, 0);
+	glVertex3d(-3.0 + fil - 1, 4.0 - col + 1, 1.5);
+
+	glEnd();
+	glDisable(GL_BLEND);
+	glDisable(GL_ALPHA_TEST);
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glEnable(GL_TEXTURE_2D);
 }

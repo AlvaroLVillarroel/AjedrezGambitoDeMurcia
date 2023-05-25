@@ -48,4 +48,6 @@ public:
 	bool turnocorrecto(pieza* pi);
 	bool movimientovalido(pieza* pi, int fil, int col);
 	void moverPieza(pieza* pi, int fil, int col);
+	void dibujarmovposibles(int fil,int col);
+	void dibujarbalon(int fil, int col);
 };
