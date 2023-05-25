@@ -110,7 +110,6 @@ void Game::dibuja() {
 	if (estado == jugando) {
 
 		tablero.dibujarTablero();
-		tablero.inicializa();
 		
 	}
 } 
@@ -232,7 +231,6 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				//equipo == PORTUGAL
 				estado = jugando;
-				ETSIDI::play("sonidos/select.wav");
 				
 			}
 			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
@@ -270,11 +268,10 @@ void Game::mousePress(int button, int state, int x, int y) {
 		}
 
 	}
-	/*if (estado = jugando) {
+	if (estado == jugando) {
 		tablero.juega(button, state, x, y);
-	}*/
+	}
 }
-
 void Game::music()
 {
 	//ETSIDI::playMusica("sonidos/fondo.mp3",true);
