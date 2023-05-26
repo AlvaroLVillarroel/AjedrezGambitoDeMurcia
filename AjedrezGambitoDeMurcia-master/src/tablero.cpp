@@ -5,6 +5,7 @@
 
 
 void Tablero::inicializa() {
+  
     piezas.lista_inicial(pa1, pa);
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -16,6 +17,7 @@ void Tablero::inicializa() {
             }
         }
     }
+   
 }
 void Tablero::dibujarTablero() {
     piezas.dibuja();
@@ -52,6 +54,7 @@ void Tablero::dibujarTablero() {
         }
         
     }
+
     glEnable(GL_TEXTURE_2D);
     glColor3f(1, 1, 1);
         
@@ -83,7 +86,7 @@ void Tablero::dibujarTablero() {
     
     glEnable(GL_TEXTURE_2D);
     glColor3f(1, 1, 1);
-    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/marcotab3.png").id);
+    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/marcotab31.png").id);
     glDisable(GL_LIGHTING);
     glBegin(GL_POLYGON);
     glTexCoord2d(0, 1); glVertex3f(-4.5f, -4.5f, 1.5f);
@@ -95,19 +98,6 @@ void Tablero::dibujarTablero() {
     glDisable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
     
-    /*glColor3ub(128, 64, 0);
-    glTranslatef(-4.5, -3.5, 0);
-    glBegin(GL_QUADS);
-    glVertex3f(x1-0.5, y1-0.5, -1);
-    glVertex3f(x2+0.5, y1-0.5,-1);
-    glVertex3f(x2 + 0.5, y2 + 0.5, -1);
-    glVertex3f(x1-0.5, y2+0.5, 0);
-    glEnd();
-    glEnable(GL_LIGHTING);
-    //cord.dibujarPrueba();
-    glTranslatef(4.5, 3.5, 1);
-    glDepthRange(0, 0.5);
-    */
 
 }
 void Tablero::juega(int button, int state, int x, int y) {

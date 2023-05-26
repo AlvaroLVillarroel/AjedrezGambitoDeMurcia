@@ -38,50 +38,7 @@ void Game::dibuja() {
 		glDisable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, 0);
 
-		if (musicPlaying)
-		{
-			glEnable(GL_TEXTURE_2D);
-			glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/notmuted.png").id);
-			glDisable(GL_LIGHTING);
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			glEnable(GL_ALPHA_TEST);
-			glAlphaFunc(GL_GREATER, 0.0);
-			glTranslated(-22, -18, 0.0);
-			glBegin(GL_POLYGON);
-			glTexCoord2d(0, 1); glVertex3f(-3.5f, -1, 1.0f);
-			glTexCoord2d(1, 1); glVertex3f(0, -1, 1.0f);
-			glTexCoord2d(1, 0); glVertex3f(0, 3, 1.0f);
-			glTexCoord2d(0, 0); glVertex3f(-3.5f, 3, 1.0f);
-			glEnd();
-			glDisable(GL_BLEND);
-			glDisable(GL_ALPHA_TEST);
-			glEnable(GL_LIGHTING);
-			glDisable(GL_TEXTURE_2D);
-			glBindTexture(GL_TEXTURE_2D, 0);
-		}
-		else
-		{
-			glEnable(GL_TEXTURE_2D);
-			glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/muted.png").id);
-			glDisable(GL_LIGHTING);
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			glEnable(GL_ALPHA_TEST);
-			glAlphaFunc(GL_GREATER, 0.0);
-			glTranslated(-22, -18, 0.0);
-			glBegin(GL_POLYGON);
-			glTexCoord2d(0, 1); glVertex3f(-3.5f, -1, 1.0f);
-			glTexCoord2d(1, 1); glVertex3f(0, -1, 1.0f);
-			glTexCoord2d(1, 0); glVertex3f(0, 3, 1.0f);
-			glTexCoord2d(0, 0); glVertex3f(-3.5f, 3, 1.0f);
-			glEnd();
-			glDisable(GL_BLEND);
-			glDisable(GL_ALPHA_TEST);
-			glEnable(GL_LIGHTING);
-			glDisable(GL_TEXTURE_2D);
-			glBindTexture(GL_TEXTURE_2D, 0);
-		}
+		
 	}
 	if (estado == modosJuego)
 	{
@@ -155,15 +112,60 @@ void Game::dibuja() {
 	if (estado == jugando) {
 
 		tablero.dibujarTablero();
+		
 
 	}
+	if (musicPlaying)
+		{
+			glEnable(GL_TEXTURE_2D);
+			glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/notmuted.png").id);
+			glDisable(GL_LIGHTING);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			glEnable(GL_ALPHA_TEST);
+			glAlphaFunc(GL_GREATER, 0.0);
+			glTranslated(-22, -18, 0.0);
+			glBegin(GL_POLYGON);
+			glTexCoord2d(0, 1); glVertex3f(-3.5f, -1, 1.0f);
+			glTexCoord2d(1, 1); glVertex3f(0, -1, 1.0f);
+			glTexCoord2d(1, 0); glVertex3f(0, 3, 1.0f);
+			glTexCoord2d(0, 0); glVertex3f(-3.5f, 3, 1.0f);
+			glEnd();
+			glDisable(GL_BLEND);
+			glDisable(GL_ALPHA_TEST);
+			glEnable(GL_LIGHTING);
+			glDisable(GL_TEXTURE_2D);
+			glBindTexture(GL_TEXTURE_2D, 0);
+		}
+		else
+		{
+			glEnable(GL_TEXTURE_2D);
+			glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/muted.png").id);
+			glDisable(GL_LIGHTING);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			glEnable(GL_ALPHA_TEST);
+			glAlphaFunc(GL_GREATER, 0.0);
+			glTranslated(-22, -18, 0.0);
+			glBegin(GL_POLYGON);
+			glTexCoord2d(0, 1); glVertex3f(-3.5f, -1, 1.0f);
+			glTexCoord2d(1, 1); glVertex3f(0, -1, 1.0f);
+			glTexCoord2d(1, 0); glVertex3f(0, 3, 1.0f);
+			glTexCoord2d(0, 0); glVertex3f(-3.5f, 3, 1.0f);
+			glEnd();
+			glDisable(GL_BLEND);
+			glDisable(GL_ALPHA_TEST);
+			glEnable(GL_LIGHTING);
+			glDisable(GL_TEXTURE_2D);
+			glBindTexture(GL_TEXTURE_2D, 0);
+		}
 }
 
 void Game::mousePress(int button, int state, int x, int y) {
 
 	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN)) {
 
-		if (x >= 30 && x <= 100 && y >= 0 && y <= 720 && estado == inicioPartida) { //cuando le estas y la musica esta on
+		if (x >= 30 && x <= 100 && y >= 0 && y <= 720 ) { 
 			SetCursor(LoadCursor(NULL, IDC_HAND));
 			x = 0;
 			y = 0;
@@ -337,7 +339,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 	if (estado == jugando) {
 		
 		if (empezar) {
-			ETSIDI::play("sonidos/game-start.mp3");
+			ETSIDI::play("sonidos/start.wav");
 			empezar = false;
 		}
 		tablero.juega(button, state, x, y);

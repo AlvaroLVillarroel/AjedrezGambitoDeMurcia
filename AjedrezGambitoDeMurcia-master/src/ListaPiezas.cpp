@@ -10,6 +10,7 @@ ListaPiezas::ListaPiezas() {
 	casillax1 = casillay1=0;
 	seleccion = COORD_DEST;
 	piezaComida = false;
+
 }
 
 /*ListaPiezas::~ListaPiezas()
@@ -109,6 +110,7 @@ void ListaPiezas::agregarRey(paises p, equipos e, int fil, int col) {
 	rey* aux = new rey;
 	aux->inicializa(p, e, REY, fil, col);
 	agregar(aux);
+
 }
 bool ListaPiezas::piezaencasilla(int fil, int col) {
 	for (int i = 0; i < numero; i++) {
@@ -122,6 +124,7 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 		switch (seleccion) {
 		case COORD_INI:
+			
 			casillax = (x - 207) * 8 / (791 - 207) + 1;
 			casillay = (y - 67) * 8 / (651 - 67) + 1;
 			seleccion = COORD_DEST;
@@ -410,7 +413,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				ETSIDI::play("sonidos/castle.mp3");
 			}
 			if (enroquevalido(pi, fil, col) == 0) {
-				ETSIDI::play("sonidos/move.mp3");
+				ETSIDI::play("sonidos/move1.wav");
 			}
 			if (piezaComida) {
 				piezaComida = false;
@@ -428,7 +431,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				ETSIDI::play("sonidos/castle.mp3");
 			}
 			if (enroquevalido(pi, fil, col) == 0) {
-				ETSIDI::play("sonidos/move2.mp3");
+				ETSIDI::play("sonidos/move1.wav");
 			}
 			if (piezaComida) {
 				piezaComida = false;
