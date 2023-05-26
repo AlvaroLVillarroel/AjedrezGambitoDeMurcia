@@ -49,12 +49,17 @@ rey::rey() {
 }
 bool rey::desplazamientovalido(int fil, int col) {
 
-	if ((abs(getFila() - fil) <= 1) && (abs(getColumna() - col) <= 1))return true;
-	//if ((getFila() == fil) && (getColumna() == col))return false;
+	
 
-	if (getmovimientos() == 0) {
+	if (movimientos == 0) {
 		if((abs(getFila()-fil)==0)&&(abs(getColumna()-col)==2))return true;
+		if ((abs(getFila() - fil) <= 1) && (abs(getColumna() - col) <= 1))return true;
+		return false;
 	}
-	return false;
+	else if (movimientos != 0) {
+		if ((abs(getFila() - fil) == 0) && (abs(getColumna() - col) == 2))return false;
+		if ((abs(getFila() - fil) <= 1) && (abs(getColumna() - col) <= 1))return true;
+		return false;
+	}
 
 }

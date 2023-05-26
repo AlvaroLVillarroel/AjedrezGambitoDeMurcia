@@ -282,22 +282,20 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 
 	int desfilas = fil - pi->getFila();
 	int descolumnas = col - pi->getColumna();
-	int i, j;
+	int i = pi->getFila();
+	int j = pi->getColumna();
 
 	if ((abs(desfilas) <= 1) && (abs(descolumnas) <= 1)) {
 		return false;
 	}
-	if ((desfilas == 0) && (descolumnas == 2)) {
-		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col-1; j++) {
-			if (piezaencasilla(i, j) == 1)return true;
+	if ((desfilas == 0) && (descolumnas == 2))  {
+			if (piezaencasilla(i, j+1) == 1)return true;
 			return false;
-		}
 	}
 	if ((desfilas == 0) && (descolumnas == -2)) {
-		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col+1; j--) {
-			if (piezaencasilla(i, j) == 1)return true;
+			if (piezaencasilla(i, j-1) == 1)return true;
+			if (piezaencasilla(i, j - 3) == 1)return true;
 			return false;
-		}
 	}
 
 }
