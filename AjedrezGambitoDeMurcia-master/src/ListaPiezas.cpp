@@ -333,6 +333,10 @@ bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 	for (int i = 0; i < numero; i++) {
 		if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col))return lista[i];
+		/*if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col)) {
+			dibujarmovposibles(lista[i], fil, col);
+			return lista[i];
+		}*/
 	}
 	return nullptr;
 }
@@ -611,4 +615,39 @@ bool ListaPiezas::jaqueMate(equipos equipo)
 		return false;
 	}
 	else return true;
+}
+
+void ListaPiezas::dibujarmovposibles(pieza* pi, int fil, int col)
+{
+	int fildes = 0;
+	int coldes = 0;
+
+	for (int i = 1; i < 64; i++) {
+		for (int a = 1; a < numero; a++) {
+			fildes = (lista[a]->getFila() - 1);
+			coldes = (lista[a]->getColumna() - 1);
+			if ((fildes == -1) || (coldes == -1)) {
+
+				i = 64;
+				break;
+
+			}
+			dibujarbalon(fildes, coldes);
+		}
+	}
+
+	for (int j = 1; j < 15; j++) {
+		for (int a = 1; a < numero; a++) {
+			fildes = (lista[a]->getFila() - 1);
+			coldes = (lista[a]->getColumna() - 1);
+			if ((fildes == -1) || (coldes == -1)) {
+
+				j = 15;
+				break;
+
+			}
+			dibujarbalon(fildes, coldes);
+		}
+	}
+
 }
