@@ -609,3 +609,23 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 		}
 	}
 }
+
+bool ListaPiezas::jaqueMate(equipos equipo)
+{
+	bool PosibleJaqueMate = false;
+	for (int i = 0; i < numero; i++) {
+		if (lista[i]->getequipo() == equipo) {
+			for (int fil = 1; fil < 9; fil++) {
+				for (int col = 1; col < 9; col++) {
+					if (movimientovalido(lista[i], fil, col)) {
+						PosibleJaqueMate = true;
+					}
+				}
+			}
+		}
+	}
+	if (PosibleJaqueMate == true) {
+		return false;
+	}
+	else return true;
+}

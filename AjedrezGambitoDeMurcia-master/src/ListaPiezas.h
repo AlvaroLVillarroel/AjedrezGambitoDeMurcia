@@ -57,4 +57,5 @@ public:
 	void hacerenroque(pieza* pi, int fil, int col);
 	void jaque(equipos equipo);
 	void comer(pieza* pi, int fil,int col);
+	bool jaqueMate(equipos equipo);
 };
