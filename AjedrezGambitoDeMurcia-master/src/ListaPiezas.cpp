@@ -319,17 +319,16 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 	int i, j;
 
 	if ((abs(desfilas) <= 1) && (abs(descolumnas) <= 1)) {
-		if (piezaencasilla(fil, col) == 1)return true;
 		return false;
 	}
 	if ((desfilas == 0) && (descolumnas == 2)) {
-		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col; j++) {
+		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col-1; j++) {
 			if (piezaencasilla(i, j) == 1)return true;
 			return false;
 		}
 	}
 	if ((desfilas == 0) && (descolumnas == -2)) {
-		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col; j--) {
+		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col+1; j--) {
 			if (piezaencasilla(i, j) == 1)return true;
 			return false;
 		}
@@ -400,16 +399,21 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 			if (turnocorrecto(pi) == 0)return false;
 			//Si es su turno entonces
 			if (turnocorrecto(pi) == 1) {
-				//Si el desplazamiento invalido devuelve false
-				if (pi->desplazamientovalido(fil, col) == 0)return false;
-				//Si el desplazamiento es valido entonces
-				if (pi->desplazamientovalido(fil, col) == 1) {
-					//Si la pieza colisiona con otra en su camino devuelve false
-					if (colisionpieza(pi, fil, col) == 1)return false;
-					//Si la pieza no colisiona con otras entonces el movimiento es valido
-					if (colisionpieza(pi, fil, col) == 0) {
-						comer(pi, fil, col);
-						return true;
+				//Si la pieza comida es un rey
+				if (posicionfinal->getpieza() == REY)return false;
+				//Si la pieza comida no es un rey
+				else if (posicionfinal->getpieza() != REY) {
+					//Si el desplazamiento invalido devuelve false
+					if (pi->desplazamientovalido(fil, col) == 0)return false;
+					//Si el desplazamiento es valido entonces
+					if (pi->desplazamientovalido(fil, col) == 1) {
+						//Si la pieza colisiona con otra en su camino devuelve false
+						if (colisionpieza(pi, fil, col) == 1)return false;
+						//Si la pieza no colisiona con otras entonces el movimiento es valido
+						if (colisionpieza(pi, fil, col) == 0) {
+							comer(pi, fil, col);
+							return true;
+						}
 					}
 				}
 			}
@@ -613,14 +617,13 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 
 	pieza* comida = piezaseleccionada(fil, col);
 	int posicion = -1;
-
-	for (int i = 0; i < numero; i++) {
-		if ((lista[i]->getFila() == comida->getFila()) && (lista[i]->getColumna() == comida->getColumna())) {
-			posicion = i;
-			piezaComida = true;
-			eliminarPieza(posicion);
+		for (int i = 0; i < numero; i++) {
+			if ((lista[i]->getFila() == comida->getFila()) && (lista[i]->getColumna() == comida->getColumna())) {
+				posicion = i;
+				piezaComida = true;
+				eliminarPieza(posicion);
+			}
 		}
-	}
 }
 
 bool ListaPiezas::jaqueMate(equipos equipo)
