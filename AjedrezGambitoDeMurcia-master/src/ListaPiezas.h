@@ -16,6 +16,7 @@ class ListaPiezas:public pieza {
 	int windowXPos = 0;
 	int windowYPos = 0;
 	int numero = 0;
+	bool piezaComida;
 	int casillax, casillay;
 	int casillax1, casillay1;
 	Seleccion seleccion;

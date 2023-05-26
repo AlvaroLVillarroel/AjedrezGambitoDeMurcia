@@ -16,6 +16,7 @@ public:
 	void mousePress(int button, int state,int x,int y );
 	void music();
 	bool musicPlaying=false;
+	bool empezar = true;
 	Estado estado;
 	Tablero tablero;
 private:

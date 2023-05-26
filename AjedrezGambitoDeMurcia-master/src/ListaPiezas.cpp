@@ -9,6 +9,7 @@ ListaPiezas::ListaPiezas() {
 	casillax= casillay = 0;
 	casillax1 = casillay1=0;
 	seleccion = COORD_DEST;
+	piezaComida = false;
 }
 
 /*ListaPiezas::~ListaPiezas()
@@ -440,10 +441,15 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
 			}
-			else ETSIDI::play("sonidos/move.mp3");
-			pi->moverPieza(fil, col);
-			turno = EQUIPO_B;
-			
+			if (enroquevalido(pi, fil, col) == 0) {
+				ETSIDI::play("sonidos/move.mp3");
+			}
+			if (piezaComida) {
+				piezaComida = false;
+				ETSIDI::play("sonidos/capture.mp3");
+			}
+				pi->moverPieza(fil, col);
+				turno = EQUIPO_B;
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -453,9 +459,15 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
 			}
-			else ETSIDI::play("sonidos/move2.mp3");
-			pi->moverPieza(fil, col);
-			turno = EQUIPO_A;
+			if (enroquevalido(pi, fil, col) == 0) {
+				ETSIDI::play("sonidos/move2.mp3");
+			}
+			if (piezaComida) {
+				piezaComida = false;
+				ETSIDI::play("sonidos/capture.mp3");
+			}
+				pi->moverPieza(fil, col);
+				turno = EQUIPO_A;
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -605,6 +617,7 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 	for (int i = 0; i < numero; i++) {
 		if ((lista[i]->getFila() == comida->getFila()) && (lista[i]->getColumna() == comida->getColumna())) {
 			posicion = i;
+			piezaComida = true;
 			eliminarPieza(posicion);
 		}
 	}

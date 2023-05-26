@@ -289,6 +289,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
+				empezar = true;
 			}
 			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -298,6 +299,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
+				empezar = true;
 			}
 			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -307,6 +309,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
+				empezar = true;
 			}
 			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -316,6 +319,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
+				empezar = true;
 			}
 			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -325,11 +329,17 @@ void Game::mousePress(int button, int state, int x, int y) {
 				estado = jugando;
 				tablero.inicializa();
 				ETSIDI::play("sonidos/select.wav");
+				empezar = true;
 			}
 		}
 		std::cout << tablero.pa1;
 	}
 	if (estado == jugando) {
+		
+		if (empezar) {
+			ETSIDI::play("sonidos/game-start.mp3");
+			empezar = false;
+		}
 		tablero.juega(button, state, x, y);
 	}
 }
