@@ -143,24 +143,24 @@ bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 	int i, j;
 
 	if ((desfilas > 0) && (descolumnas > 0)) {
-			for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil - 1, j < col - 1; i++, j++) {
-				if (piezaencasilla(i, j) == 1)return true;
-			}
+		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil - 1 && j < col - 1; i++, j++) {
+			if (piezaencasilla(i, j) == 1) return true;
+		}
 	}
 	if ((desfilas < 0) && (descolumnas > 0)) {
-			for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil + 1, j < col - 1; i--, j++) {
-				if (piezaencasilla(i, j) == 1)return true;
-			}
+		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil + 1 && j < col - 1; i--, j++) {
+			if (piezaencasilla(i, j) == 1) return true;
+		}
 	}
 	if ((desfilas < 0) && (descolumnas < 0)) {
-			for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil + 1, j > col + 1; i--, j--) {
-				if (piezaencasilla(i, j) == 1)return true;
-			}
+		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil + 1 && j > col + 1; i--, j--) {
+			if (piezaencasilla(i, j) == 1) return true;
+		}
 	}
 	if ((desfilas > 0) && (descolumnas < 0)) {
-			for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil - 1, j > col + 1; i++, i--) {
-				if (piezaencasilla(i, j) == 1)return true;
-			}
+		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil - 1 && j > col + 1; i++, j--) {
+			if (piezaencasilla(i, j) == 1) return true;
+		}
 	}
 	return false;
 }
@@ -200,48 +200,14 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 	int descolumnas = col - pi->getColumna();
 	int i, j;
 
-	//Movimientos de alfil
-	if ((desfilas > 0) && (descolumnas > 0)) {
-		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil-1, j < col-1; i++, j++) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
+	if (abs(desfilas) == abs(descolumnas)) {
+		return colisionalfil(pi, fil, col);
 	}
-	if ((desfilas < 0) && (descolumnas > 0)) {
-		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil+1, j < col-1; i--, j++) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
+	if (desfilas == 0) {
+		return colisiontorre(pi, fil, col);
 	}
-	if ((desfilas < 0) && (descolumnas < 0)) {
-		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil+1, j > col+1; i--, j--) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
-	}
-	if ((desfilas > 0) && (descolumnas < 0)) {
-		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil-1, j > col+1; i++, i--) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
-	}
-
-	//movimientos de torre
-	if (descolumnas > 0) {
-		for (i = pi->getFila(), j = pi->getColumna() + 1; j < col-1; j++) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
-	}
-	if (descolumnas < 0) {
-		for (i = pi->getFila(), j = pi->getColumna() - 1; j > col+1; j--) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
-	}
-	if (desfilas > 0) {
-		for (i = pi->getFila() + 1, j = pi->getColumna(); i < fil-1; i++) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
-	}
-	if (desfilas < 0) {
-		for (i = pi->getFila() - 1, j = pi->getColumna(); i > fil+1; i--) {
-			if (piezaencasilla(i, j) == 1)return true;
-		}
+	if (descolumnas == 0) {
+		return colisiontorre(pi, fil, col);
 	}
 	return false;
 }
