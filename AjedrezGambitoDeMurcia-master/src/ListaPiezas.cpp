@@ -619,34 +619,11 @@ bool ListaPiezas::jaqueMate(equipos equipo)
 
 void ListaPiezas::dibujarmovposibles(pieza* pi, int fil, int col)
 {
-	int fildes = 0;
-	int coldes = 0;
-
-	for (int i = 1; i < 64; i++) {
-		for (int a = 1; a < numero; a++) {
-			fildes = (lista[a]->getFila() - 1);
-			coldes = (lista[a]->getColumna() - 1);
-			if ((fildes == -1) || (coldes == -1)) {
-
-				i = 64;
-				break;
-
+	for (int fila = 1; fila <= 8; fila++) {
+		for (int col = 1; col <= 8; col++) {
+			if (movimientovalido(pi, fila, col)) {
+				dibujarbalon(fila, col);
 			}
-			dibujarbalon(fildes, coldes);
-		}
-	}
-
-	for (int j = 1; j < 15; j++) {
-		for (int a = 1; a < numero; a++) {
-			fildes = (lista[a]->getFila() - 1);
-			coldes = (lista[a]->getColumna() - 1);
-			if ((fildes == -1) || (coldes == -1)) {
-
-				j = 15;
-				break;
-
-			}
-			dibujarbalon(fildes, coldes);
 		}
 	}
 
