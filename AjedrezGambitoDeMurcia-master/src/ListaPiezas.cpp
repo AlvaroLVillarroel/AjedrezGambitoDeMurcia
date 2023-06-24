@@ -8,6 +8,7 @@ ListaPiezas::ListaPiezas() {
 	}
 	casillax= casillay = 0;
 	casillax1 = casillay1=0;
+	fila = colu = 400;
 	seleccion = COORD_DEST;
 	piezaComida = false;
 
@@ -345,12 +346,11 @@ pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 	return nullptr;
 }
 void ListaPiezas::MoverPieza() {
-	
 	pieza* pi = piezaseleccionada(casillay1, casillax1);
-	if (aux) dibujarmovposibles(pi);
 	if (pi == nullptr)seleccion = COORD_DEST;
 	//std::cout << pi->comprobarPieza() << std::endl;
-	if (pi != nullptr) {
+	if (pi != nullptr) {	
+		dibujarmovposibles(pi);
 		if (seleccion == COORD_DEST) {
 			moverPieza(pi, casillay, casillax);
 		}
@@ -571,24 +571,24 @@ void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
 	}
 }
 
-void ListaPiezas::jaque(equipos equipo)
-{
-	bool jaqueEquipo_A = false;
-	bool jaqueEquipo_B = false;
-	
-	for (int i = 0; i < numero; i++) {
-		if (lista[i]->getpieza() == REY && lista[i]->getequipo() != equipo) {
-			if (equipo == EQUIPO_A) {
-				jaqueEquipo_B = true;
-				ETSIDI::play("sonidos/jaque.mp3");
-			}
-			if (equipo == EQUIPO_B) {
-				jaqueEquipo_A = true;
-				ETSIDI::play("sonidos/jaque.mp3");
-			}
-		}
-	}
-}
+//void ListaPiezas::jaque(equipos equipo)
+//{
+//	bool jaqueEquipo_A = false;
+//	bool jaqueEquipo_B = false;
+//	
+//	for (int i = 0; i < numero; i++) {
+//		if (lista[i]->getpieza() == REY && lista[i]->getequipo() != equipo) {
+//			if (equipo == EQUIPO_A) {
+//				jaqueEquipo_B = true;
+//				ETSIDI::play("sonidos/jaque.mp3");
+//			}
+//			if (equipo == EQUIPO_B) {
+//				jaqueEquipo_A = true;
+//				ETSIDI::play("sonidos/jaque.mp3");
+//			}
+//		}
+//	}
+//}
 
 void ListaPiezas::comer(pieza* pi, int fil,int col) {
 
@@ -603,38 +603,39 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 		}
 }
 
-bool ListaPiezas::jaqueMate(equipos equipo)
-{
-	bool PosibleJaqueMate = false;
-	for (int i = 0; i < numero; i++) {
-		if (lista[i]->getequipo() == equipo) {
-			for (int fil = 1; fil < 9; fil++) {
-				for (int col = 1; col < 9; col++) {
-					if (movimientovalido(lista[i], fil, col)) {
-						PosibleJaqueMate = true;
-					}
-				}
-			}
-		}
-	}
-	if (PosibleJaqueMate == true) {
-		return false;
-	}
-	else return true;
-}
+//bool ListaPiezas::jaqueMate(equipos equipo)
+//{
+//	bool PosibleJaqueMate = false;
+//	for (int i = 0; i < numero; i++) {
+//		if (lista[i]->getequipo() == equipo) {
+//			for (int fil = 1; fil < 9; fil++) {
+//				for (int col = 1; col < 9; col++) {
+//					if (movimientovalido(lista[i], fil, col)) {
+//						PosibleJaqueMate = true;
+//					}
+//				}
+//			}
+//		}
+//	}
+//	if (PosibleJaqueMate == true) {
+//		return false;
+//	}
+//	else return true;
+//}
 
 void ListaPiezas::dibujarmovposibles(pieza* pi)
 {
 	int i = 0;
 	for (int fila = 1; fila <= 8; fila++) {
 		for (int colu = 1; colu <= 8; colu++) {
-			if (movimientovalido(pi,fila,colu)) {
-				Coordenadas aux(fila, colu);
-				vector[i] = aux;
-				i++;
-				dibujarbalon(fila, colu);
+			if (pi->desplazamientovalido(fila,colu)) {
+				ListaPiezas::fila = fila;
+				ListaPiezas::colu = colu;
 			}
 		}
 	}
+}
+void dibujarbalones() {
 
 }
+

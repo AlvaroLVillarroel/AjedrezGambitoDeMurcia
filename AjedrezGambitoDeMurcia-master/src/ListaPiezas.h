@@ -24,6 +24,7 @@ class ListaPiezas:public pieza {
 	Coordenadas vector[20];
 	bool aux=false;
 public:
+	int fila, colu;
 	ListaPiezas();
 	//~ListaPiezas();
 	bool agregar(pieza* p);
@@ -53,7 +54,7 @@ public:
 	bool turnocorrecto(pieza* pi);
 	bool movimientovalido(pieza* pi, int fil, int col);
 	void moverPieza(pieza* pi, int fil, int col);
-	
+	void dibujarbalones();
 	//void dibujarmovposibles(int fil,int col);
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
