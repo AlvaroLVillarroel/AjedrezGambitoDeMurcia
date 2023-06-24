@@ -122,6 +122,7 @@ bool ListaPiezas::piezaencasilla(int fil, int col) {
 void ListaPiezas::mousePress(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+		
 		switch (seleccion) {
 		case COORD_INI:
 			
@@ -332,7 +333,10 @@ bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 
 pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 	for (int i = 0; i < numero; i++) {
-		if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col))return lista[i];
+		if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col)){
+			aux = true;
+			return lista[i];
+		}
 		/*if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col)) {
 			dibujarmovposibles(lista[i], fil, col);
 			return lista[i];
@@ -341,7 +345,9 @@ pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 	return nullptr;
 }
 void ListaPiezas::MoverPieza() {
+	
 	pieza* pi = piezaseleccionada(casillay1, casillax1);
+	if (aux) dibujarmovposibles(pi);
 	if (pi == nullptr)seleccion = COORD_DEST;
 	//std::cout << pi->comprobarPieza() << std::endl;
 	if (pi != nullptr) {
@@ -617,12 +623,16 @@ bool ListaPiezas::jaqueMate(equipos equipo)
 	else return true;
 }
 
-void ListaPiezas::dibujarmovposibles(pieza* pi, int fil, int col)
+void ListaPiezas::dibujarmovposibles(pieza* pi)
 {
+	int i = 0;
 	for (int fila = 1; fila <= 8; fila++) {
-		for (int col = 1; col <= 8; col++) {
-			if (movimientovalido(pi, fila, col)) {
-				dibujarbalon(fila, col);
+		for (int colu = 1; colu <= 8; colu++) {
+			if (movimientovalido(pi,fila,colu)) {
+				Coordenadas aux(fila, colu);
+				vector[i] = aux;
+				i++;
+				dibujarbalon(fila, colu);
 			}
 		}
 	}

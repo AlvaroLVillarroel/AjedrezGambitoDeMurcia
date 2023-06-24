@@ -21,6 +21,8 @@ class ListaPiezas:public pieza {
 	int casillax1, casillay1;
 	Seleccion seleccion;
 	equipos turno;
+	Coordenadas vector[20];
+	bool aux=false;
 public:
 	ListaPiezas();
 	//~ListaPiezas();
@@ -59,5 +61,5 @@ public:
 	void jaque(equipos equipo);
 	void comer(pieza* pi, int fil,int col);
 	bool jaqueMate(equipos equipo);
-	void dibujarmovposibles(pieza* pi, int fil, int col);
+	void dibujarmovposibles(pieza* pi);
 };
