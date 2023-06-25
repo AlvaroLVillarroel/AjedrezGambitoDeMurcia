@@ -423,7 +423,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
 			}
-			if (enroquevalido(pi, fil, col) == 0) {
+			if (enroquevalido(pi, fil, col) == 0 && !piezaComida) {
 				ETSIDI::play("sonidos/move1.wav");
 			}
 			if (piezaComida) {
@@ -433,6 +433,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				pi->moverPieza(fil, col);
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
+				if (promocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
 		}
 		else seleccion = COORD_DEST;
@@ -443,7 +444,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
 			}
-			if (enroquevalido(pi, fil, col) == 0) {
+			if (enroquevalido(pi, fil, col) == 0 && !piezaComida) {
 				ETSIDI::play("sonidos/move1.wav");
 			}
 			if (piezaComida) {
@@ -453,6 +454,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				pi->moverPieza(fil, col);
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
+				if(promocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_A;
 		}
 		else seleccion = COORD_DEST;
@@ -682,5 +684,26 @@ bool ListaPiezas::jaque(equipos equipo) {
 			}
 		}
 		return false;
+}
+bool ListaPiezas::promocion(pieza* pi, int fil, int col) {
+	if (pi->getpieza() != PEON) {
+		return false;
+	}
+	if (pi->getequipo() == EQUIPO_A) {
+		if (pi->getFila() == 8) {
+			agregarDama(pi->getPais(), EQUIPO_A, pi->getFila(), pi->getColumna());
+			eliminarPieza(pi);
+			return true;
+		}
+		else return false;
+	}
+	if (pi->getequipo() == EQUIPO_B) {
+		if (pi->getFila() == 1) {
+			agregarDama(pi->getPais(), EQUIPO_B, pi->getFila(), pi->getColumna());
+			eliminarPieza(pi);
+			return true;
+		}
+		else return false;
+	}
 }
 

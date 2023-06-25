@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\23alv\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\bin\ajedrez.exe</FullPath>
+=======
+      <FullPath>C:\Users\tobia\source\repos\ajedreztrabaJo\AjedrezGambitoDeMurcia-master\x64\Debug\bin\ajedrez.exe</FullPath>
+>>>>>>> principio de promocion y arreglar bug eleccion
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

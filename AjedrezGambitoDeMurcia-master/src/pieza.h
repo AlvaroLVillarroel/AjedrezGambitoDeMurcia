@@ -32,6 +32,7 @@ public:
 	std::string comprobarPieza();
 	tipoPieza getpieza() { return tp; } //devuelve el tipo de pieza
 	equipos getequipo() { return equipo; }
+	paises getPais() { return pais; }
 	int getmovimientos() { return movimientos; }
 	void sumarmovimientos() { movimientos++; }
 };

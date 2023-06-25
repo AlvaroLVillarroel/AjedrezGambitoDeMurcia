@@ -65,4 +65,5 @@ public:
 	//bool jaqueMate(equipos equipo);
 	//void dibujarmovposibles(pieza* pi);
 	bool jaque(equipos equipo);
+	bool promocion(pieza* pi, int fil, int col);
 };

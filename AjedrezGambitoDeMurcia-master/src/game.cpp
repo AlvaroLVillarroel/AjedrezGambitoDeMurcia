@@ -283,7 +283,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 		if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
 		{
 			//Hay que ajustar valores acorde a las coord de los botones
-			if (x >= 190 && x <= 345 && y >= 260 && y <= 430) {
+			if (x >= 190 && x <= 345 && y >= 260 && y <= 430 && tablero.pa!=PORTUGAL) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
@@ -293,7 +293,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				ETSIDI::play("sonidos/select.wav");
 				empezar = true;
 			}
-			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430) {
+			else if (x >= 420 && x <= 575 && y >= 260 && y <= 430 && tablero.pa != JAPAN) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
@@ -303,7 +303,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				ETSIDI::play("sonidos/select.wav");
 				empezar = true;
 			}
-			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430) {
+			else if (x >= 650 && x <= 800 && y >= 260 && y <= 430 && tablero.pa != SPAIN) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
@@ -313,7 +313,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				ETSIDI::play("sonidos/select.wav");
 				empezar = true;
 			}
-			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610) {
+			else if (x >= 320 && x <= 475 && y >= 450 && y <= 610 && tablero.pa != ARGENTINA) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
@@ -323,7 +323,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				ETSIDI::play("sonidos/select.wav");
 				empezar = true;
 			}
-			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610) {
+			else if (x >= 540 && x <= 690 && y >= 450 && y <= 610 && tablero.pa != BRAZIL) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
