@@ -59,8 +59,9 @@ public:
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
-	void jaque(equipos equipo);
+	//void jaque(equipos equipo);
 	void comer(pieza* pi, int fil,int col);
-	bool jaqueMate(equipos equipo);
-	void dibujarmovposibles(pieza* pi);
+	//bool jaqueMate(equipos equipo);
+	//void dibujarmovposibles(pieza* pi);
+	bool jaque(equipos equipo);
 };
