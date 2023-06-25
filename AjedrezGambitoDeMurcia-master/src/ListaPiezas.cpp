@@ -346,7 +346,9 @@ pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 	return nullptr;
 }
 void ListaPiezas::MoverPieza() {
+	
 	pieza* pi = piezaseleccionada(casillay1, casillax1);
+	if (aux) dibujarmovposibles(pi);
 	if (pi == nullptr)seleccion = COORD_DEST;
 	//std::cout << pi->comprobarPieza() << std::endl;
 	if (pi != nullptr) {	
@@ -637,5 +639,17 @@ void ListaPiezas::dibujarmovposibles(pieza* pi)
 }
 void dibujarbalones() {
 
-}
+void ListaPiezas::dibujarmovposibles(pieza* pi)
+{
+	int i = 0;
+	for (int fila = 1; fila <= 8; fila++) {
+		for (int colu = 1; colu <= 8; colu++) {
+			if (movimientovalido(pi,fila,colu)) {
+				Coordenadas aux(fila, colu);
+				vector[i] = aux;
+				i++;
+				dibujarbalon(fila, colu);
+			}
+		}
+	}
 
