@@ -147,22 +147,22 @@ bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 	int i, j;
 
 	if ((desfilas > 0) && (descolumnas > 0)) {
-		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil - 1 && j < col - 1; i++, j++) {
+		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil  && j < col ; i++, j++) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
 	if ((desfilas < 0) && (descolumnas > 0)) {
-		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil + 1 && j < col - 1; i--, j++) {
+		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil  && j < col ; i--, j++) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
 	if ((desfilas < 0) && (descolumnas < 0)) {
-		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil + 1 && j > col + 1; i--, j--) {
+		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil  && j > col ; i--, j--) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
 	if ((desfilas > 0) && (descolumnas < 0)) {
-		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil - 1 && j > col + 1; i++, j--) {
+		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil && j > col; i++, j--) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
@@ -664,7 +664,6 @@ bool ListaPiezas::jaque(equipos equipo) {
 				int col = lista[i]->getColumna();
 				if (lista[i]->desplazamientovalido(rey->getFila(), rey->getColumna()) == 1) {
 						if (colisionpieza(lista[i], rey->getFila(), rey->getColumna()) == 0)return true;
-					
 				}
 			}
 		}
