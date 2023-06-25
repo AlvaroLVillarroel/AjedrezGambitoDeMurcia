@@ -336,6 +336,7 @@ pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
 		if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col)){
 			aux = true;
 			return lista[i];
+			//if (dibujarmovposibles(lista[i]) == true)dibujarbalon(fil, col);
 		}
 		/*if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col)) {
 			dibujarmovposibles(lista[i], fil, col);
@@ -642,6 +643,19 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 	}
 
 }*/
+bool ListaPiezas::dibujarmovposibles(pieza* pi)
+{
+	//pieza* pi = nullptr;
+	for (int i = 0; i < numero; i++) {
+		int fil = lista[i]->getFila();
+		int col = lista[i]->getColumna();
+		if (lista[i]->desplazamientovalido(pi->getFila(), pi->getColumna()) == 1) {
+			if (colisionpieza(lista[i], pi->getFila(), pi->getColumna()) == 0)return true;
+		}
+	}
+	return false;
+
+}
 
 bool ListaPiezas::jaque(equipos equipo) {
 	
