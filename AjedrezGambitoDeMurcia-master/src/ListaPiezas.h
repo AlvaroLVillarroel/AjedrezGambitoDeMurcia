@@ -28,7 +28,10 @@ class ListaPiezas:public pieza {
 	
 public:
 	int fila, colu;
-	bool click = false;
+	bool click1 = false;
+	bool click2 = false;
+	bool click12 = false;
+	bool click22 = false;
 	ListaPiezas();
 	//~ListaPiezas();
 	bool agregar(pieza* p);

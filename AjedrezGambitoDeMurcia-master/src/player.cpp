@@ -48,9 +48,7 @@ void player::mueve(float dt)
 {
 	position = position + velocity * dt;
 
-	// Si el jugador se sale de la pantalla, reiniciar su posición
-	if (position.y > 1.0f)
-		position.y = 0.0f;
+	
 }
 
 Vector2d player::getPos()

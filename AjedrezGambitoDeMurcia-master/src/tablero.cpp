@@ -5,7 +5,8 @@
 
 
 void Tablero::inicializa() {
-  
+    jugador1.setPos(-5, 0);
+    jugador2.setPos(5, 0);
     piezas.lista_inicial(pa1, pa);
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -21,9 +22,31 @@ void Tablero::inicializa() {
 }
 void Tablero::dibujarTablero() {
     piezas.dibuja();
-    jugador.dibuja();
-    if(piezas.click==true)
-    jugador.setVel(0.0f, -2.0f);
+    
+   
+    jugador1.dibuja();
+    jugador2.dibuja();
+    Vector2d d1 = jugador1.getPos();
+    Vector2d d2 = jugador2.getPos();
+    
+    if (piezas.click1) {
+        jugador1.setVel(0.0f, -4.0f);
+    }
+    /*if (piezas.click12)
+        jugador1.setPos(-5, 0);*/
+
+    if (piezas.click2) {
+        jugador2.setVel(0.0f, 4.0f);
+    }
+    if (d1.y < -4) {
+        jugador1.setVel(0, 0);
+       
+    }
+    if (d2.y > 4) {
+        jugador2.setVel(0, 0);
+
+    }
+
     //piezas.dibujarbalon(piezas.fila, piezas.colu);
     //if(piezas.dibujarmovposibles()==true)piezas.dibujarbalon(piezas.fila, piezas.colu);
 	int i, j;
@@ -113,5 +136,6 @@ void Tablero::juega(int button, int state, int x, int y) {
 
 void Tablero::mueve()
 {
-    jugador.mueve(0.025f);
+    jugador1.mueve(0.025f);
+    jugador2.mueve(0.025f);
 }

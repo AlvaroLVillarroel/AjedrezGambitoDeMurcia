@@ -9,7 +9,8 @@
 class Tablero {
 	int posiciones[8][8];
 	ListaPiezas piezas;
-	player jugador;
+	player jugador1;
+	player jugador2;
 public:
 	paises pa,pa1;
 	pieza prueba;
