@@ -113,7 +113,6 @@ void Game::dibuja() {
 
 		tablero.dibujarTablero();
 		
-
 	}
 	if (musicPlaying)
 		{
