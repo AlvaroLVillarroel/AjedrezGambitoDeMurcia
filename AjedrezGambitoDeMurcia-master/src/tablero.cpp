@@ -106,4 +106,10 @@ void Tablero::dibujarTablero() {
 void Tablero::juega(int button, int state, int x, int y) {
     piezas.mousePress(button, state, x, y);
     piezas.MoverPieza();
+    
+}
+
+void Tablero::mueve()
+{
+    jugador.mueve(0.025f);
 }

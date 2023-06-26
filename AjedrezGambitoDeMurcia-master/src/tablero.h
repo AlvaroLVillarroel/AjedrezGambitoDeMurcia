@@ -26,4 +26,5 @@ public:
 	void inicializa();
 	void dibujarTablero();
 	void juega(int button,int state,int x,int y);
+	void mueve();
 };

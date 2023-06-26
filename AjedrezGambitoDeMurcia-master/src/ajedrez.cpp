@@ -74,9 +74,9 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 
 void OnTimer(int value)
 {
-	
-	//glutTimerFunc(25, OnTimer, 0);
-	//glutPostRedisplay();
+	juego.tablero.mueve();
+	glutTimerFunc(25, OnTimer, 0);
+	glutPostRedisplay();
 }
 void mouseButton(int button, int state, int x, int y) {
 	juego.mousePress(button, state, x, y);

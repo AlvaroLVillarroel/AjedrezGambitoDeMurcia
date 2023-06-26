@@ -1,4 +1,5 @@
 #include "ListaPiezas.h"
+#include "player.h"
 
 ListaPiezas::ListaPiezas() {
 	numero = 0;

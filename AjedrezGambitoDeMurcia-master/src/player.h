@@ -12,7 +12,10 @@ class player
 public:
 	player();
 	void dibuja();
+	void setVel(float vx, float vy);
+	void setPos(float ix, float iy);
 	void mueve(float dt);
+	Vector2d getPos();
 
 };
 
