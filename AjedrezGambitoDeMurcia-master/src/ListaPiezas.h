@@ -8,6 +8,7 @@
 #include "Torre.h"
 #include "Peon.h"
 #include "coordenadas.h"
+#include "player.h"
 #define MAX_PIEZAS 100
 class ListaPiezas:public pieza {
 	enum Seleccion { COORD_DEST, COORD_INI };
@@ -20,11 +21,14 @@ class ListaPiezas:public pieza {
 	int casillax, casillay;
 	int casillax1, casillay1;
 	Seleccion seleccion;
+	player jugador;
 	equipos turno;
 	Coordenadas vector[20];
 	bool aux=false;
+	
 public:
 	int fila, colu;
+	bool click = false;
 	ListaPiezas();
 	//~ListaPiezas();
 	bool agregar(pieza* p);

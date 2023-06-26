@@ -1,5 +1,5 @@
 #include "ListaPiezas.h"
-#include "player.h"
+
 
 ListaPiezas::ListaPiezas() {
 	numero = 0;
@@ -11,6 +11,7 @@ ListaPiezas::ListaPiezas() {
 	casillax1 = casillay1=0;
 	seleccion = COORD_DEST;
 	piezaComida = false;
+	
 
 }
 
@@ -126,15 +127,18 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 		
 		switch (seleccion) {
 		case COORD_INI:
-			
+		
 			casillax = (x - 207) * 8 / (791 - 207) + 1;
 			casillay = (y - 67) * 8 / (651 - 67) + 1;
 			seleccion = COORD_DEST;
+			
 			break;
 		case COORD_DEST:
 			casillax1 = (x - 207) * 8 / (791 - 207) + 1;
 			casillay1 = (y - 67) * 8 / (651 - 67) + 1;
 			seleccion = COORD_INI;
+			if (piezaencasilla(casillay1, casillax1)&& turno==EQUIPO_B)
+				click = true;
 			//dibujarmovposibles(casillay1, casillax1);
 			break;
 		}
@@ -419,6 +423,7 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	switch (turno) {
 	case EQUIPO_A:
+		
 		if (movimientovalido(pi, fil, col) == 1) {
 			if (enroquevalido(pi, fil, col) == 1) {
 				hacerenroque(pi, fil, col);
@@ -440,6 +445,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 		else seleccion = COORD_DEST;
 		break;
 	case EQUIPO_B:
+		
 		if (movimientovalido(pi, fil, col) == 1) {
 			if (enroquevalido(pi, fil, col) == 1) { 
 				hacerenroque(pi, fil, col);

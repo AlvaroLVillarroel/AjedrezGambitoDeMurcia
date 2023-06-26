@@ -2,19 +2,24 @@
 
 player::player()
 {
-	glPushMatrix();
+	/*glPushMatrix();
 	glTranslatef(position.x, position.y, 2);
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glScaled(scale, scale, scale);
 	sprite.draw();
 	setVel(5.0f, 0.0f);
-	glPopMatrix();
+	glPopMatrix();*/
+	//sprite.setSize(2, 2);
+	position.x = -5;
+	position.y = 0;
+	//velocity.x = 0.15f;
+	//velocity.y = 0.0f;
 }
 
 void player::dibuja()
 {
 	glPushMatrix();
-	glTranslatef(-5, 0, 2);
+	glTranslatef(position.x, position.y, 2);
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glScaled(0.005, 0.005, 0.005);
 	if (velocity.x > 0.01)sprite.flip(false, false);
@@ -44,8 +49,8 @@ void player::mueve(float dt)
 	position = position + velocity * dt;
 
 	// Si el jugador se sale de la pantalla, reiniciar su posición
-	if (position.x > 1.0f)
-		position.x = -1.0f;
+	if (position.y > 1.0f)
+		position.y = 0.0f;
 }
 
 Vector2d player::getPos()

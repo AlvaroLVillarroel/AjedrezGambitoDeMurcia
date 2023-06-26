@@ -22,6 +22,8 @@ void Tablero::inicializa() {
 void Tablero::dibujarTablero() {
     piezas.dibuja();
     jugador.dibuja();
+    if(piezas.click==true)
+    jugador.setVel(0.0f, -2.0f);
     //piezas.dibujarbalon(piezas.fila, piezas.colu);
     //if(piezas.dibujarmovposibles()==true)piezas.dibujarbalon(piezas.fila, piezas.colu);
 	int i, j;
