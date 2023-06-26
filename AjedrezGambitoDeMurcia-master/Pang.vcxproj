@@ -158,6 +158,7 @@
     <ClCompile Include="src\ListaPiezas.cpp" />
     <ClCompile Include="src\Peon.cpp" />
     <ClCompile Include="src\pieza.cpp" />
+    <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\rey.cpp" />
     <ClCompile Include="src\tablero.cpp" />
     <ClCompile Include="src\torre.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="src\ListaPiezas.h" />
     <ClInclude Include="src\Peon.h" />
     <ClInclude Include="src\pieza.h" />
+    <ClInclude Include="src\player.h" />
     <ClInclude Include="src\rey.h" />
     <ClInclude Include="src\tablero.h" />
     <ClInclude Include="src\torre.h" />

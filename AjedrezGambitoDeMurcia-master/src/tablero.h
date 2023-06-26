@@ -4,10 +4,12 @@
 //#include "coordenadas.h"
 #include "ListaPIezas.h"
 #include "ETSIDI.h"
+#include "player.h"
 
 class Tablero {
 	int posiciones[8][8];
 	ListaPiezas piezas;
+	player jugador;
 public:
 	paises pa,pa1;
 	pieza prueba;
