@@ -26,26 +26,45 @@ void Tablero::dibujarTablero() {
    
     jugador1.dibuja();
     jugador2.dibuja();
+
     Vector2d d1 = jugador1.getPos();
     Vector2d d2 = jugador2.getPos();
     
     if (piezas.click1) {
-        jugador1.setVel(0.0f, -4.0f);
-    }
-    /*if (piezas.click12)
-        jugador1.setPos(-5, 0);*/
-
-    if (piezas.click2) {
-        jugador2.setVel(0.0f, 4.0f);
+        jugador1.setVel(0.0f, -4.5f);
     }
     if (d1.y < -4) {
         jugador1.setVel(0, 0);
-       
+        d1.y = 0;
     }
+    if(piezas.click12)
+        jugador1.setVel(0.0f, 4.5f);
+       
+    
+
+    if (d1.y > 0) {
+        jugador1.setVel(0.0f, 0.0f);
+    }
+
+
+    if (piezas.click2) {
+        jugador2.setVel(0.0f, 4.5f);
+    }
+    
+
     if (d2.y > 4) {
         jugador2.setVel(0, 0);
-
+        d2.y = 0;
     }
+    if (piezas.click22)
+        jugador2.setVel(0.0f, -4.5f);
+
+    if (d2.y < 0){
+        jugador2.setVel(0.0f, 0.0f);
+        
+    }
+   
+
 
     //piezas.dibujarbalon(piezas.fila, piezas.colu);
     //if(piezas.dibujarmovposibles()==true)piezas.dibujarbalon(piezas.fila, piezas.colu);
@@ -128,6 +147,7 @@ void Tablero::dibujarTablero() {
     
 
 }
+
 void Tablero::juega(int button, int state, int x, int y) {
     piezas.mousePress(button, state, x, y);
     piezas.MoverPieza();

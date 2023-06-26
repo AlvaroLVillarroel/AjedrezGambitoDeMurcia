@@ -132,17 +132,27 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 			casillax = (x - 207) * 8 / (791 - 207) + 1;
 			casillay = (y - 67) * 8 / (651 - 67) + 1;
 			seleccion = COORD_DEST;
-			if (piezaencasilla(casillay, casillax) && turno == EQUIPO_B)
+			if (turno == EQUIPO_B){
 				click12 = true;
+				click22 = false;	
+			}
+			if (turno == EQUIPO_A){
+				click22 = true;
+				click12 = false;
+			}
 			break;
 		case COORD_DEST:
 			casillax1 = (x - 207) * 8 / (791 - 207) + 1;
 			casillay1 = (y - 67) * 8 / (651 - 67) + 1;
 			seleccion = COORD_INI;
-			if (piezaencasilla(casillay1, casillax1)&& turno == EQUIPO_B)
+			if (piezaencasilla(casillay1, casillax1)&& turno == EQUIPO_B) {
 				click1 = true;
-			if(piezaencasilla(casillay1, casillax1) && turno == EQUIPO_A)
+				click2 = false; // Asegurarse de que click2 se establezca en falso en este punto
+			}
+			if(piezaencasilla(casillay1, casillax1) && turno == EQUIPO_A) {
 				click2 = true;
+				click1 = false; // Asegurarse de que click1 se establezca en falso en este punto
+			}
 			//dibujarmovposibles(casillay1, casillax1);
 			break;
 		}
