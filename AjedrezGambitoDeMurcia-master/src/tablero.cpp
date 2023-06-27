@@ -144,6 +144,28 @@ void Tablero::dibujarTablero() {
     glEnable(GL_LIGHTING);
     glDisable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
+
+    glEnable(GL_TEXTURE_2D);
+    glColor3f(1, 1, 1);
+
+    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/letrapausa.png").id);
+    glDisable(GL_LIGHTING);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_ALPHA_TEST);
+    glAlphaFunc(GL_GREATER, 0.0);
+    glBegin(GL_POLYGON);
+    glTexCoord2d(0, 1); glVertex3f(-7.1f, -6.7f, 2.0f);
+    glTexCoord2d(1, 1); glVertex3f(-3.3f, -6.7f, 2.0f);
+    glTexCoord2d(1, 0); glVertex3f(-3.3f, -2.4f, 2.0f);
+    glTexCoord2d(0, 0); glVertex3f(-7.1f, -2.4f, 2.0f);
+
+    glEnd();
+    glDisable(GL_BLEND);
+    glDisable(GL_ALPHA_TEST);
+    glEnable(GL_LIGHTING);
+    glDisable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
     
 
 }
