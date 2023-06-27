@@ -832,8 +832,8 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 
 	for (int i = 0; i < numero; i++) {
 		if (lista[i]->getequipo() == equipo) {
-			for (int fil = 0; fil < 8; fil++) {
-				for (int col = 0; col < 8; col++) {
+			for (int fil = 1; fil < 9; fil++) {
+				for (int col = 1; col < 9; col++) {
 					if (movimientovalido(lista[i],fil,col)==1)return false;
 				}
 			}
