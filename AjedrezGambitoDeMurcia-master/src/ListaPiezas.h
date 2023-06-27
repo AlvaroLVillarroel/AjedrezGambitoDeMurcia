@@ -72,5 +72,10 @@ public:
 	//bool jaqueMate(equipos equipo);
 	//void dibujarmovposibles(pieza* pi);
 	bool jaque(equipos equipo);
+<<<<<<< HEAD
 	bool promocion(pieza* pi, int fil, int col);
+=======
+	bool jaqueposible(pieza* pi, int fil, int col);
+	bool JaqueMate(equipos equipo);
+>>>>>>> jaque posible y casi terminado jaquemate
 };

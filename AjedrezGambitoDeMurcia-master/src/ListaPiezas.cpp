@@ -408,8 +408,11 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 						if (colisionpieza(pi, fil, col) == 1)return false;
 						//Si la pieza no colisiona con otras entonces el movimiento es valido
 						if (colisionpieza(pi, fil, col) == 0) {
-							comer(pi, fil, col);
-							return true;
+							if (jaqueposible(pi, fil, col) == 1)return false;
+							if (jaqueposible(pi, fil, col) == 0) {
+								comer(pi, fil, col);
+								return true;
+							}
 						}
 					}
 				}
@@ -429,7 +432,12 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 				//Si la pieza colisiona con otra en su camino devuelve false
 				if (colisionpieza(pi, fil, col) == 1)return false;
 				//Si la pieza no colisiona con otras entonces el movimiento es valido
-				if (colisionpieza(pi, fil, col) == 0)return true;
+				if (colisionpieza(pi, fil, col) == 0) {
+					if (jaqueposible(pi, fil, col) == 1)return false;
+					if (jaqueposible(pi, fil, col) == 0) {
+						return true;
+					}
+				}
 			}
 		}
 	}
@@ -455,6 +463,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (promocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
+				if (JaqueMate(EQUIPO_B) == 1)std::cout << "JAQUE MATE B";
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -477,6 +486,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if(promocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_A;
+				if (JaqueMate(EQUIPO_A) == 1)std::cout << "JAQUE MATE A";
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -725,6 +735,110 @@ bool ListaPiezas::promocion(pieza* pi, int fil, int col) {
 			return true;
 		}
 		else return false;
+	}
+}
+
+bool ListaPiezas::jaqueposible(pieza* pi, int fil, int col) {
+
+	int fila_inicial = pi->getFila();
+	int col_inicial = pi->getColumna();
+
+	/*pieza* rey_rival = nullptr;
+
+	//Buscar al rey rival
+	for (int i = 0; i < numero; i++) {
+		if (lista[i]->getequipo() != pi->getequipo() && lista[i]->getpieza() == REY) {
+			rey_rival = lista[i];
+		}
+	}*/
+
+	pieza* rey_mio = nullptr;
+
+
+	//Buscar al rey de mi equipo
+	for (int j = 0; j < numero; j++) {
+		if (lista[j]->getequipo() == pi->getequipo() && lista[j]->getpieza() == REY) {
+			rey_mio = lista[j];
+		}
+	}
+
+	//Buscar si hay pieza en la casilla
+	pieza* pieza_rival = piezaseleccionada(fil, col);
+
+	if (pieza_rival != nullptr) {
+
+
+		//Mueve la pieza rival fuera del tablero
+		pieza_rival->setFila(10);
+		pieza_rival->setColumna(10);
+
+
+		pi->setFila(fil);
+		pi->setColumna(col);
+
+		if (jaque(rey_mio->getequipo()) == 1) {
+
+			//Devuelve la pieza rival a la posicion de inicio
+			pieza_rival->setFila(fil);
+			pieza_rival->setColumna(col);
+
+			//Devuelve la pieza a la posicion de inicio
+			pi->setFila(fila_inicial);
+			pi->setColumna(col_inicial);
+
+			return true;
+		}
+		else {
+			//Devuelve la pieza rival a la posicion de inicio
+			pieza_rival->setFila(fil);
+			pieza_rival->setColumna(col);
+
+			//Devuelve la pieza a la posicion de inicio
+			pi->setFila(fila_inicial);
+			pi->setColumna(col_inicial);
+
+			return false;
+		}
+	}
+
+	// Si no hay una pieza en esa posicion
+	else if (pieza_rival == nullptr) {
+
+		//mueve la pieza a la posicion deseada
+		pi->setFila(fil);
+		pi->setColumna(col);
+
+		//Comprueba si hay jaque y yo no estoy en jaque
+		if (jaque(rey_mio->getequipo()) == 1) {
+
+			//Devuelve la pieza a la posicion de inicio
+			pi->setFila(fila_inicial);
+			pi->setColumna(col_inicial);
+
+			return true;
+		}
+		else {
+
+			//Devuelve la pieza a la posicion de inicio
+			pi->setFila(fila_inicial);
+			pi->setColumna(col_inicial);
+
+			return false;
+		}		
+	}
+}
+
+bool ListaPiezas::JaqueMate(equipos equipo) {
+
+	for (int i = 0; i < numero; i++) {
+		if (lista[i]->getequipo() == equipo) {
+			for (int fil = 1; fil < 9; fil++) {
+				for (int col = 1; col < 9; col++) {
+					if (movimientovalido(lista[i],fil,col)==1)return false;
+				}
+			}
+			return true;
+		}
 	}
 }
 
