@@ -136,6 +136,48 @@ void Game::dibuja() {
 		glDisable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
+	if (estado == ganaJUG1) {
+		gluLookAt(0, 0, 40,  // posicion del ojo
+			0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
+			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+
+		//dibuja pantalla de inicio
+
+		glEnable(GL_TEXTURE_2D);
+		glColor3f(1, 1, 1);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/ganaJUG1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(-28.0f, -20.0f, 0.0f);
+		glTexCoord2d(1, 1); glVertex3f(28.0f, -20.0f, 0.0f);
+		glTexCoord2d(1, 0); glVertex3f(28.0f, 20.0f, 0.0f);
+		glTexCoord2d(0, 0); glVertex3f(-28.0f, 20.0f, 0.0f);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	if (estado == ganaJUG2) {
+		gluLookAt(0, 0, 40,  // posicion del ojo
+			0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
+			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+
+		//dibuja pantalla de inicio
+
+		glEnable(GL_TEXTURE_2D);
+		glColor3f(1, 1, 1);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/ganaJUG2.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(-28.0f, -20.0f, 0.0f);
+		glTexCoord2d(1, 1); glVertex3f(28.0f, -20.0f, 0.0f);
+		glTexCoord2d(1, 0); glVertex3f(28.0f, 20.0f, 0.0f);
+		glTexCoord2d(0, 0); glVertex3f(-28.0f, 20.0f, 0.0f);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 	if (musicPlaying)
 		{
 			glEnable(GL_TEXTURE_2D);
@@ -382,6 +424,29 @@ void Game::mousePress(int button, int state, int x, int y) {
 				x = 0;
 				y = 0;
 				estado = jugando;
+				ETSIDI::play("sonidos/select.wav");
+			}
+
+
+		}
+
+	}
+	if (estado == ganaJUG1 || estado == ganaJUG2) {
+
+		if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
+		{
+			//Hay que ajustar valores acorde a las coord de los botones
+			if (x >= 310 && x <= 740 && y >= 450 && y <= 550) {
+				x = 0;
+				y = 0;
+				exit(0);
+				ETSIDI::play("sonidos/select.wav");
+			}
+			if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
+				SetCursor(LoadCursor(NULL, IDC_HAND));
+				x = 0;
+				y = 0;
+				estado = modosJuego;
 				ETSIDI::play("sonidos/select.wav");
 			}
 

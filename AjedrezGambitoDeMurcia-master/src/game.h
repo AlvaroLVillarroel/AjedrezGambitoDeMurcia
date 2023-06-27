@@ -6,7 +6,7 @@
 
 
 
-enum Estado {inicioPartida,modosJuego,seleccionJUG1,seleccionJUG2,modo_pvp,modo_rapido,pausa,jugando};
+enum Estado {inicioPartida,modosJuego,seleccionJUG1,seleccionJUG2,modo_pvp,modo_rapido,pausa,jugando,ganaJUG1, ganaJUG2};
 
 class Game
 {
