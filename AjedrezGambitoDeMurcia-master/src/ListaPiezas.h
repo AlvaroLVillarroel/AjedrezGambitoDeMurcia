@@ -62,6 +62,7 @@ public:
 	bool movimientovalido(pieza* pi, int fil, int col);
 	void moverPieza(pieza* pi, int fil, int col);
 	void dibujarbalones();
+	
 	//void dibujarmovposibles(int fil,int col);
 	bool dibujarmovposibles(pieza* pi);
 	void dibujarbalon(int fil, int col);
@@ -75,4 +76,5 @@ public:
 	bool jaqueposible(pieza* pi, int fil, int col);
 	bool JaqueMate(equipos equipo);
 	bool promocion(pieza* pi, int fil, int col);
+	void dibujarPromocion();
 };

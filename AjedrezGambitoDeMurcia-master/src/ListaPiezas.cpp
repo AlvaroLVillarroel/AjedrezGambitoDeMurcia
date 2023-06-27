@@ -722,6 +722,7 @@ bool ListaPiezas::promocion(pieza* pi, int fil, int col) {
 	}
 	if (pi->getequipo() == EQUIPO_A) {
 		if (pi->getFila() == 8) {
+			ListaPiezas::dibujarPromocion();
 			agregarDama(pi->getPais(), EQUIPO_A, pi->getFila(), pi->getColumna());
 			eliminarPieza(pi);
 			return true;
@@ -736,6 +737,51 @@ bool ListaPiezas::promocion(pieza* pi, int fil, int col) {
 		}
 		else return false;
 	}
+}
+
+void ListaPiezas::dibujarPromocion()
+{
+	//TURNO A
+	glEnable(GL_TEXTURE_2D);
+	glColor3f(1, 1, 1);
+
+	if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promospain.png").id);
+	if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promojapan.png").id);
+	if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promobrazil.png").id);
+	if (pais == PORTUGAL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoportugal.png").id);
+	if (pais == ARGENTINA) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoargentina.png").id);
+
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glTexCoord2d(0, 1); glVertex3f(4.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 1); glVertex3f(6.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 0); glVertex3f(6.45f, 1.0f, 2.0f);
+	glTexCoord2d(0, 0); glVertex3f(4.45f, 1.0f, 2.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+
+	glEnable(GL_TEXTURE_2D);
+	glColor3f(1, 1, 1);
+	//TURNO B
+	if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promospain.png").id);
+	if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promojapan.png").id);
+	if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promobrazil.png").id);
+	if (pais == PORTUGAL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoportugal.png").id);
+	if (pais == ARGENTINA) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoargentina.png").id);
+
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glTexCoord2d(0, 1); glVertex3f(-4.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 1); glVertex3f(-6.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 0); glVertex3f(-6.45f, 1.0f, 2.0f);
+	glTexCoord2d(0, 0); glVertex3f(-4.45f, 1.0f, 2.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 bool ListaPiezas::jaqueposible(pieza* pi, int fil, int col) {

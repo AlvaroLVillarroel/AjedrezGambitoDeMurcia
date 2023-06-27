@@ -23,7 +23,7 @@ void Tablero::inicializa() {
 void Tablero::dibujarTablero() {
     piezas.dibuja();
     
-   
+   // piezas.dibujarPromocion();
     jugador1.dibuja();
     jugador2.dibuja();
 
