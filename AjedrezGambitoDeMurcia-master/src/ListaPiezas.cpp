@@ -195,22 +195,22 @@ bool ListaPiezas::colisiontorre(pieza* pi, int fil, int col) {
 	int i, j;
 
 		if (descolumnas > 0) {
-			for (i = pi->getFila(), j = pi->getColumna()+1; j < col-1; j++) {
+			for (i = pi->getFila(), j = pi->getColumna()+1; j < col; j++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
 		if (descolumnas < 0) {
-			for (i = pi->getFila(), j = pi->getColumna()-1; j > col+1; j--) {
+			for (i = pi->getFila(), j = pi->getColumna()-1; j > col; j--) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
 		if (desfilas > 0) {
-			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil-1; i++) {
+			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil; i++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
 		if (desfilas < 0) {
-			for (i = pi->getFila()-1, j = pi->getColumna(); i > fil+1; i--) {
+			for (i = pi->getFila()-1, j = pi->getColumna(); i > fil; i--) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
@@ -832,8 +832,8 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 
 	for (int i = 0; i < numero; i++) {
 		if (lista[i]->getequipo() == equipo) {
-			for (int fil = 1; fil < 9; fil++) {
-				for (int col = 1; col < 9; col++) {
+			for (int fil = 0; fil < 8; fil++) {
+				for (int col = 0; col < 8; col++) {
 					if (movimientovalido(lista[i],fil,col)==1)return false;
 				}
 			}
