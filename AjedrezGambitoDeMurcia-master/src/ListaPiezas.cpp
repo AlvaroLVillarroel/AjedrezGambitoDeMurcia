@@ -249,7 +249,7 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 			if (piezaencasilla(pi->getFila() + 1, pi->getColumna()) == 1)return true;
 		}
 		if ((desfilas == 2) && (col == pi->getColumna())) {
-			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil; i++) {
+			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil+1; i++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
@@ -277,7 +277,7 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 			if (piezaencasilla(pi->getFila() - 1, pi->getColumna()) == 1)return true;
 		}
 		if ((-desfilas == 2) && (col == pi->getColumna())) {
-			for (i = pi->getFila()-1, j = pi->getColumna(); i > fil; i--) {
+			for (i = pi->getFila()-1, j = pi->getColumna(); i > fil-1; i--) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
@@ -410,7 +410,6 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 						if (colisionpieza(pi, fil, col) == 0) {
 							if (jaqueposible(pi, fil, col) == 1)return false;
 							if (jaqueposible(pi, fil, col) == 0) {
-								comer(pi, fil, col);
 								return true;
 							}
 						}
@@ -445,8 +444,8 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	switch (turno) {
 	case EQUIPO_A:
-		
 		if (movimientovalido(pi, fil, col) == 1) {
+			comer(pi, fil, col);
 			if (enroquevalido(pi, fil, col) == 1) {
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
@@ -463,13 +462,13 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (promocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
-				if (JaqueMate(EQUIPO_B) == 1)std::cout << "JAQUE MATE B";
+				if (JaqueMate(EQUIPO_B))std::cout << "JAQUE MATE B";
 		}
 		else seleccion = COORD_DEST;
 		break;
 	case EQUIPO_B:
-		
 		if (movimientovalido(pi, fil, col) == 1) {
+			comer(pi, fil, col);
 			if (enroquevalido(pi, fil, col) == 1) { 
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
@@ -486,9 +485,9 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if(promocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_A;
-				if (JaqueMate(EQUIPO_A) == 1)std::cout << "JAQUE MATE A";
+				if (JaqueMate(EQUIPO_A))std::cout << "JAQUE MATE A";
 		}
-		else seleccion = COORD_DEST;
+		else  seleccion = COORD_DEST;
 		break;
 	}
 }
@@ -632,6 +631,7 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 
 	pieza* comida = piezaseleccionada(fil, col);
 	int posicion = -1;
+	if (comida != nullptr) {
 		for (int i = 0; i < numero; i++) {
 			if ((lista[i]->getFila() == comida->getFila()) && (lista[i]->getColumna() == comida->getColumna())) {
 				posicion = i;
@@ -639,6 +639,8 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 				eliminarPieza(posicion);
 			}
 		}
+	}
+	else return;
 }
 
 /*bool ListaPiezas::jaqueMate(equipos equipo)
@@ -880,12 +882,19 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 		if (lista[i]->getequipo() == equipo) {
 			for (int fil = 1; fil < 9; fil++) {
 				for (int col = 1; col < 9; col++) {
-					if (movimientovalido(lista[i],fil,col)==1)return false;
+					int fil_inicial = lista[i]->getFila();
+					int col_inicial = lista[i]->getColumna();
+					if (movimientovalido(lista[i], fil, col))
+						return false;
 				}
 			}
+<<<<<<< HEAD
 			return true;
 		
+=======
+>>>>>>> JaqueMate terminado y estructuracion de la funcin comer en el codigo
 		}
 	}
+	return true;
 }
 
