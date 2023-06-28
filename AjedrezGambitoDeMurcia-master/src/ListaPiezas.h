@@ -81,5 +81,4 @@ public:
 	void dibujarmovimientosposibles(pieza* pi);
 	void dibujarmovpos(pieza* pi, int fil, int col);
 	void dibujarmovs();
-
 };

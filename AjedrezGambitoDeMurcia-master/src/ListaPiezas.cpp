@@ -884,20 +884,6 @@ void ListaPiezas::dibujarmovpos(pieza* pi, int fil, int col) {
 		break;
 	}
 }
-void ListaPiezas::esperar() {
-	while (!promocioncheck) {
-		if (wait) {
-			promocioncheck = true;
-		}
-		clock_t start_time = clock();
-		const clock_t end_time = start_time + 10 * CLOCKS_PER_SEC / 1000;  // 10 milisegundos
-
-		while (clock() < end_time) {
-			// No hacer nada, solo esperar
-		}
-	}
-}
-
 void ListaPiezas::dibujarmovs() {
 	pieza* pi = piezaseleccionada(casillay1, casillax1);
 	if (pi != nullptr) {
