@@ -82,4 +82,8 @@ public:
 	bool JaqueMate(equipos equipo);
 	bool promocion(pieza* pi, int fil, int col);
 	void dibujarPromocion();
+	equipos getTurno() { return turno; }
+	bool getPromo() { return promocionflag; }
+	void setPromo(bool flag) { promocionflag = flag; }
+	void esperar();
 };
