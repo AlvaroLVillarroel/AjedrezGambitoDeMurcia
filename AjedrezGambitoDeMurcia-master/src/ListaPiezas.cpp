@@ -11,10 +11,8 @@ ListaPiezas::ListaPiezas() {
 	casillax1 = casillay1=0;
 	seleccion = COORD_DEST;
 	piezaComida = false;
-	promocionflag = false;
-	promocioncheck = false;
-	promo = pNULL;
-	wait = true;
+	
+
 }
 
 /*ListaPiezas::~ListaPiezas()
@@ -460,15 +458,11 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				ETSIDI::play("sonidos/capture.mp3");
 			}
 				pi->moverPieza(fil, col);
-				if (promocion(pi, fil, col)) {
-					ETSIDI::play("sonidos/promote.mp3");
-					promocioncheck = true;  // Se ha realizado la promoción
-				}
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (promocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
-				if (JaqueMate(EQUIPO_B) == 1)std::cout << "JAQUE MATE B";
+				if (JaqueMate(EQUIPO_B))std::cout << "JAQUE MATE B";
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -487,15 +481,11 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				ETSIDI::play("sonidos/capture.mp3");
 			}
 				pi->moverPieza(fil, col);
-				if (promocion(pi, fil, col)) {
-					ETSIDI::play("sonidos/promote.mp3");
-					promocioncheck = true;  // Se ha realizado la promoción
-				}
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if(promocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_A;
-				if (JaqueMate(EQUIPO_A) == 1)std::cout << "JAQUE MATE A";
+				if (JaqueMate(EQUIPO_A))std::cout << "JAQUE MATE A";
 		}
 		else  seleccion = COORD_DEST;
 		break;
@@ -699,108 +689,72 @@ bool ListaPiezas::jaque(equipos equipo) {
 		}
 		return false;
 }
-void ListaPiezas::seleccionPromocion(int button, int state, int x, int y) {
-	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN) && (promocionflag) ) {
-		std::cout << x << " , " << y<<std::endl;
-		if (x >= 845 && x <= 911 && y >= 289 && y <= 356) {
-		//dama
-			SetCursor(LoadCursor(NULL, IDC_HAND));
-			promo = pDAMA;
-			promocionflag = false;
-			promocioncheck = false;
-			wait = true;
-			std::cout << "wait true";
-		}
-		if (x >= 919 && x <= 982 && y >= 289 && y <= 356) {
-			//torre
-			SetCursor(LoadCursor(NULL, IDC_HAND));
-			promo = pTORRE;
-			promocionflag = false;
-			promocioncheck = false;
-			wait = true;
-		}
-		if (x >= 845 && x <= 911 && y >= 363 && y <= 430) {
-			//alfil
-			SetCursor(LoadCursor(NULL, IDC_HAND));
-			promo = pALFIL;
-			promocionflag = false;
-			promocioncheck = false;
-			wait = true;
-		}
-		if (x >= 919 && x <= 982 && y >= 363 && y <= 430) {
-			//caballo
-			SetCursor(LoadCursor(NULL, IDC_HAND));
-			promo = pCABALLO;
-			promocionflag = false;
-			promocioncheck = false;
-			wait = true;
-		}
-	}
-}
 bool ListaPiezas::promocion(pieza* pi, int fil, int col) {
 	if (pi->getpieza() != PEON) {
 		return false;
 	}
 	if (pi->getequipo() == EQUIPO_A) {
 		if (pi->getFila() == 8) {
-			promocionflag = true;
-				if (promo == pDAMA) {
-					agregarDama(pi->getPais(), pi->getequipo(), fil, col);
-					std::cout << "spawn de dama";
-					eliminarPieza(pi);
-					return true;
-				}
-				if (promo == pTORRE) {
-					agregarTorre(pi->getPais(), pi->getequipo(), fil, col);
-
-					eliminarPieza(pi);
-					return true;
-				}
-				if (promo == pALFIL) {
-					agregarAlfil(pi->getPais(), pi->getequipo(), fil, col);
-
-					eliminarPieza(pi);
-					return true;
-				}
-				if (promo == pCABALLO) {
-					agregarCaballo(pi->getPais(), pi->getequipo(), fil, col);
-					eliminarPieza(pi);
-					return true;
-				}
+			ListaPiezas::dibujarPromocion();
+			agregarDama(pi->getPais(), EQUIPO_A, pi->getFila(), pi->getColumna());
+			eliminarPieza(pi);
+			return true;
 		}
 		else return false;
 	}
 	if (pi->getequipo() == EQUIPO_B) {
 		if (pi->getFila() == 1) {
-			promocionflag = true;
-			//esperar();
-				if (promo == pDAMA) {
-					agregarDama(pi->getPais(), pi->getequipo(), fil, col);
-					std::cout << "spawn de dama";
-
-					eliminarPieza(pi);
-					return true;
-				}
-				if (promo == pTORRE) {
-					agregarTorre(pi->getPais(), pi->getequipo(), fil, col);
-					eliminarPieza(pi);
-					return true;
-				}
-				if (promo == pALFIL) {
-					agregarAlfil(pi->getPais(), pi->getequipo(), fil, col);
-
-					eliminarPieza(pi);
-					return true;
-				}
-				if (promo == pCABALLO) {
-					agregarCaballo(pi->getPais(), pi->getequipo(), fil, col);
-
-					eliminarPieza(pi);
-					return true;
-				}
+			agregarDama(pi->getPais(), EQUIPO_B, pi->getFila(), pi->getColumna());
+			eliminarPieza(pi);
+			return true;
 		}
 		else return false;
 	}
+}
+
+void ListaPiezas::dibujarPromocion()
+{
+	//TURNO A
+	glEnable(GL_TEXTURE_2D);
+	glColor3f(1, 1, 1);
+
+	if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promospain.png").id);
+	if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promojapan.png").id);
+	if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promobrazil.png").id);
+	if (pais == PORTUGAL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoportugal.png").id);
+	if (pais == ARGENTINA) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoargentina.png").id);
+
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glTexCoord2d(0, 1); glVertex3f(4.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 1); glVertex3f(6.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 0); glVertex3f(6.45f, 1.0f, 2.0f);
+	glTexCoord2d(0, 0); glVertex3f(4.45f, 1.0f, 2.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+
+	glEnable(GL_TEXTURE_2D);
+	glColor3f(1, 1, 1);
+	//TURNO B
+	if (pais == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promospain.png").id);
+	if (pais == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promojapan.png").id);
+	if (pais == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promobrazil.png").id);
+	if (pais == PORTUGAL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoportugal.png").id);
+	if (pais == ARGENTINA) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoargentina.png").id);
+
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glTexCoord2d(0, 1); glVertex3f(-4.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 1); glVertex3f(-6.45f, -1.0f, 2.0f);
+	glTexCoord2d(1, 0); glVertex3f(-6.45f, 1.0f, 2.0f);
+	glTexCoord2d(0, 0); glVertex3f(-4.45f, 1.0f, 2.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 bool ListaPiezas::jaqueposible(pieza* pi, int fil, int col) {
@@ -940,6 +894,15 @@ void ListaPiezas::esperar() {
 
 		while (clock() < end_time) {
 			// No hacer nada, solo esperar
+		}
+	}
+}
+
+void ListaPiezas::dibujarmovs() {
+	pieza* pi = piezaseleccionada(casillay1, casillax1);
+	if (pi != nullptr) {
+		if (seleccion == COORD_INI) {
+			dibujarmovpos(pi, casillay, casillax);
 		}
 	}
 }

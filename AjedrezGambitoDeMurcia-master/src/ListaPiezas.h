@@ -13,7 +13,6 @@
 #define MAX_PIEZAS 100
 class ListaPiezas:public pieza {
 	enum Seleccion { COORD_DEST, COORD_INI };
-	enum Promocion { pDAMA, pCABALLO, pTORRE, pALFIL,pNULL };
 	pieza* lista[MAX_PIEZAS];
 	pieza* piezasel = 0;
 	int windowXPos = 0;
@@ -22,11 +21,7 @@ class ListaPiezas:public pieza {
 	bool piezaComida;
 	int casillax, casillay;
 	int casillax1, casillay1;
-	bool promocionflag;
-	bool promocioncheck;
-	bool wait;
 	Seleccion seleccion;
-	Promocion promo;
 	//player jugador;
 	equipos turno;
 	Coordenadas vector[20];
@@ -67,10 +62,7 @@ public:
 	bool turnocorrecto(pieza* pi);
 	bool movimientovalido(pieza* pi, int fil, int col);
 	void moverPieza(pieza* pi, int fil, int col);
-	void dibujarbalones();
-	
-	//void dibujarmovposibles(int fil,int col);
-	bool dibujarmovposibles(pieza* pi);
+
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
@@ -86,4 +78,8 @@ public:
 	bool getPromo() { return promocionflag; }
 	void setPromo(bool flag) { promocionflag = flag; }
 	void esperar();
+	void dibujarmovimientosposibles(pieza* pi);
+	void dibujarmovpos(pieza* pi, int fil, int col);
+	void dibujarmovs();
+
 };
