@@ -112,6 +112,7 @@ void Game::dibuja() {
 	if (estado == jugando) {
 
 		tablero.dibujarTablero();
+		tablero.dibujarJugadores();
 		
 	}
 	if (estado == pausa) {

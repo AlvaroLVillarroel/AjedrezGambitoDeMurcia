@@ -24,46 +24,8 @@ void Tablero::dibujarTablero() {
     piezas.dibuja();
     
    // piezas.dibujarPromocion();
-    jugador1.dibuja();
-    jugador2.dibuja();
-
-    Vector2d d1 = jugador1.getPos();
-    Vector2d d2 = jugador2.getPos();
-    
-    if (piezas.click1) {
-        jugador1.setVel(0.0f, -4.5f);
-    }
-    if (d1.y < -4) {
-        jugador1.setVel(0, 0);
-        d1.y = 0;
-    }
-    if(piezas.click12)
-        jugador1.setVel(0.0f, 4.5f);
-       
     
 
-    if (d1.y > 0) {
-        jugador1.setVel(0.0f, 0.0f);
-    }
-
-
-    if (piezas.click2) {
-        jugador2.setVel(0.0f, 4.5f);
-    }
-    
-
-    if (d2.y > 4) {
-        jugador2.setVel(0, 0);
-        d2.y = 0;
-    }
-    if (piezas.click22)
-        jugador2.setVel(0.0f, -4.5f);
-
-    if (d2.y < 0){
-        jugador2.setVel(0.0f, 0.0f);
-        
-    }
-   
 
 
     //piezas.dibujarbalon(piezas.fila, piezas.colu);
@@ -168,6 +130,58 @@ void Tablero::dibujarTablero() {
     glBindTexture(GL_TEXTURE_2D, 0);
     
 
+}
+
+void Tablero::dibujarJugadores()
+{
+    jugador1.dibuja();
+    jugador2.dibuja();
+
+    Vector2d d1 = jugador1.getPos();
+    Vector2d d2 = jugador2.getPos();
+
+    if (piezas.click1) {
+        jugador1.setVel(0.0f, -4.5f);
+        if (d1.y < -4) {
+            jugador1.setVel(0, 0);
+            d1.y = 0;
+            piezas.click1 = false; // Actualizar el estado de piezas.click1
+        }
+    }
+
+    if (piezas.click12) {
+        jugador1.setVel(0.0f, 4.5f);
+        if (d1.y > 0) {
+            jugador1.setVel(0.0f, 0.0f);
+            //d1.y = 0;
+            piezas.click12 = false;
+            piezas.click1 = false;// Actualizar el estado de piezas.click12
+        }
+    }
+
+
+
+
+
+
+    if (piezas.click2) {
+        jugador2.setVel(0.0f, 4.5f);
+        if (d2.y > 4) {
+            jugador2.setVel(0, 0);
+            d2.y = 0;
+            piezas.click2 = false; // Actualizar el estado de piezas.click2
+        }
+    }
+
+    if (piezas.click22) {
+        jugador2.setVel(0.0f, -4.5f);
+        if (d2.y < 0) {
+            jugador2.setVel(0.0f, 0.0f);
+            d2.y = 0;
+            piezas.click22 = false;
+            piezas.click2 = false;// Actualizar el estado de piezas.click22
+        }
+    }
 }
 
 void Tablero::juega(int button, int state, int x, int y) {

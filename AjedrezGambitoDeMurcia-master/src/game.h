@@ -3,6 +3,7 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
 #include "tablero.h"
+#include "player.h"
 
 
 
@@ -20,6 +21,8 @@ public:
 	bool empezar = true;
 	Estado estado;
 	Tablero tablero;
+	player jugador1;
+	player jugador2;
 private:
 	
 }; 

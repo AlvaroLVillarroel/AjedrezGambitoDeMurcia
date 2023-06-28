@@ -9,6 +9,7 @@
 #include "Peon.h"
 #include "coordenadas.h"
 #include "player.h"
+
 #define MAX_PIEZAS 100
 class ListaPiezas:public pieza {
 	enum Seleccion { COORD_DEST, COORD_INI };

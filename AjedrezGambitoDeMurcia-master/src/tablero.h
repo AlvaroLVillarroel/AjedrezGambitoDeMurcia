@@ -26,6 +26,7 @@ public:
 	unsigned char tecla;
 	void inicializa();
 	void dibujarTablero();
+	void dibujarJugadores();
 	void juega(int button,int state,int x,int y);
 	void mueve();
 };

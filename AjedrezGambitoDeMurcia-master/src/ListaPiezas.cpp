@@ -134,11 +134,11 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 			seleccion = COORD_DEST;
 			if (turno == EQUIPO_B){
 				click12 = true;
-				click22 = false;	
+				
 			}
 			if (turno == EQUIPO_A){
 				click22 = true;
-				click12 = false;
+				
 			}
 			break;
 		case COORD_DEST:
@@ -147,11 +147,11 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 			seleccion = COORD_INI;
 			if (piezaencasilla(casillay1, casillax1)&& turno == EQUIPO_B) {
 				click1 = true;
-				click2 = false; // Asegurarse de que click2 se establezca en falso en este punto
+				
 			}
 			if(piezaencasilla(casillay1, casillax1) && turno == EQUIPO_A) {
 				click2 = true;
-				click1 = false; // Asegurarse de que click1 se establezca en falso en este punto
+			
 			}
 			//dibujarmovposibles(casillay1, casillax1);
 			break;
@@ -884,6 +884,7 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 				}
 			}
 			return true;
+		
 		}
 	}
 }
