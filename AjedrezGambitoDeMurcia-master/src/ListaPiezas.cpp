@@ -145,11 +145,11 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 			casillax1 = (x - 207) * 8 / (791 - 207) + 1;
 			casillay1 = (y - 67) * 8 / (651 - 67) + 1;
 			seleccion = COORD_INI;
-			if (piezaencasilla(casillay1, casillax1)&& turno == EQUIPO_B ) {
+			if (piezaencasilla(casillay1, casillax1)&& turno == EQUIPO_B && piezaseleccionada(casillay1,casillax1)!=nullptr && piezaseleccionada(casillay1, casillax1)->getequipo()==EQUIPO_B) {
 				click1 = true;
 				
 			}
-			if(piezaencasilla(casillay1, casillax1) && turno == EQUIPO_A) {
+			if(piezaencasilla(casillay1, casillax1) && turno == EQUIPO_A && piezaseleccionada(casillay1, casillax1) != nullptr && piezaseleccionada(casillay1, casillax1)->getequipo() == EQUIPO_A) {
 				click2 = true;
 			
 			}
