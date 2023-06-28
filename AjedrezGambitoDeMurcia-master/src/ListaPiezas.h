@@ -62,20 +62,20 @@ public:
 	bool turnocorrecto(pieza* pi);
 	bool movimientovalido(pieza* pi, int fil, int col);
 	void moverPieza(pieza* pi, int fil, int col);
-	void dibujarbalones();
-	
-	//void dibujarmovposibles(int fil,int col);
-	bool dibujarmovposibles(pieza* pi);
+
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
 	//void jaque(equipos equipo);
 	void comer(pieza* pi, int fil,int col);
 	//bool jaqueMate(equipos equipo);
-	//void dibujarmovposibles(pieza* pi);
 	bool jaque(equipos equipo);
 	bool jaqueposible(pieza* pi, int fil, int col);
 	bool JaqueMate(equipos equipo);
 	bool promocion(pieza* pi, int fil, int col);
 	void dibujarPromocion();
+	void dibujarmovimientosposibles(pieza* pi);
+	void dibujarmovpos(pieza* pi, int fil, int col);
+	void dibujarmovs();
+
 };

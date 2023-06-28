@@ -22,14 +22,11 @@ void Tablero::inicializa() {
 }
 void Tablero::dibujarTablero() {
     piezas.dibuja();
-    
+    piezas.dibujarmovs();
    // piezas.dibujarPromocion();
     
 
 
-
-    //piezas.dibujarbalon(piezas.fila, piezas.colu);
-    //if(piezas.dibujarmovposibles()==true)piezas.dibujarbalon(piezas.fila, piezas.colu);
 	int i, j;
     //resizeTablero(tecla);
     //cord.setCord();

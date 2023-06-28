@@ -663,35 +663,6 @@ void ListaPiezas::comer(pieza* pi, int fil,int col) {
 	else return true;
 }*/
 
-/*void ListaPiezas::dibujarmovposibles(pieza* pi)
-{
-	int i = 0;
-	for (int fila = 1; fila <= 8; fila++) {
-		for (int colu = 1; colu <= 8; colu++) {
-			if (movimientovalido(pi,fila,colu)) {
-				Coordenadas aux(fila, colu);
-				vector[i] = aux;
-				i++;
-				dibujarbalon(fila, colu);
-			}
-		}
-	}
-
-}*/
-bool ListaPiezas::dibujarmovposibles(pieza* pi)
-{
-	//pieza* pi = nullptr;
-	for (int i = 0; i < numero; i++) {
-		int fil = lista[i]->getFila();
-		int col = lista[i]->getColumna();
-		if (lista[i]->desplazamientovalido(pi->getFila(), pi->getColumna()) == 1) {
-			if (colisionpieza(lista[i], pi->getFila(), pi->getColumna()) == 0)return true;
-		}
-	}
-	return false;
-
-}
-
 bool ListaPiezas::jaque(equipos equipo) {
 	
 		pieza* rey = nullptr;
@@ -893,3 +864,32 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 	return true;
 }
 
+void ListaPiezas::dibujarmovimientosposibles(pieza* pi) {
+
+	for (int fil = 1; fil < 9; fil++) {
+		for (int col = 1; col < 9; col++) {
+			if (movimientovalido(pi, fil, col) == 1)dibujarbalon(col, fil);
+		}
+	}
+}
+
+void ListaPiezas::dibujarmovpos(pieza* pi, int fil, int col) {
+	switch (turno) {
+	case EQUIPO_A:
+		dibujarmovimientosposibles(pi);
+		break;
+
+	case EQUIPO_B:
+		dibujarmovimientosposibles(pi);
+		break;
+	}
+}
+
+void ListaPiezas::dibujarmovs() {
+	pieza* pi = piezaseleccionada(casillay1, casillax1);
+	if (pi != nullptr) {
+		if (seleccion == COORD_INI) {
+			dibujarmovpos(pi, casillay, casillax);
+		}
+	}
+}
