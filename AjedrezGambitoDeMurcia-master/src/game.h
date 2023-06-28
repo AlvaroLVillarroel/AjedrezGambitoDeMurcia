@@ -21,8 +21,5 @@ public:
 	bool empezar = true;
 	Estado estado;
 	Tablero tablero;
-	player jugador1;
-	player jugador2;
-private:
-	
+
 }; 

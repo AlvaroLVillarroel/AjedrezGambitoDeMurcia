@@ -22,7 +22,7 @@ class ListaPiezas:public pieza {
 	int casillax, casillay;
 	int casillax1, casillay1;
 	Seleccion seleccion;
-	player jugador;
+	//player jugador;
 	equipos turno;
 	Coordenadas vector[20];
 	bool aux=false;

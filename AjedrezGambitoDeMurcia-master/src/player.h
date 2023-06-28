@@ -5,7 +5,7 @@ using ETSIDI::SpriteSequence;
 class player
 {
 
-	SpriteSequence sprite{ "fotos/player.png", 5 };
+	SpriteSequence sprite{ "fotos/pp.png", 5 };
 	Vector2d position; // Posición actual del jugador
 	Vector2d velocity; // Velocidad del jugador
 	float scale; // Escala del sprite del jugador

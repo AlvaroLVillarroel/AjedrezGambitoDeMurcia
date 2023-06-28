@@ -135,8 +135,10 @@ void Tablero::dibujarTablero() {
 void Tablero::dibujarJugadores()
 {
     jugador1.dibuja();
+    glTranslatef(10, 0, 0.0f);
+    glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
     jugador2.dibuja();
-
+    
     Vector2d d1 = jugador1.getPos();
     Vector2d d2 = jugador2.getPos();
 
