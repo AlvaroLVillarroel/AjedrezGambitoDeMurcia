@@ -11,7 +11,7 @@ ListaPiezas::ListaPiezas() {
 	casillax1 = casillay1=0;
 	seleccion = COORD_DEST;
 	piezaComida = false;
-	
+	promocionflag = promocioncheck = wait = false;
 
 }
 

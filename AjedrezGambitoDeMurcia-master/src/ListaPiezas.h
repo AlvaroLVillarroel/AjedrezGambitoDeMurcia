@@ -26,7 +26,9 @@ class ListaPiezas:public pieza {
 	equipos turno;
 	Coordenadas vector[20];
 	bool aux=false;
-	
+	bool promocionflag;
+	bool promocioncheck;
+	bool wait;
 public:
 	int fila, colu;
 	bool click1 = false;
