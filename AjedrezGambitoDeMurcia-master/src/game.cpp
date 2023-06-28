@@ -113,7 +113,7 @@ void Game::dibuja() {
 
 		tablero.dibujarTablero();
 		tablero.dibujarJugadores();
-		
+		tablero.dibujarPromocion();
 	}
 	if (estado == pausa) {
 
