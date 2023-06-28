@@ -888,11 +888,6 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 						return false;
 				}
 			}
-<<<<<<< HEAD
-			return true;
-		
-=======
->>>>>>> JaqueMate terminado y estructuracion de la funcin comer en el codigo
 		}
 	}
 	return true;
