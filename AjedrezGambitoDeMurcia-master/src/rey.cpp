@@ -49,8 +49,6 @@ rey::rey() {
 }
 bool rey::desplazamientovalido(int fil, int col) {
 
-	
-
 	if (movimientos == 0) {
 		if((abs(getFila()-fil)==0)&&(abs(getColumna()-col)==2))return true;
 		if ((abs(getFila() - fil) <= 1) && (abs(getColumna() - col) <= 1))return true;
