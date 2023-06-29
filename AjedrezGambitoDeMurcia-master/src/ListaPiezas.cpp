@@ -740,18 +740,18 @@ bool ListaPiezas::jaque(equipos equipo) {
 	
 		pieza* rey = nullptr;
 
+		//Busca el rey de mi equipo en la lista
 		for (int i = 0; i < numero; i++) {
 			if (lista[i]->getequipo() == equipo && lista[i]->getpieza() == REY) {
 				rey = lista[i];
 			}
 		}
 		
+		//Mira para todas las piezas del equipo contrario que no sean reyes si pueden comer a mi rey
 		for (int i = 0; i < numero; i++) {
 			if (lista[i]->getequipo() != equipo && lista[i]->getpieza() != REY) {
-				int fil = lista[i]->getFila();
-				int col = lista[i]->getColumna();
 				if (lista[i]->desplazamientovalido(rey->getFila(), rey->getColumna()) == 1) {
-						if (colisionpieza(lista[i], rey->getFila(), rey->getColumna()) == 0)return true;
+						if (colisionpieza(lista[i], rey->getFila(), rey->getColumna()) == 0)return true;//Si pueden comer
 				}
 			}
 		}
@@ -854,6 +854,7 @@ bool ListaPiezas::jaqueposible(pieza* pi, int fil, int col) {
 		pi->setFila(fil);
 		pi->setColumna(col);
 
+		//Si hay jaque
 		if (jaque(rey_mio->getequipo()) == 1) {
 
 			//Devuelve la pieza rival a la posicion de inicio
@@ -908,6 +909,7 @@ bool ListaPiezas::jaqueposible(pieza* pi, int fil, int col) {
 
 bool ListaPiezas::JaqueMate(equipos equipo) {
 
+	//Mira para todas las piezas de mi equipo si pueden realizar algun movimiento para que no haya jaque
 	for (int i = 0; i < numero; i++) {
 		if (lista[i]->getequipo() == equipo) {
 			for (int fil = 1; fil < 9; fil++) {
@@ -915,16 +917,17 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 					int fil_inicial = lista[i]->getFila();
 					int col_inicial = lista[i]->getColumna();
 					if (movimientovalido(lista[i], fil, col))
-						return false;
+						return false;//Si pueden realizar algun movimiento
 				}
 			}
 		}
 	}
-	return true;
+	return true;//No pueden realizar ningun movimiento
 }
 
 void ListaPiezas::dibujarmovimientosposibles(pieza* pi) {
 
+	//Dibuja todos los movimientos de la pieza seleccionada para todas las casillas del tablero
 	for (int fil = 1; fil < 9; fil++) {
 		for (int col = 1; col < 9; col++) {
 			if (movimientovalido(pi, fil, col) == 1)dibujarbalon(col, fil);
