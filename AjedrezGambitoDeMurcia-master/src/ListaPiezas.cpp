@@ -517,19 +517,11 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				piezaComida = false;
 				ETSIDI::play("sonidos/capture.mp3");
 			}
-			pi->moverPieza(fil, col);
-			if (comprobarPromocion(pi, fil, col)) {
-			ETSIDI::play("sonidos/promote.mp3");
-			}
-			turno = EQUIPO_B;
-			if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
-			if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
-			if (JaqueMate(EQUIPO_B))std::cout << "JAQUE MATE B" << std::endl;
 				anularenroque(pi, fil, col);
 				pi->moverPieza(fil, col);
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
-				if (promocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
+				if (comprobarPromocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
 				if (JaqueMate(EQUIPO_B))
 					ganaJUG1 = true;
@@ -555,19 +547,11 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				pi->moverPieza(fil, col);
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
-				if(promocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
+				if(comprobarPromocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_A;
 				if (JaqueMate(EQUIPO_A))
 					ganaJUG2 = true;
 					//std::cout << "JAQUE MATE A";
-			pi->moverPieza(fil, col);
-			if (comprobarPromocion(pi, fil, col)) {
-				ETSIDI::play("sonidos/promote.mp3");
-			}
-			turno = EQUIPO_A;
-			if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
-			if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
-			if (JaqueMate(EQUIPO_A))std::cout << "JAQUE MATE A" << std::endl;
 		}
 		else  seleccion = COORD_DEST;
 		break;
