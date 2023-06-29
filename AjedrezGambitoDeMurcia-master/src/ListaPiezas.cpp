@@ -853,7 +853,6 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 						return false;//Si pueden realizar algun movimiento
 				}
 			}
-				return true;
 		}
 	}
 	return true;//No pueden realizar ningun movimiento
