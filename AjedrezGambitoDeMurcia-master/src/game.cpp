@@ -10,9 +10,13 @@
 Game::Game()
 {
 	estado = inicioPartida;
+	tablasJUG1 = false;
+	tablasJUG2 = false;
 	music();
 
 }
+
+
 
 void Game::dibuja() {
 
@@ -109,12 +113,84 @@ void Game::dibuja() {
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 	}
+	if (tablasJUG1) {
+
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/tick.png").id);
+		glDisable(GL_LIGHTING);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.0);
+		
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(-5.3f, 2.8, 2.0f);
+		glTexCoord2d(1, 1); glVertex3f(-4.6, 2.8, 2.0f);
+		glTexCoord2d(1, 0); glVertex3f(-4.6, 3.8, 2.0f);
+		glTexCoord2d(0, 0); glVertex3f(-5.3f, 3.8, 2.0f);
+		glEnd();
+		glDisable(GL_BLEND);
+		glDisable(GL_ALPHA_TEST);
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	
+
+	}
+	if (tablasJUG1) {
+
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/tick.png").id);
+		glDisable(GL_LIGHTING);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.0);
+		
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(-5.3f, 2.8, 2.0f);
+		glTexCoord2d(1, 1); glVertex3f(-4.6, 2.8, 2.0f);
+		glTexCoord2d(1, 0); glVertex3f(-4.6, 3.8, 2.0f);
+		glTexCoord2d(0, 0); glVertex3f(-5.3f, 3.8, 2.0f);
+		glEnd();
+		glDisable(GL_BLEND);
+		glDisable(GL_ALPHA_TEST);
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	if (tablasJUG2) {
+
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/tick2.png").id);
+		glDisable(GL_LIGHTING);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.0);
+		
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(5.3f, 2.8, 2.0f);
+		glTexCoord2d(1, 1); glVertex3f(4.6, 2.8, 2.0f);
+		glTexCoord2d(1, 0); glVertex3f(4.6, 3.8, 2.0f);
+		glTexCoord2d(0, 0); glVertex3f(5.3f, 3.8, 2.0f);
+		glEnd();
+		glDisable(GL_BLEND);
+		glDisable(GL_ALPHA_TEST);
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 	if (estado == jugando) {
 
 		tablero.dibujarTablero();
 		tablero.dibujarJugadores();
+		if (tablasJUG1 == true && tablasJUG2 == true)
+			estado = tablas;
+
 		
 	}
+	
 	if (estado == pausa) {
 
 		gluLookAt(0, 0, 40,  // posicion del ojo
@@ -179,6 +255,29 @@ void Game::dibuja() {
 		glDisable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
+	if (estado == tablas) {
+		tablasJUG1 = false;
+		tablasJUG2 = false;
+		gluLookAt(0, 0, 40,  // posicion del ojo
+			0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
+			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+
+		//dibuja pantalla de inicio
+
+		glEnable(GL_TEXTURE_2D);
+		glColor3f(1, 1, 1);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/pantallaTablas.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(-28.0f, -20.0f, 1.0f);
+		glTexCoord2d(1, 1); glVertex3f(28.0f, -20.0f, 1.0f);
+		glTexCoord2d(1, 0); glVertex3f(28.0f, 20.0f, 1.0f);
+		glTexCoord2d(0, 0); glVertex3f(-28.0f, 20.0f, 1.0f);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 	if (musicPlaying)
 		{
 			glEnable(GL_TEXTURE_2D);
@@ -223,13 +322,14 @@ void Game::dibuja() {
 			glDisable(GL_TEXTURE_2D);
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
+	
 }
 
 void Game::mousePress(int button, int state, int x, int y) {
 
 	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN)) {
-
-		if (x >= 30 && x <= 100 && y >= 0 && y <= 720 ) { 
+		
+		if (x >= 30 && x <= 100 && y >= 645 && y <= 700 ) { 
 			SetCursor(LoadCursor(NULL, IDC_HAND));
 			x = 0;
 			y = 0;
@@ -406,8 +506,44 @@ void Game::mousePress(int button, int state, int x, int y) {
 		if (empezar) {
 			ETSIDI::play("sonidos/start.wav");
 			empezar = false;
+			
 		}
 		tablero.juega(button, state, x, y);
+		if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
+		{
+			std::cout << x << " " << y;
+			//rendirse
+			if (x >= 15 && x <= 61 && y >= 85 && y <= 137) {
+				x = 0;
+				y = 0;
+				estado = ganaJUG2;
+				ETSIDI::play("sonidos/select.wav");
+			}
+			//tablas
+			if (x >= 73 && x <= 153 && y >= 93 && y <= 125) {
+				SetCursor(LoadCursor(NULL, IDC_HAND));
+				x = 0;
+				y = 0;
+				tablasJUG1 = true;
+				ETSIDI::play("sonidos/select.wav");
+			}
+			//tablas
+			if(x >= 842 && x <= 924 && y >= 93 && y <= 125) {
+				SetCursor(LoadCursor(NULL, IDC_HAND));
+				x = 0;
+				y = 0;
+				tablasJUG2 = true;
+				ETSIDI::play("sonidos/select.wav");
+			}
+			//rendirse
+			if(x >= 942 && x <= 986 && y >= 90 && y <= 136) {
+				SetCursor(LoadCursor(NULL, IDC_HAND));
+				x = 0;
+				y = 0;
+				estado=ganaJUG1;
+				ETSIDI::play("sonidos/select.wav");
+			}
+		}
 	}
 	if (estado == pausa) {
 
@@ -453,6 +589,33 @@ void Game::mousePress(int button, int state, int x, int y) {
 
 
 		}
+
+	}
+	if (estado == tablas)
+
+	{
+
+		if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
+		{
+			//Hay que ajustar valores acorde a las coord de los botones
+			if (x >= 310 && x <= 740 && y >= 450 && y <= 550) {
+				x = 0;
+				y = 0;
+				exit(0);
+				ETSIDI::play("sonidos/select.wav");
+			}
+			if (x >= 310 && x <= 740 && y >= 300 && y <= 400) {
+				SetCursor(LoadCursor(NULL, IDC_HAND));
+				x = 0;
+				y = 0;
+				estado = modosJuego;
+				ETSIDI::play("sonidos/select.wav");
+			}
+
+
+		}
+
+
 
 	}
 }

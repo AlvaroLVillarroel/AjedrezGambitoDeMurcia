@@ -3,16 +3,16 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
 #include "tablero.h"
-#include "player.h"
 
 
 
-enum Estado {inicioPartida,modosJuego,seleccionJUG1,seleccionJUG2,modo_pvp,modo_rapido,pausa,jugando,ganaJUG1, ganaJUG2};
+enum Estado {inicioPartida,modosJuego,seleccionJUG1,seleccionJUG2,modo_pvp,modo_rapido,pausa,jugando,ganaJUG1, ganaJUG2,tablas};
 
 class Game
 {
 public:
 	Game();
+	
 	void dibuja();
 	void mousePress(int button, int state,int x,int y );
 	void music();
@@ -21,5 +21,7 @@ public:
 	bool empezar = true;
 	Estado estado;
 	Tablero tablero;
+	bool tablasJUG1 = false;
+	bool tablasJUG2=false;
 
 }; 

@@ -5,12 +5,15 @@
 #include "dama.h"
 #include "caballo.h"
 #include "Alfil.h"
-#include "Torre.h"
+#include "torre.h"
 #include "Peon.h"
 #include "coordenadas.h"
 #include "player.h"
 
+
 #define MAX_PIEZAS 100
+
+class Game;
 class ListaPiezas:public pieza {
 	enum Seleccion { COORD_DEST, COORD_INI };
 	pieza* lista[MAX_PIEZAS];

@@ -462,7 +462,9 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (promocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
-				if (JaqueMate(EQUIPO_B))std::cout << "JAQUE MATE B";
+				if (JaqueMate(EQUIPO_B))
+					
+					std::cout << "JAQUE MATE B";
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -510,13 +512,13 @@ void ListaPiezas::dibujarbalon(int fil, int col) {
 	glBegin(GL_POLYGON);
 
 	glTexCoord2d(0, 0);
-	glVertex3d(-4.0 + fil - 1, 4.0 - col + 1, 1.5);
+	glVertex3d(-4.0 + fil - 1, 4.0  - col + 1, 1.5);
 	glTexCoord2d(0, 1);
-	glVertex3d(-4.0 + fil - 1, 3.0 - col + 1, 1.5);
+	glVertex3d(-4.0  + fil - 1, 3.0 - col + 1, 1.5);
 	glTexCoord2d(1, 1);
-	glVertex3d(-3.0 + fil - 1, 3.0 - col + 1, 1.5);
+	glVertex3d(-3.0  + fil - 1, 3.0  - col + 1, 1.5);
 	glTexCoord2d(1, 0);
-	glVertex3d(-3.0 + fil - 1, 4.0 - col + 1, 1.5);
+	glVertex3d(-3.0  + fil - 1, 4.0  - col + 1, 1.5);
 
 	glEnd();
 	glDisable(GL_BLEND);
