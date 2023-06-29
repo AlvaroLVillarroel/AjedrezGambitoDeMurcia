@@ -188,6 +188,7 @@ void Game::dibuja() {
 		if (tablasJUG1 == true && tablasJUG2 == true)
 			estado = tablas;
 
+		tablero.dibujarPromocion();
 		
 	}
 	
@@ -328,8 +329,8 @@ void Game::dibuja() {
 void Game::mousePress(int button, int state, int x, int y) {
 
 	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN)) {
-		
-		if (x >= 30 && x <= 100 && y >= 645 && y <= 700 ) { 
+
+		if (x >= 30 && x <= 100 && y >= 0 && y <= 720 && estado!=jugando) {
 			SetCursor(LoadCursor(NULL, IDC_HAND));
 			x = 0;
 			y = 0;
@@ -439,7 +440,6 @@ void Game::mousePress(int button, int state, int x, int y) {
 				ETSIDI::play("sonidos/select.wav");
 			}
 		}
-		std::cout << tablero.pa;
 
 	}
 	if (estado == seleccionJUG2)
@@ -498,8 +498,6 @@ void Game::mousePress(int button, int state, int x, int y) {
 				empezar = true;
 			}
 		}
-		
-		std::cout << tablero.pa1;
 	}
 	if (estado == jugando) {
 		
@@ -625,13 +623,15 @@ void Game::mousePress(int button, int state, int x, int y) {
 }
 void Game::music()
 {
-	if (musicPlaying) {
+	if (musicPlaying && estado != jugando) {
 		ETSIDI::stopMusica();
 		musicPlaying = false;
 	}
 	else {
-		ETSIDI::playMusica("sonidos/fondo.mp3", true);
-		musicPlaying = true;
+		if (estado != jugando) {
+			ETSIDI::playMusica("sonidos/fondo.mp3", true);
+			musicPlaying = true;
+		}
 	}
 
 }

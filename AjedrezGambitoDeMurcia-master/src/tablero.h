@@ -31,4 +31,5 @@ public:
 	//void finalPartida();
 	void juega(int button,int state,int x,int y);
 	void mueve();
+	void dibujarPromocion();
 };

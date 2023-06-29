@@ -16,6 +16,7 @@
 class Game;
 class ListaPiezas:public pieza {
 	enum Seleccion { COORD_DEST, COORD_INI };
+	enum promo { pDAMA, pTORRE, pCABALLO, pALFIL}; 
 	pieza* lista[MAX_PIEZAS];
 	pieza* piezasel = 0;
 	int windowXPos = 0;
@@ -40,6 +41,8 @@ class ListaPiezas:public pieza {
 	bool Enroque_rey_A;
 	bool Enroque_rey_B;
 
+	bool selecciona, seleccionb;
+	promo promo;
 public:
 	int fila, colu;
 	bool click1 = false;
@@ -87,15 +90,15 @@ public:
 	bool jaque(equipos equipo);
 	bool jaqueposible(pieza* pi, int fil, int col);
 	bool JaqueMate(equipos equipo);
-	bool promocion(pieza* pi, int fil, int col);
-	void dibujarPromocion();
+	bool comprobarPromocion(pieza* pi, int fil, int col);
+	void promocion();
 	equipos getTurno() { return turno; }
 	bool getPromo() { return promocionflag; }
 	void setPromo(bool flag) { promocionflag = flag; }
-	void esperar();
 	void dibujarmovimientosposibles(pieza* pi);
 	void dibujarmovpos(pieza* pi, int fil, int col);
 	void dibujarmovs();
 	void anularenroque(pieza* pi, int fil, int col);
 
+	void seleccionPromocion(int button, int state, int x, int y);
 };

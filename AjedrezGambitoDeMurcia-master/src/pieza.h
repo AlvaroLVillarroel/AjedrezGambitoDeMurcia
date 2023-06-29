@@ -4,7 +4,7 @@
 #include "ETSIDI.h"
 #include <string>
 enum paises{SPAIN,JAPAN,BRAZIL,PORTUGAL,ARGENTINA};
-enum equipos{EQUIPO_A,EQUIPO_B};
+enum equipos { EQUIPO_A, EQUIPO_B, SELECCION };
 enum tipoPieza{PEON,ALFIL,TORRE,CABALLO,REINA,REY};
 
 class pieza

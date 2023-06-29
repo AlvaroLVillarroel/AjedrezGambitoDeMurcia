@@ -23,7 +23,6 @@ void Tablero::inicializa() {
 void Tablero::dibujarTablero() {
     piezas.dibuja();
     piezas.dibujarmovs();
-   // piezas.dibujarPromocion();
     
 
 
@@ -156,12 +155,6 @@ void Tablero::dibujarJugadores()
             piezas.click1 = false;// Actualizar el estado de piezas.click12
         }
     }
-
-
-
-
-
-
     if (piezas.click2) {
         jugador2.setVel(0.0f, 4.5f);
         if (d2.y > 4) {
@@ -191,11 +184,66 @@ void Tablero::dibujarJugadores()
 void Tablero::juega(int button, int state, int x, int y) {
     piezas.mousePress(button, state, x, y);
     piezas.MoverPieza();
-   
+    piezas.seleccionPromocion(button, state, x, y);
 }
 
 void Tablero::mueve()
 {
     jugador1.mueve(0.025f);
     jugador2.mueve(0.025f);
+}
+void Tablero::dibujarPromocion()
+{
+        //TURNO A
+        glEnable(GL_TEXTURE_2D);
+        glColor3f(1, 1, 1);
+
+        glScalef(0.8f, 0.8f, 1);
+    if (piezas.getTurno() == EQUIPO_B) {
+        glPushMatrix();
+        glTranslatef(1.7, -4.8, 0);
+        if (pa == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promospain.png").id);
+        if (pa == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promojapan.png").id);
+        if (pa == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promobrazil.png").id);
+        if (pa == PORTUGAL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoportugal.png").id);
+        if (pa == ARGENTINA) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoargentina.png").id);
+        //glTranslatef(0, -3.5f, 0);
+        //glTranslatef(0, 0, 0);
+        glDisable(GL_LIGHTING);
+        glBegin(GL_POLYGON);
+        glTexCoord2d(0, 1); glVertex3f(4.05f, -0.6f, 1.9f);
+        glTexCoord2d(1, 1); glVertex3f(6.05f, -0.6f, 1.9f);
+        glTexCoord2d(1, 0); glVertex3f(6.05f, 1.4f, 1.9f);
+        glTexCoord2d(0, 0); glVertex3f(4.05f, 1.4f, 1.9f);
+        glEnd();
+        glEnable(GL_LIGHTING);
+        glDisable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        //piezas.setPromo(false);
+        glPopMatrix();
+        glEnable(GL_TEXTURE_2D);
+        glColor3f(1, 1, 1);
+    }
+    if (piezas.getTurno() == EQUIPO_A) {
+        glPushMatrix();
+        //TURNO B
+        if (pa1 == SPAIN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promospain.png").id);
+        if (pa1 == JAPAN) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promojapan.png").id);
+        if (pa1 == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promobrazil.png").id);
+        if (pa1 == PORTUGAL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoportugal.png").id);
+        if (pa1 == ARGENTINA) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoargentina.png").id);
+        glTranslatef(-1.4, -4.4, 0);
+        glDisable(GL_LIGHTING);
+        glBegin(GL_POLYGON);
+        glTexCoord2d(0, 1); glVertex3f(-4.45f, -1.0f, 1.9f);
+        glTexCoord2d(1, 1); glVertex3f(-6.45f, -1.0f, 1.9f);
+        glTexCoord2d(1, 0); glVertex3f(-6.45f, 1.0f, 1.9f);
+        glTexCoord2d(0, 0); glVertex3f(-4.45f, 1.0f, 1.9f);
+        glEnd();
+        glEnable(GL_LIGHTING);
+        glDisable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        glPopMatrix();
+        //piezas.setPromo(false);
+    }
 }
