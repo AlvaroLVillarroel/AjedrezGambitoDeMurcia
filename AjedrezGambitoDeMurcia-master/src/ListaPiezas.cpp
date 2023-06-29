@@ -503,7 +503,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	switch (turno) {
 	case EQUIPO_A:
 		if (movimientovalido(pi, fil, col) == 1) {
-			comer(pi, fil, col);
+			comer(fil, col);
 			if (enroquevalido(pi, fil, col) == 1) {
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
@@ -529,7 +529,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 		break;
 	case EQUIPO_B:
 		if (movimientovalido(pi, fil, col) == 1) {
-			comer(pi, fil, col);
+			comer(fil, col);
 			if (enroquevalido(pi, fil, col) == 1) { 
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
@@ -593,48 +593,61 @@ void ListaPiezas::dibujarbalon(int fil, int col) {
 
 bool ListaPiezas::enroquevalido(pieza* pi, int fil, int col) {
 
-
 	pieza* torres;
+
+	//Si la pieza que se mueve es un rey
 	if (pi->getpieza() == REY) {
 		if ((fil == 1) && (col == 3)) {
+			//Busca la torre de la casilla(1,1)
 			torres = piezaseleccionada(1, 1);
+			//Si no hay torre
 			if (torres == nullptr)return false;
+			//Si hay torre
 			else if (torres != nullptr) {
 				if (torres->getmovimientos() != 0)return false;
 				else if (torres->getmovimientos() == 0) {
 					if (colisionpieza(pi, 1, 2) == 1)return false;
-					return true;
+					return true;//No hay colisiones y la torre no se ha movido
 				}
 			}
 		}
 		if ((fil == 1) && (col == 7)) {
+			//Busca la torre de la casilla(1,8)
 			torres = piezaseleccionada(1, 8);
+			//Si no hay torre
 			if (torres == nullptr)return false;
+			//Si hay torre
 			else if (torres != nullptr) {
 				if (torres->getmovimientos() != 0)return false;
 				else if (torres->getmovimientos() == 0) {
-					return true;
+					return true;//No hay colisiones y la torre no se ha movido
 				}
 			}
 		}
 		if ((fil == 8) && (col == 3)) {
+			//Busca la torre de la casilla(8,1)
 			torres = piezaseleccionada(8, 1);
+			//Si no hay torre
 			if (torres == nullptr)return false;
+			//Si hay torre
 			else if (torres != nullptr) {
 				if (torres->getmovimientos() != 0)return false;
 				else if (torres->getmovimientos() == 0) {
 					if (colisionpieza(pi, 8, 2) == 1)return false;
-					return true;
+					return true; //No hay colisiones y la torre no se ha movido
 				}
 			}
 		}
 		if ((fil == 8) && (col == 7)) {
+			//Busca la torre de la casilla(8,8)
 			torres = piezaseleccionada(8, 8);
+			//Si no hay torre
 			if (torres == nullptr)return false;
+			//Si hay torre
 			else if (torres != nullptr) {
 				if (torres->getmovimientos() != 0)return false;
 				else if (torres->getmovimientos() == 0) {
-					return true;
+					return true;//No hay colisiones y la torre no se ha movido
 				}
 			}
 		}
@@ -644,39 +657,39 @@ bool ListaPiezas::enroquevalido(pieza* pi, int fil, int col) {
 //
 void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
 
-	if(pi->getpieza()==REY){
-
+		//Si el movimiento es hacia la casilla(1,3) 
 		if ((fil == 1) && (col == 3)) {
-			if (enroquevalido(pi,fil,col) == 1) {
-				pieza* torr = piezaseleccionada(1, 1);
-				torr->moverPieza(1, 4);
-			}
+			pieza* torr = piezaseleccionada(1, 1);
+			//Mover torre a la casilla(1,4);
+			torr->moverPieza(1, 4);
 		}
+		//Si el movimiento es hacia la casilla(1,7) 
 		if ((fil == 1) && (col == 7)) {
-			if (enroquevalido(pi,fil,col) == 1) {
-				pieza* torr = piezaseleccionada(1, 8);
-				torr->moverPieza(1, 6);
-			}
+			pieza* torr = piezaseleccionada(1, 8);
+			//Mover torre a la casilla(1,6);
+			torr->moverPieza(1, 6);
 		}
+		//Si el movimiento es hacia la casilla(8,3) 
 		if ((fil == 8) && (col == 3)) {
-			if (enroquevalido(pi,fil,col) == 1) {
 				pieza* torr = piezaseleccionada(8, 1);
+				//Mover torre a la casilla(8,4);
 				torr->moverPieza(8, 4);
-			}
 		}
+		//Si el movimiento es hacia la casilla(8,7) 
 		if ((fil == 8) && (col == 7)) {
-			if (enroquevalido(pi,fil,col) == 1) {
 				pieza* torr = piezaseleccionada(8, 8);
+				//Mover torre a la casilla(8,6);
 				torr->moverPieza(8, 6);
 			}
 		}
-	}
-}
 
 void ListaPiezas::anularenroque(pieza *pi, int fil, int col) {
 
+	//Si la pieza que se mueve es una torre
 	if (pi->getpieza() == TORRE) {
+		//Si pertence al equipo A
 		if (pi->getequipo() == EQUIPO_A) {
+			//Desactiva la flag de enroque  segun la torre que se mueva
 			if (pi->getColumna() == 1) {
 				Torre_B_Izq = false;
 			}
@@ -684,7 +697,9 @@ void ListaPiezas::anularenroque(pieza *pi, int fil, int col) {
 				Torre_B_Drh = false;
 			}
 		}
+		//Si pertence al equipo B
 		if (pi->getequipo() == EQUIPO_B) {
+			//Desactiva la flag de enroque  segun la torre que se mueve
 			if (pi->getColumna() == 1) {
 				Torre_A_Izq = false;
 			}
@@ -693,65 +708,33 @@ void ListaPiezas::anularenroque(pieza *pi, int fil, int col) {
 			}
 		}
 	}
+	//Si la pieza que se mueve es un rey
 	if (pi->getpieza() == REY) {
+		//Desactiva la flag de enroque segun el rey que se mueva
 		if ((pi->getFila() == 8) && (pi->getColumna() == 5))Enroque_rey_A = true;
 		if ((pi->getFila() == 1) && (pi->getColumna() == 5))Enroque_rey_B = true;
 	}
 }
-/*void ListaPiezas::jaque(equipos equipo)
-{
-	bool jaqueEquipo_A = false;
-	bool jaqueEquipo_B = false;
-	
-	for (int i = 0; i < numero; i++) {
-		if (lista[i]->getpieza() == REY && lista[i]->getequipo() != equipo) {
-			if (equipo == EQUIPO_A) {
-				jaqueEquipo_B = true;
-				ETSIDI::play("sonidos/jaque.mp3");
-			}
-			if (equipo == EQUIPO_B) {
-				jaqueEquipo_A = true;
-				ETSIDI::play("sonidos/jaque.mp3");
-			}
-		}
-	}
-}*/
 
-void ListaPiezas::comer(pieza* pi, int fil,int col) {
+void ListaPiezas::comer(int fil,int col) {
 
+	//Busca la pieza en la casilla
 	pieza* comida = piezaseleccionada(fil, col);
 	int posicion = -1;
+	//Si hay una pieza en la casilla
 	if (comida != nullptr) {
+		//Busca la pieza en la lista
 		for (int i = 0; i < numero; i++) {
 			if ((lista[i]->getFila() == comida->getFila()) && (lista[i]->getColumna() == comida->getColumna())) {
 				posicion = i;
 				piezaComida = true;
+				//Elimina la pieza de la lista
 				eliminarPieza(posicion);
 			}
 		}
 	}
 	else return;
 }
-
-/*bool ListaPiezas::jaqueMate(equipos equipo)
-{
-	bool PosibleJaqueMate = false;
-	for (int i = 0; i < numero; i++) {
-		if (lista[i]->getequipo() == equipo) {
-			for (int fil = 1; fil < 9; fil++) {
-				for (int col = 1; col < 9; col++) {
-					if (movimientovalido(lista[i], fil, col)) {
-						PosibleJaqueMate = true;
-					}
-				}
-			}
-		}
-	}
-	if (PosibleJaqueMate == true) {
-		return false;
-	}
-	else return true;
-}*/
 
 bool ListaPiezas::jaque(equipos equipo) {
 	
@@ -762,11 +745,6 @@ bool ListaPiezas::jaque(equipos equipo) {
 				rey = lista[i];
 			}
 		}
-
-		/*if (rey == nullptr) {
-			return false;
-		}
-		*/
 		
 		for (int i = 0; i < numero; i++) {
 			if (lista[i]->getequipo() != equipo && lista[i]->getpieza() != REY) {
@@ -851,15 +829,6 @@ bool ListaPiezas::jaqueposible(pieza* pi, int fil, int col) {
 
 	int fila_inicial = pi->getFila();
 	int col_inicial = pi->getColumna();
-
-	/*pieza* rey_rival = nullptr;
-
-	//Buscar al rey rival
-	for (int i = 0; i < numero; i++) {
-		if (lista[i]->getequipo() != pi->getequipo() && lista[i]->getpieza() == REY) {
-			rey_rival = lista[i];
-		}
-	}*/
 
 	pieza* rey_mio = nullptr;
 

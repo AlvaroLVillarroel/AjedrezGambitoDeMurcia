@@ -82,7 +82,7 @@ public:
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
 	//void jaque(equipos equipo);
-	void comer(pieza* pi, int fil,int col);
+	void comer(int fil,int col);
 	//bool jaqueMate(equipos equipo);
 	bool jaque(equipos equipo);
 	bool jaqueposible(pieza* pi, int fil, int col);
