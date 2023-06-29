@@ -581,6 +581,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
+				tablero.reiniciarTablero();
 				estado = modosJuego;
 				ETSIDI::play("sonidos/select.wav");
 			}
@@ -606,15 +607,11 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
+				tablero.reiniciarTablero();
 				estado = modosJuego;
 				ETSIDI::play("sonidos/select.wav");
 			}
-
-
 		}
-
-
-
 	}
 	if (tablero.piezas.ganaJUG1)
 		estado = ganaJUG1;

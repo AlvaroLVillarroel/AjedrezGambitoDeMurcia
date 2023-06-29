@@ -238,3 +238,7 @@ void Tablero::dibujarPromocion()
         glPopMatrix();
     }
 }
+
+void Tablero::reiniciarTablero() {
+    piezas.destruirPiezas();
+}

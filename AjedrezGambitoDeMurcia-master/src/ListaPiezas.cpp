@@ -23,14 +23,6 @@ ListaPiezas::ListaPiezas() {
 	selecciona = seleccionb = false;
 }
 
-/*ListaPiezas::~ListaPiezas()
-{
-	for (int i = 0; i < MAX_PIEZAS; i++) {
-		delete lista[i];
-	}
-	numero = 0;
-}
-*/
 
 bool ListaPiezas::agregar(pieza*p) {
 	if (numero < MAX_PIEZAS) {
@@ -583,11 +575,15 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	}
 }
 
-/*void ListaPiezas::destruirPiezas(pieza* p, int fil, int col) {
-	if (colisionpieza(p, fil, col) == true) {
-		eliminarPieza(p);
+void ListaPiezas::destruirPiezas() {
+	//Destruye las piezas de la lista
+	for(int i=1;i<9;i++){
+		for (int j = 1; j < 9; j++) {
+			eliminarPieza(piezaseleccionada(i, j));
+		}
 	}
-}*/
+}
+
 void ListaPiezas::dibujarbalon(int fil, int col) {
 
 	glEnable(GL_TEXTURE_2D);
