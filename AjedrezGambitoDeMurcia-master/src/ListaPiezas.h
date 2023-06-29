@@ -29,6 +29,14 @@ class ListaPiezas:public pieza {
 	bool promocionflag;
 	bool promocioncheck;
 	bool wait;
+	//Tags para el enroque
+	bool Torre_A_Izq;
+	bool Torre_A_Drh;
+	bool Torre_B_Izq;
+	bool Torre_B_Drh;
+	bool Enroque_rey_A;
+	bool Enroque_rey_B;
+
 public:
 	int fila, colu;
 	bool click1 = false;
@@ -83,4 +91,5 @@ public:
 	void dibujarmovimientosposibles(pieza* pi);
 	void dibujarmovpos(pieza* pi, int fil, int col);
 	void dibujarmovs();
+	void anularenroque(pieza* pi, int fil, int col);
 };

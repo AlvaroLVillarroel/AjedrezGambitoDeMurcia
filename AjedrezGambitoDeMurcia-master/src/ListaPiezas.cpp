@@ -12,6 +12,12 @@ ListaPiezas::ListaPiezas() {
 	seleccion = COORD_DEST;
 	piezaComida = false;
 	promocionflag = promocioncheck = wait = false;
+	Torre_A_Izq = true;
+	Torre_A_Drh = true;
+	Torre_B_Izq = true;
+	Torre_B_Drh = true;
+	Enroque_rey_A = true;
+	Enroque_rey_B = true;
 
 }
 
@@ -311,7 +317,58 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 	if ((abs(desfilas) <= 1) && (abs(descolumnas) <= 1)) {
 		return false;
 	}
-	if ((desfilas == 0) && (descolumnas == 2))  {
+
+	if (Enroque_rey_A == true) {
+		//Si se mueve hacia la izquierda
+		if ((pi->getequipo() == EQUIPO_B) && (fil == 8) && (col == 3)) {
+			if (Torre_A_Izq == true) {
+				if (piezaencasilla(i, j - 1) == 1)return true;
+				if (piezaencasilla(i, j - 3) == 1)return true;
+				return false;
+			}
+		}
+
+		if ((pi->getequipo() == EQUIPO_B) && (fil == 8) && (col == 2)) {
+			if (Torre_A_Drh == true) {
+				if (piezaencasilla(8, 2) == 1)return true;
+				return false;
+			}
+		}
+		//Si se mueve a la derecha
+		if ((pi->getequipo() == EQUIPO_B) && (fil == 8) && (col == 7)) {
+			if (Torre_A_Drh == true) {
+				if (piezaencasilla(i, j + 1) == 1)return true;
+				return false;
+			}
+		}
+	}
+	if (Enroque_rey_B == true) {
+		//Si se mueve hacia la izquierda
+		if ((pi->getequipo() == EQUIPO_A) && (fil == 1) && (col == 3)) {
+			if (Torre_B_Izq == true) {
+				if (piezaencasilla(i, j - 1) == 1)return true;
+				if (piezaencasilla(i, j - 3) == 1)return true;
+				return false;
+			}
+		}
+		if ((pi->getequipo() == EQUIPO_A) && (fil == 1) && (col == 2)) {
+			if (Torre_B_Drh == true) {
+				if (piezaencasilla(1, 2) == 1)return true;
+				return false;
+			}
+		}
+
+		//Si se mueve a la derecha
+		if ((pi->getequipo() == EQUIPO_A) && (fil == 1) && (col == 7)) {
+			if (Torre_B_Drh == true) {
+				if (piezaencasilla(i, j + 1) == 1)return true;
+				return false;
+			}
+		}
+	}
+	return true;
+
+/*	if ((desfilas == 0) && (descolumnas == 2)) {
 			if (piezaencasilla(i, j+1) == 1)return true;
 			return false;
 	}
@@ -319,7 +376,7 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 			if (piezaencasilla(i, j-1) == 1)return true;
 			if (piezaencasilla(i, j - 3) == 1)return true;
 			return false;
-	}
+	}*/
 
 }
 
@@ -410,6 +467,7 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 						if (colisionpieza(pi, fil, col) == 0) {
 							if (jaqueposible(pi, fil, col) == 1)return false;
 							if (jaqueposible(pi, fil, col) == 0) {
+
 								return true;
 							}
 						}
@@ -457,6 +515,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				piezaComida = false;
 				ETSIDI::play("sonidos/capture.mp3");
 			}
+				anularenroque(pi, fil, col);
 				pi->moverPieza(fil, col);
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
@@ -480,6 +539,7 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				piezaComida = false;
 				ETSIDI::play("sonidos/capture.mp3");
 			}
+				anularenroque(pi, fil, col);
 				pi->moverPieza(fil, col);
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
@@ -531,46 +591,47 @@ bool ListaPiezas::enroquevalido(pieza* pi, int fil, int col) {
 
 
 	pieza* torres;
-
-	if ((fil == 1) && (col == 3)) {
-		torres = piezaseleccionada(1, 1);
-		if (torres == nullptr)return false;
-		else if (torres != nullptr) {
-			if (torres->getmovimientos() != 0)return false;
-			else if (torres->getmovimientos() == 0) {
-					if (colisionpieza(pi,1, 2) == 1)return false;
+	if (pi->getpieza() == REY) {
+		if ((fil == 1) && (col == 3)) {
+			torres = piezaseleccionada(1, 1);
+			if (torres == nullptr)return false;
+			else if (torres != nullptr) {
+				if (torres->getmovimientos() != 0)return false;
+				else if (torres->getmovimientos() == 0) {
+					if (colisionpieza(pi, 1, 2) == 1)return false;
 					return true;
+				}
 			}
 		}
-	}
-	if ((fil == 1) && (col == 7)) {
-		torres = piezaseleccionada(1, 8);
-		if (torres == nullptr)return false;
-		else if (torres != nullptr) {
-			if (torres->getmovimientos() != 0)return false;
-			else if (torres->getmovimientos() == 0) {
+		if ((fil == 1) && (col == 7)) {
+			torres = piezaseleccionada(1, 8);
+			if (torres == nullptr)return false;
+			else if (torres != nullptr) {
+				if (torres->getmovimientos() != 0)return false;
+				else if (torres->getmovimientos() == 0) {
 					return true;
+				}
 			}
 		}
-	}
-	if ((fil == 8) && (col == 3)) {
-		torres = piezaseleccionada(8, 1);
-		if (torres == nullptr)return false;
-		else if (torres != nullptr) {
-			if (torres->getmovimientos() != 0)return false;
-			else if (torres->getmovimientos() == 0) {
+		if ((fil == 8) && (col == 3)) {
+			torres = piezaseleccionada(8, 1);
+			if (torres == nullptr)return false;
+			else if (torres != nullptr) {
+				if (torres->getmovimientos() != 0)return false;
+				else if (torres->getmovimientos() == 0) {
 					if (colisionpieza(pi, 8, 2) == 1)return false;
 					return true;
+				}
 			}
 		}
-	}
-	if ((fil == 8) && (col == 7)) {
-		torres = piezaseleccionada(8, 8);
-		if (torres == nullptr)return false;
-		else if (torres != nullptr) {
-			if (torres->getmovimientos() != 0)return false;
-			else if (torres->getmovimientos() == 0) {
+		if ((fil == 8) && (col == 7)) {
+			torres = piezaseleccionada(8, 8);
+			if (torres == nullptr)return false;
+			else if (torres != nullptr) {
+				if (torres->getmovimientos() != 0)return false;
+				else if (torres->getmovimientos() == 0) {
 					return true;
+				}
 			}
 		}
 	}
@@ -608,6 +669,31 @@ void ListaPiezas::hacerenroque(pieza* pi, int fil, int col) {
 	}
 }
 
+void ListaPiezas::anularenroque(pieza *pi, int fil, int col) {
+
+	if (pi->getpieza() == TORRE) {
+		if (pi->getequipo() == EQUIPO_A) {
+			if (pi->getColumna() == 1) {
+				Torre_B_Izq = false;
+			}
+			if (pi->getColumna() == 8) {
+				Torre_B_Drh = false;
+			}
+		}
+		if (pi->getequipo() == EQUIPO_B) {
+			if (pi->getColumna() == 1) {
+				Torre_A_Izq = false;
+			}
+			if (pi->getColumna() == 8) {
+				Torre_A_Drh = false;
+			}
+		}
+	}
+	if (pi->getpieza() == REY) {
+		if ((pi->getFila() == 8) && (pi->getColumna() == 5))Enroque_rey_A = true;
+		if ((pi->getFila() == 1) && (pi->getColumna() == 5))Enroque_rey_B = true;
+	}
+}
 /*void ListaPiezas::jaque(equipos equipo)
 {
 	bool jaqueEquipo_A = false;
