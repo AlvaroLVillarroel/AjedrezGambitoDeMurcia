@@ -80,13 +80,10 @@ public:
 	bool turnocorrecto(pieza* pi);
 	bool movimientovalido(pieza* pi, int fil, int col);
 	void moverPieza(pieza* pi, int fil, int col);
-
 	void dibujarbalon(int fil, int col);
 	bool enroquevalido(pieza* pi, int fil, int col);
 	void hacerenroque(pieza* pi, int fil, int col);
-	//void jaque(equipos equipo);
 	void comer(int fil,int col);
-	//bool jaqueMate(equipos equipo);
 	bool jaque(equipos equipo);
 	bool jaqueposible(pieza* pi, int fil, int col);
 	bool JaqueMate(equipos equipo);
@@ -99,6 +96,5 @@ public:
 	void dibujarmovpos(pieza* pi, int fil, int col);
 	void dibujarmovs();
 	void anularenroque(pieza* pi, int fil, int col);
-
 	void seleccionPromocion(int button, int state, int x, int y);
 };

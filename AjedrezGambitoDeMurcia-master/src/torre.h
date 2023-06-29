@@ -12,6 +12,6 @@ public:
 	float getPosColumna() {
 		return Coord.getColumna();
 	}
-	bool desplazamientovalido(int fil, int col);
+	virtual bool desplazamientovalido(int fil, int col);
 };
 

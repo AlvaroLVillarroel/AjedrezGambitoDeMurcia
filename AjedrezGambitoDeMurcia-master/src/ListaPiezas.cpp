@@ -31,6 +31,7 @@ ListaPiezas::ListaPiezas() {
 	numero = 0;
 }
 */
+
 bool ListaPiezas::agregar(pieza*p) {
 	if (numero < MAX_PIEZAS) {
 		lista[numero++] = p;
@@ -161,7 +162,6 @@ void ListaPiezas::mousePress(int button, int state, int x, int y)
 				click2 = true;
 			
 			}
-			//dibujarmovposibles(casillay1, casillax1);
 			break;
 		}
 	}
@@ -173,21 +173,25 @@ bool ListaPiezas::colisionalfil(pieza* pi, int fil, int col) {
 	int descolumnas = col - pi->getColumna();
 	int i, j;
 
+	//Si se desplaza en diagonal hacia arriba a la derecha
 	if ((desfilas > 0) && (descolumnas > 0)) {
 		for (i = pi->getFila() + 1, j = pi->getColumna() + 1; i < fil  && j < col ; i++, j++) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
+	//Si se desplaza en diagonal hacia abajo a la derecha
 	if ((desfilas < 0) && (descolumnas > 0)) {
 		for (i = pi->getFila() - 1, j = pi->getColumna() + 1; i > fil  && j < col ; i--, j++) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
+	//Si se desplaza en diagonal hacia abajo a la izquierda
 	if ((desfilas < 0) && (descolumnas < 0)) {
 		for (i = pi->getFila() - 1, j = pi->getColumna() - 1; i > fil  && j > col ; i--, j--) {
 			if (piezaencasilla(i, j) == 1) return true;
 		}
 	}
+	//Si se desplaza hacia arriba a la izquierda
 	if ((desfilas > 0) && (descolumnas < 0)) {
 		for (i = pi->getFila() + 1, j = pi->getColumna() - 1; i < fil && j > col; i++, j--) {
 			if (piezaencasilla(i, j) == 1) return true;
@@ -202,21 +206,25 @@ bool ListaPiezas::colisiontorre(pieza* pi, int fil, int col) {
 	int descolumnas = col - pi->getColumna();
 	int i, j;
 
+		//Si se desplaza en horizontal derecha
 		if (descolumnas > 0) {
 			for (i = pi->getFila(), j = pi->getColumna()+1; j < col; j++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
+		//Si se desplaza en horizontal izquierda
 		if (descolumnas < 0) {
 			for (i = pi->getFila(), j = pi->getColumna()-1; j > col; j--) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
+		//Si se desplaza vetical arriba
 		if (desfilas > 0) {
 			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil; i++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
+		//Si se desplaza vertical abajo
 		if (desfilas < 0) {
 			for (i = pi->getFila()-1, j = pi->getColumna(); i > fil; i--) {
 				if (piezaencasilla(i, j) == 1)return true;
@@ -230,6 +238,8 @@ bool ListaPiezas::colisionreina(pieza* pi, int fil, int col) {
 	int desfilas = fil - pi->getFila();
 	int descolumnas = col - pi->getColumna();
 	int i, j;
+
+	//Colision de alfil y torre segun la casilla que quiera desplazar
 
 	if (abs(desfilas) == abs(descolumnas)) {
 		return colisionalfil(pi, fil, col);
@@ -251,16 +261,20 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 
 	pieza* posicion = piezaseleccionada(fil, col);
 
+	//Para el peon del equipo A
 	if (pi->getequipo() == EQUIPO_A) {
 
+		//Si se mueve una casilla
 		if ((desfilas == 1) && (col == pi->getColumna())) {
 			if (piezaencasilla(pi->getFila() + 1, pi->getColumna()) == 1)return true;
 		}
+		//Si se mueve dos casillas
 		if ((desfilas == 2) && (col == pi->getColumna())) {
 			for (i = pi->getFila()+1, j = pi->getColumna(); i < fil+1; i++) {
 				if (piezaencasilla(i, j) == 1)return true;
 			}
 		}
+		//Si no hay pieza no tiene permitido moverse en diagonal y se considora colision
 		if (posicion == nullptr) {
 			if ((desfilas == 1) && (descolumnas == 1)) {
 				return true;
@@ -269,6 +283,7 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 				return true;
 			}
 		}
+		//Si hay pieza en la casilla final se considera que va a comer en diagonal y no hay colision
 		else if (posicion != nullptr) {
 			if ((desfilas == 1) && (descolumnas == 1)) {
 				return false;
@@ -279,6 +294,7 @@ bool ListaPiezas::colisionpeon(pieza* pi, int fil, int col) {
 		}
 		return false;
 	}
+	//Equivalente al equipo A para el caso del equipo B
 	else if (pi->getequipo() == EQUIPO_B) {
 
 		if ((-desfilas == 1) && (col == pi->getColumna())) {
@@ -320,9 +336,11 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 		return false;
 	}
 
+	//Si se permite el enroque en el rey A 
 	if (Enroque_rey_A == true) {
 		//Si se mueve hacia la izquierda
 		if ((pi->getequipo() == EQUIPO_B) && (fil == 8) && (col == 3)) {
+			//Si la torre puede enrocar
 			if (Torre_A_Izq == true) {
 				if (piezaencasilla(i, j - 1) == 1)return true;
 				if (piezaencasilla(i, j - 3) == 1)return true;
@@ -331,6 +349,7 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 		}
 
 		if ((pi->getequipo() == EQUIPO_B) && (fil == 8) && (col == 2)) {
+			//Si la torre puede enrocar
 			if (Torre_A_Drh == true) {
 				if (piezaencasilla(8, 2) == 1)return true;
 				return false;
@@ -338,15 +357,18 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 		}
 		//Si se mueve a la derecha
 		if ((pi->getequipo() == EQUIPO_B) && (fil == 8) && (col == 7)) {
+			//Si la torre puede enrocar
 			if (Torre_A_Drh == true) {
 				if (piezaencasilla(i, j + 1) == 1)return true;
 				return false;
 			}
 		}
 	}
+	//Si se permite el enroque en el rey B
 	if (Enroque_rey_B == true) {
 		//Si se mueve hacia la izquierda
 		if ((pi->getequipo() == EQUIPO_A) && (fil == 1) && (col == 3)) {
+			//Si la torre puede enrocar
 			if (Torre_B_Izq == true) {
 				if (piezaencasilla(i, j - 1) == 1)return true;
 				if (piezaencasilla(i, j - 3) == 1)return true;
@@ -354,6 +376,7 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 			}
 		}
 		if ((pi->getequipo() == EQUIPO_A) && (fil == 1) && (col == 2)) {
+			//Si la torre puede enrocar
 			if (Torre_B_Drh == true) {
 				if (piezaencasilla(1, 2) == 1)return true;
 				return false;
@@ -362,6 +385,7 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 
 		//Si se mueve a la derecha
 		if ((pi->getequipo() == EQUIPO_A) && (fil == 1) && (col == 7)) {
+			//Si la torre puede enrocar
 			if (Torre_B_Drh == true) {
 				if (piezaencasilla(i, j + 1) == 1)return true;
 				return false;
@@ -369,21 +393,11 @@ bool ListaPiezas::colisionrey(pieza* pi, int fil, int col) {
 		}
 	}
 	return true;
-
-/*	if ((desfilas == 0) && (descolumnas == 2)) {
-			if (piezaencasilla(i, j+1) == 1)return true;
-			return false;
-	}
-	if ((desfilas == 0) && (descolumnas == -2)) {
-			if (piezaencasilla(i, j-1) == 1)return true;
-			if (piezaencasilla(i, j - 3) == 1)return true;
-			return false;
-	}*/
-
 }
 
 bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 	bool resul;
+
 	if (pi->getpieza() == TORRE) {
 		resul = colisiontorre(pi, fil, col);
 		return resul;
@@ -410,25 +424,20 @@ bool ListaPiezas::colisionpieza(pieza* pi, int fil, int col) {
 }
 
 pieza* ListaPiezas::piezaseleccionada(int fil, int col) {
+	//Seleciona la pieza que esta en la casilla
 	for (int i = 0; i < numero; i++) {
 		if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col)){
 			aux = true;
 			return lista[i];
-			//if (dibujarmovposibles(lista[i]) == true)dibujarbalon(fil, col);
 		}
-		/*if ((lista[i]->getFila() == fil) && (lista[i]->getColumna() == col)) {
-			dibujarmovposibles(lista[i], fil, col);
-			return lista[i];
-		}*/
 	}
-	return nullptr;
+	return nullptr; //si no encuentra devuelve nada
 }
+
 void ListaPiezas::MoverPieza() {
 	
 	pieza* pi = piezaseleccionada(casillay1, casillax1);
-	//if (aux) dibujarmovposibles(pi);
 	if (pi == nullptr)seleccion = COORD_DEST;
-	//std::cout << pi->comprobarPieza() << std::endl;
 	if (pi != nullptr) {
 		if (seleccion == COORD_DEST) {
 			moverPieza(pi, casillay, casillax);
@@ -436,6 +445,7 @@ void ListaPiezas::MoverPieza() {
 	}
 }
 bool ListaPiezas::turnocorrecto(pieza* pi) {
+	//Se gestiona el turno
 	if (pi->getequipo() == turno)return true;
 	return false;
 }
@@ -503,13 +513,19 @@ bool ListaPiezas::movimientovalido(pieza* pi, int fil, int col) {
 }
 void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 	switch (turno) {
+		//Turno del equipo A
 	case EQUIPO_A:
+		//Si el movimiento es válido
 		if (movimientovalido(pi, fil, col) == 1) {
+			//Come la pieza
 			comer(fil, col);
+			//Si hay enroque hazlo
 			if (enroquevalido(pi, fil, col) == 1) {
+				//Hacer enroque
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
 			}
+			//Si no hay enroque 
 			if (enroquevalido(pi, fil, col) == 0 && !piezaComida) {
 				ETSIDI::play("sonidos/move1.wav");
 			}
@@ -518,24 +534,31 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				ETSIDI::play("sonidos/capture.mp3");
 			}
 				anularenroque(pi, fil, col);
+				//mueve la pieza
 				pi->moverPieza(fil, col);
+				//Si hay jaques
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (comprobarPromocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
 				if (JaqueMate(EQUIPO_B))
 					ganaJUG1 = true;
-					//std::cout << "JAQUE MATE B";
 		}
 		else seleccion = COORD_DEST;
 		break;
+		//Turno del equipo B
 	case EQUIPO_B:
+		//Si el movimiento es válido
 		if (movimientovalido(pi, fil, col) == 1) {
+			//Come la pieza
 			comer(fil, col);
-			if (enroquevalido(pi, fil, col) == 1) { 
+			//Si hay enroque hazlo
+			if (enroquevalido(pi, fil, col) == 1) {
+				//Hacer enroque
 				hacerenroque(pi, fil, col);
 				ETSIDI::play("sonidos/castle.mp3");
 			}
+			//Si no hay enroque
 			if (enroquevalido(pi, fil, col) == 0 && !piezaComida) {
 				ETSIDI::play("sonidos/move1.wav");
 			}
@@ -544,7 +567,9 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 					ETSIDI::play("sonidos/capture.mp3");
 			}
 				anularenroque(pi, fil, col);
+				//mueve la pieza
 				pi->moverPieza(fil, col);
+				//Si hay jaques
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if(comprobarPromocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
@@ -847,8 +872,6 @@ bool ListaPiezas::JaqueMate(equipos equipo) {
 		if (lista[i]->getequipo() == equipo) {
 			for (int fil = 1; fil < 9; fil++) {
 				for (int col = 1; col < 9; col++) {
-					int fil_inicial = lista[i]->getFila();
-					int col_inicial = lista[i]->getColumna();
 					if (movimientovalido(lista[i], fil, col))
 						return false;//Si pueden realizar algun movimiento
 				}

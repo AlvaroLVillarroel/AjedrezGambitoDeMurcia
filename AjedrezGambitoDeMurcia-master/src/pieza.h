@@ -11,7 +11,6 @@ class pieza
 {
 protected:
 	bool negra;
-	
 	paises pais;
 	equipos equipo;
 	tipoPieza tp;
@@ -20,14 +19,12 @@ protected:
 	int movimientos;
 public:
 	pieza();
-	~pieza();
 	int getFila(); //obtiene valor de fila
 	int getColumna(); //obtiene valor de columna
 	void moverPieza(int fil, int col);
-	virtual void setFila(int row); //modifica valor de fila
-	virtual void setColumna(int column); //modifica valor de columna
+	void setFila(int row); //modifica valor de fila
+	void setColumna(int column); //modifica valor de columna
 	virtual void dibujarPieza(); //dibuja la pieza
-	virtual void colorCasilla();
 	virtual bool desplazamientovalido(int fil,int col);
 	std::string comprobarPieza();
 	tipoPieza getpieza() { return tp; } //devuelve el tipo de pieza

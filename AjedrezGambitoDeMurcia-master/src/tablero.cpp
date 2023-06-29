@@ -175,11 +175,6 @@ void Tablero::dibujarJugadores()
     }
 }
 
-/*void Tablero::finalPartida()
-{
-    if (piezas.ganaJUG1 == true)
-
-}*/
 
 void Tablero::juega(int button, int state, int x, int y) {
     piezas.mousePress(button, state, x, y);
@@ -207,8 +202,6 @@ void Tablero::dibujarPromocion()
         if (pa == BRAZIL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promobrazil.png").id);
         if (pa == PORTUGAL) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoportugal.png").id);
         if (pa == ARGENTINA) glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promocion/promoargentina.png").id);
-        //glTranslatef(0, -3.5f, 0);
-        //glTranslatef(0, 0, 0);
         glDisable(GL_LIGHTING);
         glBegin(GL_POLYGON);
         glTexCoord2d(0, 1); glVertex3f(4.05f, -0.6f, 1.9f);
@@ -219,7 +212,6 @@ void Tablero::dibujarPromocion()
         glEnable(GL_LIGHTING);
         glDisable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, 0);
-        //piezas.setPromo(false);
         glPopMatrix();
         glEnable(GL_TEXTURE_2D);
         glColor3f(1, 1, 1);
@@ -244,6 +236,5 @@ void Tablero::dibujarPromocion()
         glDisable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, 0);
         glPopMatrix();
-        //piezas.setPromo(false);
     }
 }

@@ -8,12 +8,8 @@ class Coordenadas{
     int fila;
     int columna;
 public:
-  /*float x[8][8], y[8][8];
-    void setCord();
-    void dibujarPrueba();
-    */
+    Coordenadas() {}
     Coordenadas(int fila, int columna); //constructor
-    Coordenadas();
     int getFila(); //obtiene valor de fila
     int getColumna(); //obtiene valor de columna
     void setFila(int row); //modifica valor de fila

@@ -7,9 +7,6 @@ pieza::pieza(){
 	bool negra = false;
 	movimientos = 0;
 }
-pieza::~pieza()
-{
-}
 pieza::pieza(paises pais, equipos equipo, tipoPieza pieza, Coordenadas coord)
 {
 	this->pais = pais;
@@ -52,15 +49,6 @@ void pieza::dibujarPieza()
 	glEnable(GL_LIGHTING);
 }
 
-void pieza::colorCasilla()
-{
-	int fila = Coord.getFila();
-	int columna = Coord.getColumna();
-
-	if (((fila % 2 != 0) && (columna % 2 != 0)) || ((fila % 2 == 0) && (columna % 2 == 0))) {
-		negra=true; //si es una casilla negra
-	}
-}
 bool pieza::desplazamientovalido(int fil, int col) {
 
 	return 0;
