@@ -19,6 +19,7 @@ public:
 	GLfloat y1=0;
 	GLfloat x2=8;
 	GLfloat y2=8;
+	bool damaslocas;
 	int flagrz = 0;
 	float a = 1.5;
 	//Coordenadas cord;

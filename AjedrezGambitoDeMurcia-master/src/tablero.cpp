@@ -7,7 +7,8 @@
 void Tablero::inicializa() {
     jugador1.setPos(-5, 0);
     jugador2.setPos(5, 0);
-    piezas.lista_inicial(pa1, pa);
+    if (!damaslocas)piezas.lista_inicial(pa1, pa);
+    else piezas.damasLocas(pa1, pa);
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if ((i == 0) || (i == 1) || (i == 6) || (i == 7)) {
@@ -23,7 +24,7 @@ void Tablero::inicializa() {
 void Tablero::dibujarTablero() {
     piezas.dibuja();
     piezas.dibujarmovs();
-    
+    piezas.dibujarPuntito();
 
 
 	int i, j;

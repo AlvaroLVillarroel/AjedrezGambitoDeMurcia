@@ -95,5 +95,7 @@ public:
 	void dibujarmovpos(pieza* pi, int fil, int col);
 	void dibujarmovs();
 	void anularenroque(pieza* pi, int fil, int col);
+	void dibujarPuntito();
 	void seleccionPromocion(int button, int state, int x, int y);
+	void damasLocas(paises p1, paises p2);
 };

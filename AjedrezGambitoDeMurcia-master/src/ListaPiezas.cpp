@@ -84,6 +84,22 @@ void ListaPiezas::lista_inicial(paises p1,paises p2) {
 		agregarRey(p1, EQUIPO_A, 1, 5);
 		agregarRey(p2, EQUIPO_B, 8, 5);
 }
+void ListaPiezas::damasLocas(paises p1, paises p2) {
+	for (int i = 1;i < 9;i++) {
+		agregarPeon(p1, EQUIPO_A, 2, i);
+		agregarPeon(p2, EQUIPO_B, 7, i);
+	}
+	for (int i = 1;i < 9;i++) {
+		if (i == 5) {
+			agregarRey(p1, EQUIPO_A, 1, 5);
+			agregarRey(p2, EQUIPO_B, 8, 5);
+		}
+		else {
+			agregarDama(p1, EQUIPO_A, 1, i);
+			agregarDama(p2, EQUIPO_B, 8, i);
+		}
+	}
+}
 void ListaPiezas::agregarPeon(paises p,equipos e,int fil,int col) {
 	Peon* aux = new Peon;
 	aux->inicializa(p, e, PEON, fil, col);
@@ -1011,5 +1027,72 @@ bool ListaPiezas::comprobarPromocion(pieza* pi, int fil, int col) {
 			return true;
 		}
 		else return false;
+	}
+}
+void ListaPiezas::dibujarPuntito() {
+	float x = 0, y = 0;
+	if (promo == pDAMA) {
+		x = 0;
+		y = 0;
+	}
+	if (promo == pTORRE) {
+		x = 1.015;
+		y = 0;
+	}
+	if (promo == pALFIL) {
+		x = 0;
+		y = 1;
+	}
+	if (promo == pCABALLO) {
+		x = 1.015;
+		y = 1;
+	}
+	if (turno == EQUIPO_A) {
+		glPushMatrix();
+		glScalef(0.75, 0.75, 1);
+		glTranslatef(-2.05-x, -7.575-y, 0);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/promosign.png").id);
+		glDisable(GL_LIGHTING);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.0);
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(-5.3f, 2.87f, 2.0f);
+		glTexCoord2d(1, 1); glVertex3f(-4.1, 2.87f, 2.0f);
+		glTexCoord2d(1, 0); glVertex3f(-4.1, 3.75f, 2.0f);
+		glTexCoord2d(0, 0); glVertex3f(-5.3f, 3.75f, 2.0f);
+		glEnd();
+		glDisable(GL_BLEND);
+		glDisable(GL_ALPHA_TEST);
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glPopMatrix();
+	}
+	if (turno == EQUIPO_B) {
+		glPushMatrix();
+		glScalef(0.75, 0.75, 1);
+		glTranslatef(1.75 + x, -7.55 - y, 0);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("fotos/mirror.png").id);
+		glDisable(GL_LIGHTING);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.0);
+		glBegin(GL_POLYGON);
+		glTexCoord2d(0, 1); glVertex3f(5.3f, 2.87f, 2.0f);
+		glTexCoord2d(1, 1); glVertex3f(4.1f, 2.87f, 2.0f);
+		glTexCoord2d(1, 0); glVertex3f(4.1f, 3.75f, 2.0f);
+		glTexCoord2d(0, 0); glVertex3f(5.3f, 3.75f, 2.0f);
+		glEnd();
+		glDisable(GL_BLEND);
+		glDisable(GL_ALPHA_TEST);
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glPopMatrix();
 	}
 }

@@ -385,7 +385,8 @@ void Game::mousePress(int button, int state, int x, int y) {
 				y = 0;
 				estado = seleccionJUG1;
 				ETSIDI::play("sonidos/select.wav");
-				//pve
+				//DAMAS_LOCAS
+				tablero.damaslocas = true;
 
 			}
 
@@ -584,6 +585,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				tablero.reiniciarTablero();
 				estado = modosJuego;
 				ETSIDI::play("sonidos/select.wav");
+				tablero.damaslocas = false;
 			}
 
 
@@ -610,6 +612,7 @@ void Game::mousePress(int button, int state, int x, int y) {
 				tablero.reiniciarTablero();
 				estado = modosJuego;
 				ETSIDI::play("sonidos/select.wav");
+				tablero.damaslocas = false;
 			}
 		}
 	}
