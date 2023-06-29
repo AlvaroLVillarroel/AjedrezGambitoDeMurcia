@@ -90,6 +90,7 @@ public:
 	void promocion();
 	equipos getTurno() { return turno; }
 	bool getPromo() { return promocionflag; }
+	void setTurno(equipos eq) { turno = eq; }
 	void setPromo(bool flag) { promocionflag = flag; }
 	void dibujarmovimientosposibles(pieza* pi);
 	void dibujarmovpos(pieza* pi, int fil, int col);

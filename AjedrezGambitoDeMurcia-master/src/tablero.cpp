@@ -7,6 +7,7 @@
 void Tablero::inicializa() {
     jugador1.setPos(-5, 0);
     jugador2.setPos(5, 0);
+    piezas.setTurno(EQUIPO_B);
     if (!damaslocas)piezas.lista_inicial(pa1, pa);
     else piezas.damasLocas(pa1, pa);
     for (int i = 0; i < 8; i++) {
