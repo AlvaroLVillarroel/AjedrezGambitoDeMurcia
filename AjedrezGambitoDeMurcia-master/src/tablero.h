@@ -8,10 +8,11 @@
 
 class Tablero {
 	int posiciones[8][8];
-	ListaPiezas piezas;
+	
 	player jugador1;
 	player jugador2;
 public:
+	ListaPiezas piezas;
 	paises pa,pa1;
 	pieza prueba;
 	GLfloat x1=0;
@@ -27,6 +28,7 @@ public:
 	void inicializa();
 	void dibujarTablero();
 	void dibujarJugadores();
+	//void finalPartida();
 	void juega(int button,int state,int x,int y);
 	void mueve();
 };

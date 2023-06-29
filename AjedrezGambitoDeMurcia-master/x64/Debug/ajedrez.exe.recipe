@@ -2,11 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-<<<<<<< HEAD
       <FullPath>C:\Users\Diego Carasa\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\bin\ajedrez.exe</FullPath>
-=======
-      <FullPath>C:\Users\david\source\repos\AjedrezGambitoDeMurcia\AjedrezGambitoDeMurcia-master\x64\Debug\bin\ajedrez.exe</FullPath>
->>>>>>> 7dd732dd2a1db8a27f5279432ea929f5dc4d3cb5
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

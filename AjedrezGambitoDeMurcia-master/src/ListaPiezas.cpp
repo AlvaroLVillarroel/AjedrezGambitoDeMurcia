@@ -522,8 +522,8 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (promocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
 				if (JaqueMate(EQUIPO_B))
-					
-					std::cout << "JAQUE MATE B";
+					ganaJUG1 = true;
+					//std::cout << "JAQUE MATE B";
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -547,7 +547,9 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if(promocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_A;
-				if (JaqueMate(EQUIPO_A))std::cout << "JAQUE MATE A";
+				if (JaqueMate(EQUIPO_A))
+					ganaJUG2 = true;
+					//std::cout << "JAQUE MATE A";
 		}
 		else  seleccion = COORD_DEST;
 		break;

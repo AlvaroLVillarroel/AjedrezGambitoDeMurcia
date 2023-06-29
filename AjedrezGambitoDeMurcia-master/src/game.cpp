@@ -618,6 +618,10 @@ void Game::mousePress(int button, int state, int x, int y) {
 
 
 	}
+	if (tablero.piezas.ganaJUG1)
+		estado = ganaJUG1;
+	if (tablero.piezas.ganaJUG2)
+		estado = ganaJUG2;
 }
 void Game::music()
 {

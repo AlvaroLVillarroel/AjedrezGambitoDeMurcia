@@ -46,6 +46,8 @@ public:
 	bool click2 = false;
 	bool click12 = false;
 	bool click22 = false;
+	bool ganaJUG1 = false;
+	bool ganaJUG2 = false;
 	ListaPiezas();
 	//~ListaPiezas();
 	bool agregar(pieza* p);
@@ -95,4 +97,5 @@ public:
 	void dibujarmovpos(pieza* pi, int fil, int col);
 	void dibujarmovs();
 	void anularenroque(pieza* pi, int fil, int col);
+
 };
