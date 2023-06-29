@@ -68,12 +68,12 @@ public:
 	void agregarDama(paises p, equipos e, int fil, int col);
 	void agregarRey(paises p, equipos e, int fil, int col);
 	bool piezaencasilla(int fil, int col);
-	bool colisionalfil(pieza* pi, int fil, int col);
-	bool colisiontorre(pieza* pi, int fil, int col);
-	bool colisionreina(pieza* pi, int fil, int col);
-	bool colisionpeon(pieza* pi, int fil, int col);
-	bool colisionrey(pieza* pi, int fil, int col);
-	bool colisionpieza(pieza* pi, int fil, int col);
+	bool colisionalfil(pieza* pi, int fil, int col);//mira las colisiones del alfil
+	bool colisiontorre(pieza* pi, int fil, int col);//mira las colisiones de torre
+	bool colisionreina(pieza* pi, int fil, int col);//mira las colisiones de reina
+	bool colisionpeon(pieza* pi, int fil, int col);//mira las colisiones de peon
+	bool colisionrey(pieza* pi, int fil, int col);//mira las colisiones del rey
+	bool colisionpieza(pieza* pi, int fil, int col); //gestiona la colision segun el tipo de pieza
 	void mousePress(int button, int state, int x, int y);
 	pieza* piezaseleccionada(int fil, int col);
 	void MoverPieza();
