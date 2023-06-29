@@ -51,6 +51,7 @@ public:
 	bool click22 = false;
 	bool ganaJUG1 = false;
 	bool ganaJUG2 = false;
+	bool tablas = false;
 	ListaPiezas();
 	bool agregar(pieza* p);
 	void dibuja();

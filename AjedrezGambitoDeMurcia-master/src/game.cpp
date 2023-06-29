@@ -510,13 +510,14 @@ void Game::mousePress(int button, int state, int x, int y) {
 		tablero.juega(button, state, x, y);
 		if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN))
 		{
-			std::cout << x << " " << y;
+			//std::cout << x << " " << y;
 			//rendirse
 			if (x >= 15 && x <= 61 && y >= 85 && y <= 137) {
 				x = 0;
 				y = 0;
 				estado = ganaJUG2;
-				ETSIDI::play("sonidos/select.wav");
+				ETSIDI::play("sonidos/game-end.mp3");
+				//ETSIDI::play("sonidos/select.wav");
 			}
 			//tablas
 			if (x >= 73 && x <= 153 && y >= 93 && y <= 125) {
@@ -540,7 +541,8 @@ void Game::mousePress(int button, int state, int x, int y) {
 				x = 0;
 				y = 0;
 				estado=ganaJUG1;
-				ETSIDI::play("sonidos/select.wav");
+				//ETSIDI::play("sonidos/select.wav");
+				ETSIDI::play("sonidos/game-end.mp3");
 			}
 		}
 	}
@@ -582,10 +584,11 @@ void Game::mousePress(int button, int state, int x, int y) {
 				SetCursor(LoadCursor(NULL, IDC_HAND));
 				x = 0;
 				y = 0;
-				tablero.reiniciarTablero();
 				estado = modosJuego;
+				tablero.reiniciarTablero();
 				ETSIDI::play("sonidos/select.wav");
 				tablero.damaslocas = false;
+				std::cout << "perdiste bro"<<std::endl;
 			}
 
 
@@ -616,10 +619,20 @@ void Game::mousePress(int button, int state, int x, int y) {
 			}
 		}
 	}
-	if (tablero.piezas.ganaJUG1)
+	if (tablero.piezas.ganaJUG1) {
+		tablero.reiniciarTablero();
 		estado = ganaJUG1;
-	if (tablero.piezas.ganaJUG2)
+		tablero.piezas.ganaJUG1 = false;
+	}
+	if (tablero.piezas.ganaJUG2) {
+		tablero.reiniciarTablero();
 		estado = ganaJUG2;
+		tablero.piezas.ganaJUG2 = false;
+	}
+	if (tablero.piezas.tablas) { 
+		estado = tablas;
+		tablero.piezas.tablas = false;
+	}
 }
 void Game::music()
 {

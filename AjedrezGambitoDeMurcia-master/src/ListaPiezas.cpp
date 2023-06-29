@@ -549,8 +549,12 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_A) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if (comprobarPromocion(pi, fil, col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_B;
-				if (JaqueMate(EQUIPO_B))
+				if (JaqueMate(EQUIPO_B)) {
+					if (!jaque(EQUIPO_B))tablas = true;
 					ganaJUG1 = true;
+					ETSIDI::play("sonidos/game-end.mp3");
+					destruirPiezas();
+				}
 		}
 		else seleccion = COORD_DEST;
 		break;
@@ -582,9 +586,13 @@ void ListaPiezas::moverPieza(pieza* pi, int fil, int col) {
 				if (jaque(EQUIPO_B) == 1)ETSIDI::play("sonidos/move-check.mp3");
 				if(comprobarPromocion(pi,fil,col))ETSIDI::play("sonidos/promote.mp3");
 				turno = EQUIPO_A;
-				if (JaqueMate(EQUIPO_A))
+				if (JaqueMate(EQUIPO_A)) {
+					if (!jaque(EQUIPO_A))tablas = true;
 					ganaJUG2 = true;
+					ETSIDI::play("sonidos/game-end.mp3");
+					destruirPiezas();
 					//std::cout << "JAQUE MATE A";
+				}
 		}
 		else  seleccion = COORD_DEST;
 		break;
@@ -924,13 +932,13 @@ void ListaPiezas::dibujarmovs() {
 }
 void ListaPiezas::seleccionPromocion(int button, int state, int x, int y) {
 	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN)) {
-		std::cout << x << " , " << y << std::endl;
+		//std::cout << x << " , " << y << std::endl;
 		if (x >= 852 && x <= 905 && y >= 569 && y <= 623) {
 			//dama
 			SetCursor(LoadCursor(NULL, IDC_HAND));
 			promo = pDAMA;
 			wait = true;
-			std::cout << "wait true" << std::endl;
+			//std::cout << "wait true" << std::endl;
 		}
 		if (x >= 911 && x <= 962 && y >= 569 && y <= 621) {
 			//torre
@@ -955,7 +963,7 @@ void ListaPiezas::seleccionPromocion(int button, int state, int x, int y) {
 			SetCursor(LoadCursor(NULL, IDC_HAND));
 			promo = pDAMA;
 			wait = true;
-			std::cout << "wait true" << std::endl;
+			//std::cout << "wait true" << std::endl;
 		}
 		if (x >= 29 && x <= 82 && y >= 568 && y <= 621) {
 			//torre
@@ -985,7 +993,7 @@ bool ListaPiezas::comprobarPromocion(pieza* pi, int fil, int col) {
 		if (pi->getFila() == 8) {
 			if (promo == pDAMA) {
 				agregarDama(pi->getPais(), pi->getequipo(), pi->getFila(), pi->getColumna());
-				std::cout << "spawn de dama";
+				//std::cout << "spawn de dama";
 				eliminarPieza(pi);
 			}
 			if (promo == pTORRE) {
@@ -1008,7 +1016,7 @@ bool ListaPiezas::comprobarPromocion(pieza* pi, int fil, int col) {
 		if (pi->getFila() == 1) {
 			if (promo == pDAMA) {
 				agregarDama(pi->getPais(), pi->getequipo(), pi->getFila(), pi->getColumna());
-				std::cout << "spawn de dama";
+				//std::<< "spawn de dama";
 				eliminarPieza(pi);
 			}
 			if (promo == pTORRE) {
